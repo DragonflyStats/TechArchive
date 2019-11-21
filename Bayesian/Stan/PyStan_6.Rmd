@@ -1,0 +1,65 @@
+
+### Differences between PyStan and RStan
+While PyStan attempts to maintain API compatibility with RStan, there are certain unavoidable differences between Python and R.
+
+### Methods and attributes
+* Methods are invoked in different ways: fit.summary() and fit.extract() (Python) vs. summary(fit) and extract(fit) (R).
+* Attributes are accessed in a different manner as well: fit.sim (Python) vs. fit@sim (R).
+* Dictionaries instead of Lists
+* Where RStan uses lists, PyStan uses (ordered) dictionaries.
+
+Python:
+<pre><code>
+fit.extract()['theta']
+</code></pre>
+R:
+<pre><code>
+extract(fit)$theta
+</code></pre>
+
+#### Reusing models and saving objects
+PyStan uses pickle to save objects for future use.
+Python:
+<pre><code>
+import pickle
+import pystan
+
+# bernoulli model
+model_code = """
+    data {
+      int<lower=0> N;
+      int<lower=0,upper=1> y[N];
+    }
+    parameters {
+      real<lower=0,upper=1> theta;
+    }
+    model {
+      for (n in 1:N)
+          y[n] ~ bernoulli(theta);
+    }
+    """
+data = dict(N=10, y=[0, 1, 0, 0, 0, 0, 0, 0, 0, 1])
+model = pystan.StanModel(model_code=model_code)
+fit = model.sampling(data=data)
+
+with open('model.pkl', 'wb') as f:
+    pickle.dump(model, f, protocol=pickle.HIGHEST_PROTOCOL)
+
+# load it at some future point
+with open('model.pkl', 'rb') as f:
+    model = pickle.load(f)
+
+# run with different data
+fit = model.sampling(data=dict(N=5, y=[1, 1, 0, 1, 0]))
+</code></pre>
+R:
+<pre><code>
+library(rstan)
+
+model = stan_model(model_code=model_code)
+save(model, file='model.rdata')
+</code></pre>
+
+See also Avoiding recompilation of Stan models.
+
+If you are saving a large amount of data with pickle.dump, be sure to use the highest protocol version available. Earlier versions are limited in the amount of data they can save in a single file.

@@ -1,0 +1,10 @@
+### rstanarm
+Bayesian applied regression modeling
+
+rstanarm is an R package that emulates other R model-fitting functions but uses Stan (via the rstan package) for the back-end estimation. The primary target audience is people who would be open to Bayesian inference if using Bayesian software were easier but would use frequentist software otherwise.
+
+###Getting started
+If you are new to rstanarm we recommend starting with the tutorial vignettes.
+Installation
+Install the latest release from CRAN
+install.packages("rstanarm")
