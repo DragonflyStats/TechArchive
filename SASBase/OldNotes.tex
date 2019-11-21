@@ -1,0 +1,133 @@
+
+
+
+
+
+--------------------------------------------------------------
+Chapter 17
+
+#### Reading Non Standard Numeric Data (page 535)
+
+- blanks, commas, dashes, dollar signs, percent signs, right parentheses, left parentheses
+
+
+-------------------------------------------------------------
+
+Chapter 19
+
+
+- How SAS stores Data Values
+- How SAS stores Time Values
+- More about SAS Time and Date Values
+
+
+
+
+------------------------------------------------------------
+Chapter 21
+
+
+<pre><code>
+data perm.sales97;
+   infile data97 missover;
+   input ID $ sales : comma. @;
+   Quarter=0
+do while (sales ne .);
+   quarter+1;
+   output; 
+   input sales : comma. @;
+end;
+run;   
+
+
+</code></pre>
+
+------------------------------------------------------------
+
+Chapter 22
+
+
+-----------------------------------------------------------------------------
+
+Informats and Formats
+
+An informat is a specification for how raw data should be read.
+
+A format is a layout specification for how a variable should be printed or displayed.
+
+SAS contains many internal formats and informats, or user defined formats and informats can be constructed using PROC FORMAT.
+
+---------------------------------------------
+
+Conditional Processing
+
+http://www.puzha.com/sasbook/working%20with%20sas%20datasets%20part3.html
+
+---------------------------------------------
+
+
+http://www.ssc.wisc.edu/sscc/pubs/4-18.htm
+
+
+Proc Print
+
+ 
+
+Proc print simply prints the contents of a data set to the lst file. The basic syntax is
+
+ 
+
+proc print data=dataset;
+
+ run;
+
+ 
+
+All you have to do is specify the data set.
+
+ 
+
+By default SAS will format the output such that it will be centered on a printed page.
+
+You can override this behavior by adding
+
+ 
+
+options nocenter;
+
+ 
+
+right before the proc print. This can make it easier to read on the screen.
+
+You can also set the line size and page size SAS will use.
+
+
+
+referencing a SAS library
+
+referencing a data file
+
+name a SAS data set to be created
+
+specifying a raw data file to be read
+
+creating new variables and assigning values
+
+
+reading in instream data
+
+submittting and verifying a DATA step program
+
+
+
+P95 P50 -  percentiles
+
+Q1,Q3 - Quartiles
+
+--------------------------------------------------------------------------------
+
+
+
+ 
+
+

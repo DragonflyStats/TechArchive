@@ -1,0 +1,34 @@
+\section{SAS Base 19: Reading Date and Time Values}
+
+Numeric SAS Day Values: Number of Days since  Juanuary 1 1960
+SAS time values are the number of seconds since midnight,
+Informats
+\begin{itemize}
+\item DATEw.
+\item DATETIMEw.
+\item MMDDYYw.
+\item TIMEw.
+\end{itemize}
+TIMEw. reads time such as 17:00
+Using Dates and Times in Calculations
+Using Time and Date formats
+
+\subsubsection{Chapter 19}
+\begin{verbatim}
+Modifying List Input (p560)
+Using the & Modifier with a LENGTH Statement (p561)
+Reading Nonstandard Values (p562)
+Creating Free-Format Data (p565)
+Specifying a Delimiter (p566)
+Using DSD Options (p566)
+Mixing Inputs Styles (p569)
+\end{verbatim}
+%-------------------%
+\begin{framed}
+\begin{verbatim}
+options yearcutoff =1920;
+data perm.aprbills;
+   infile aprdata;
+\end{verbatim}
+\end{framed}
+%------------------------------------------------------------------- 20 --%

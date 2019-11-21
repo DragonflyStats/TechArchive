@@ -1,0 +1,21 @@
+%----------------------------------------------------------%
+
+SAS Base 16
+
+\subsection*{Arrays in SAS}
+SAS permits the construction and use of arrays in data steps. The first step in usingNan array in SAS is to declare one, using an \texttt{array} statement.
+
+\begin{framed}
+\begin{verbatim}
+ARRAY arrayname {subscripts} <$><length>
+<array elements><(critical values)>;
+\end{verbatim}
+\end{framed}
+
+At a minimum the array function must contain the name of the array
+and either an indication of the subscripts or a description of the
+elements themselves.
+
+The array name must be a valid SAS name, similar to a variable name.
+
+The subscripts, which must appear in braces are either a numerical constant or an asterisk.

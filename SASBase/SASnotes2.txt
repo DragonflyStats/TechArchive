@@ -1,0 +1,122 @@
+
+SAS
+
+http://www.nesug.org/Proceedings/nesug97/begtut/dickson2.pdf
+
+Proc Freq
+Proc Corr
+Proc Glimmix	
+
+
+Overview: PLOT Procedure
+The PLOT procedure plots the values of two variables for each observation in an input SAS data set. The coordinates of each point on the plot correspond to the two variables' values in one or more observations of the input data set.
+The following output is a simple plot of the high values of the Dow Jones Industrial Average (DJIA) between 1954 and 1994. PROC PLOT determines the plotting symbol and the scales for the axes. Here are the statements that produce the output:
+options nodate pageno=1 linesize=64 
+   pagesize=25;
+
+proc plot data=djia;
+   plot high*year;
+   title 'High Values of the Dow Jones'; 
+   title2 'Industrial Average';
+   title3 'from 1954 to 1994';
+run;
+A Simple Plot
+                 High Values of the Dow Jones                 1
+                       Industrial Average
+                       from 1954 to 1994
+
+     Plot of High*Year.  Legend: A = 1 obs, B = 2 obs, etc.
+
+ 4000 +                                              A
+      |                                             A
+      |                                           AA
+ High |                                          A
+      |                                       A A
+      |                                        A
+ 2000 +                                      A
+      |                                     A
+      |                                   AA
+      |                AAAAAAAAAAAAAAAAAAA
+      |        AAAAAAAA
+      |      AA
+    0 +
+      ---+---------+---------+---------+---------+---------+--
+       1950      1960      1970      1980      1990      2000
+
+                                Year
+
+
+
+You can also overlay two plots, as shown in the following output. One plot shows the high values of the DJIA; the other plot shows the low values. The plot also shows that you can specify plotting symbols and put a box around a plot. The statements that produce the following output are shown in Overlaying Two Plots.
+Plotting Two Sets of Values at Once
+                    Plot of Highs and Lows                    1
+              for the Dow Jones Industrial Average
+
+            Plot of High*Year.  Symbol used is '*'.
+            Plot of Low*Year.  Symbol used is 'o'.
+
+      ---+---------+---------+---------+---------+---------+---
+ 4000 +                                              *        +
+      |                                             *         |
+      |                                            * o        |
+      |                                           *oo         |
+ High |                                          *            |
+      |                                       * *             |
+      |                                           o           |
+      |                                        *oo            |
+ 2000 +                                      * o              +
+      |                                       o               |
+      |                                     *o                |
+      |                                   **o                 |
+      |                ****** ************oo                  |
+      |           *****oooooo*o o oooooooo                    |
+      |      *****oooo           o                            |
+      |      o                                                |
+    0 +                                                       +
+      ---+---------+---------+---------+---------+---------+---
+       1950      1960      1970      1980      1990      2000
+
+                                Year
+
+NOTE: 7 obs hidden.
+PROC PLOT can also label points on a plot with the values of a variable, as shown in the following output. The plotted data represents population density and crime rates for selected U.S. states. The SAS code that produces the following output is shown in Adjusting Labels on a Plot with the PLACEMENT= Option.
+Labeling Points on a Plot
+                                     A Plot of Population Density and Crime Rates                                     1
+
+                              Plot of Density*CrimeRate$State.  Symbol is value of State.
+
+               ---+------------+------------+------------+------------+------------+------------+------------+---
+       Density |                                                                                                |
+           500 +                                                                                                +
+               |                                                                                                |
+               |                                            Maryland                                            |
+               |                                               M                                                |
+               |                                                                                                |
+               |                                                                                                |
+               |                                                                                                |
+               |                                                                                                |
+               |                                     Delaware                                                   |
+               |                                        D                                                       |
+               |            Pennsylvania          Ohio                                                          |
+               |                 P                 O                                                            |
+           250 +                                                                                                +
+               |                                           Illinois                                             |
+               |                                              I                                     Florida     |
+               |                                                                                       F        |
+               |                              North Carolina             California                             |
+               |                   New                   South               C                                  |
+               |   West         Hampshire   Alabama N   Carolina                                                |
+               | Virginia           N                T     S       G Georgia                                    |
+               |    W           Mississippi       A Tennessee                  Washington Texas                 |
+               |                     M  Vermont V    M Missouri    Oklahoma        W        T                   |
+               |         South        Arkansas A    M Minnesota       O          Oregon                         |
+               |         Dakota               I Idaho                    Nevada    O                            |
+             0 +           S N North Dakota                                N                                    +
+               ---+------------+------------+------------+------------+------------+------------+------------+---
+                2000         3000         4000         5000         6000         7000         8000         9000
+
+                                                           CrimeRate
+
+
+
+

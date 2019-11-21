@@ -1,0 +1,83 @@
+p115
+
+proc print data=clinic.stress double;
+var resthe maxhr rechr;
+where tolerance ='I';
+run;
+___________________
+p121
+proc print data=clinic.admit lable;
+ var age height;
+ label age= "age of Patient';
+ label height ='Height in Inches';
+run;
+___________________
+p125
+proc print data =reps split='*';
+var salesrep type unitsold net commsion;
+label salesrep = 'sales *respresentative';
+run;
+___________________
+p153 
+data sas.user stress; 
+infile tests;
+input ID 1-4 Name $ 6-25 $ RehsHR
+Tolerance $ 45;
+TotalTime = (timemin*60)+timeset;
+run;
+___________________
+p155
+data sas.user stress; 
+infile tests;
+..
+if tolerance='D';
+TotalTime = (timemin*60)+timeset;
+run;
+___________________
+p184
+
+data perm.updata
+	infile invet;
+	input item $1-13 IDnum $15-19
+	Instock 21-22 Back Ord 24-25;
+	Total=instock_backord;
+run;
+___________________
+p224 
+
+libname library 'C:/sas/formats/lib';
+proc format lib=library;
+ value jobfmt;
+ 103='mamager'
+ 105='test processor';
+ 111='assoc. text writer';
+ 113='senior. tech writer';
+run;
+
+___________________
+p247
+
+proc report data = flights.europe nowd;
+ where dest in ('Lon','Par');
+ column flight orig dest mail freight revenues;
+ define revenue /format =dollar15.2
+ define flight / width = 6 centre;
+
+
+___________________
+
+p283
+prod format
+value wtfmt low ='<<140'
+140-180='140-180'
+181-high='>180';
+run;
+proc freq data =clinic.diabets
+tables sex*weight / nofreq norow nocol;
+format weight wtfml.;
+run;
+
+___________________
+
+
+___________________

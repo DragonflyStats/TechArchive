@@ -1,0 +1,123 @@
+
+\documentclass[12pt, a4paper]{report}
+\usepackage{natbib}
+\usepackage{vmargin}
+\usepackage{graphicx}
+\usepackage{epsfig}
+\usepackage{subfigure}
+%\usepackage{amscd}
+\usepackage{amssymb}
+\usepackage{subfigure}
+\usepackage{amsbsy}
+\usepackage{amsthm, amsmath}
+%\usepackage[dvips]{graphicx}
+\bibliographystyle{chicago}
+\renewcommand{\baselinestretch}{1.1}
+
+% left top textwidth textheight headheight % headsep footheight footskip
+\setmargins{2.0cm}{2cm}{15.5 cm}{23.5cm}{0.5cm}{0cm}{1cm}{1cm}
+
+\pagenumbering{arabic}
+
+
+\begin{document}
+\author{Kevin O'Brien}
+\title{Advanced SAS}
+\date{\today}
+\maketitle
+
+\tableofcontents \setcounter{tocdepth}{2}
+
+\newpage
+%-----------------------------------------------------------------------------------------%
+\chapter{SAS SQL}
+\section{Table Joins}
+
+\begin{itemize}
+\item Inner Joins
+    \begin{itemize}\item An inner join is the most
+    common join operation used in applications and can be regarded as
+    the default join-type. \item Inner join creates a new result table
+    by combining column values of two tables (A and B) based upon the
+    join-predicate.
+    \end{itemize}
+\item Right Joins
+
+\item Left Joins
+
+\item Full Joins
+    \begin{itemize}
+    \item A full join combines the results of both left and right
+    outer joins. \item The joined table will contain all records from
+    both tables, and fill in NULLs for missing matches on either side.
+    \end{itemize}
+\end{itemize}
+
+
+%----------------------------------------------------------------------------------------Chapter 2%
+\chapter{SAS Macro Language}
+\section{Macros}
+SAS macro language gives the opportunity to insert programming
+steps inside a SAS code. The first advantage is to simplify large
+programs. Indeed, it is possible to create functions with
+parameters, which can be easily invoked several times. It is
+therefore possible to define a model and submit it to statistical
+testing without having to use predefined functions. All the usual
+programming elements: if then else statements, loops for I=1 to N
+do, and other similar operators can be used to this effect.
+
+
+\begin{itemize}
+\item The most common macro statements are $\%MACRO$ and $\%MEND$.
+\item Other macro statements, often similar to their regular SAS
+equivalents, also start with the $\%$ symbol, such as $\%DO$,
+$\%END$, $\%IF\%THEN$, $\%ELSE$, $\%GLOBAL$, $\%LOCAL$, and
+$\%LET$. \item Macro statements are ended with semicolons (;).
+\end{itemize}
+
+\section{Macro Variables}
+Macro variables are indicated by preceding a variable name with an
+ampersand ($\&$). To define a macro variable use the $\%LET$
+statement. For example to assign the value 24 to the variable
+named `sto':
+\begin{verbatim}
+%LET sto=24;
+\end{verbatim}
+
+Macro variables that contain entire sections of a SAS program can
+also be created:
+\begin{verbatim}
+%let sto2=%str(proc means data=year;
+var rainfall; run; );
+\end{verbatim}
+
+\section{Example of code}
+\begin{verbatim}%MACRO CLAIMREP;
+%LET CURYEAR = 98;
+%DO YEAR = 89 %TO 98;
+%IF &YEAR = &CURYEAR %THEN %LET
+NOTE = FOOTNOTE THRU &SYSDATE; PROC PRINT DATA = CLAIMS; WHERE
+YEAR = &YEAR; TITLE1 ANNUAL REPORT FOR 19&YEAR; &NOTE;
+%END;
+%MEND CLAIMREP;
+%CLAIMREP;
+\end{verbatim}
+
+
+\section{Macro functions}
+Macro functions operate much as regular SAS functions, except that
+the arguments are within the context of the macro language. Most
+operate on character strings (e.g., $\%SUBSTR$) or control the
+exact interpretation of macro special symbols (e.g., $\%STR$).
+Macro variables are character variables so the $\%EVAL$ function
+may be required to perform arithmetic within macro statements.
+
+\section{Debugging Macros}
+Identifying and fixing macro language errors can be quite a
+challenge. Good programming practice will help to limit the extent
+of the task. This includes designing the macro program carefully.
+Test regular programming steps to confirm that they work (and are
+not a source of apparent macro errors). Then build and test the
+macros incrementally, commenting out macro statements irrelevant
+to the current testing.
+\end{document}

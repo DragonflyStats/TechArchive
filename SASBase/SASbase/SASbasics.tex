@@ -1,0 +1,26 @@
+SAS Basics 
+
+Simple SAS program
+
+DATA steps
+PROC steps
+
+Proc SQL
+
+PROC SQL is the SAS implementation of the Standard Query Language (SQL) standard to
+work with databases and is used in Oracle, Microsoft SQL Server, Microsoft Access and other
+database systems. PROC SQL is a powerful language that allows sophisticated merges. 
+When you merge datasets with PROC SQL you do not need to sort them.
+
+PROC SQL;
+CREATE TABLE temp2 AS SELECT
+inanames.coname, inanames.iname, temp.*
+FROM temp, comp.inanames
+WHERE temp.cnum=inanames.cnum AND temp.cic=inanames.cic;
+QUIT;
+
+
+Websites:
+http://www.ats.ucla.edu/stat/sas/library/SASRead_os.htm
+http://www.kellogg.northwestern.edu/rc/docs/SAS_Programming_Skills.pdf
+

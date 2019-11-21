@@ -1,0 +1,66 @@
+%------------------------------------------------------------------------------------------------------------------%
+\section{SAS Base 2 : Referencing Files and Setting Options}
+
+Chapter 2
+Defining Libraries (p39)\\
+Assigning LibRefs (p39)\\
+Verifying Librefs (p40)\\
+Specifying Two Level Names(p41)\\
+Referencing Files in Other Formats (p42)\\
+A SAS engine is a set of internal instructions that SAS uses for writing to and reading from files in a SAS library.
+Specifying Engines (p42)\\
+Specify the engine name in the LIBNAME statement\\
+Interface Library Engines (p42)\\
+Engine
+
+BMDP
+OSIRIS
+SPSS
+allows read only access to BMDP files\\
+allows read-only access to OSIRIS files\\
+allows read-only access to SPSS files\\
+
+SAS/Access Engines (p43)
+·         Relational Databases:  Oracle, Sybase, Informix, ODBC
+·         Non-relational Databases: CA-IDMS
+·         PC Files: Excel
+
+Viewing SAS Libraries (p43)\\
+Viewing the Contents of a SAS Library (p45)\\
+Using PROC DATASETS (p47)\\
+Specifying Results Formats(p48)\\
+The results Tab of the preference window\\
+Internal Browser vs Preferred Web Browser (p50)\\
+Internal Browser (p50)\\
+The results Viewer is displayed as a SAS window.\\
+Preferred Web Browser (p51)\\
+Setting System Options (p51)\\
+\begin{verbatim}
+·         Line size
+·         Page size
+·         The display of page numbers
+·         The display of date and time
+\end{verbatim}
+How four-digit years are handed(p56)\\
+The value of the YEARCUTOFF= system option affects only two-digit year values
+Using System Options to specify observations (p56)\\
+\begin{verbatim}
+·         FIRSTOBS=
+·         OBS=
+\end{verbatim}
+Using FIRSTOBS= and OBS = for specific data sets (58)\\
+options firstobs=10 obs=15;
+proc print data=sasuser.heart;
+run;
+
+The SAS System Options Window (p59)\\
+Finding Options Quickly (p60)
+         Referencing SAS files in SAS Libraries
+         Viewing Librefs
+         Viewing the contents of a library
+         Viewing the contents of a File
+         Listing the contents of a library
+         Specifying Results Formats
+         Setting System Options
+
+

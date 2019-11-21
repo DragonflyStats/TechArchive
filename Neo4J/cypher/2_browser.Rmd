@@ -1,0 +1,39 @@
+Neo4j Browser
+
+    Neo4j Installation
+    Neo4j Query Language
+
+The Neo4j browser is a graphical user interface (GUI) that can be run through a web browser.
+
+The Neo4j browser can be used for adding data, running queries, creating relationships, and more. It also provides an easy way to visualise the data in the database.
+
+#### Overview
+Here's an overview of the Neo4j browser interface.
+Screenshot of the Neo4j browser
+
+#### Editor
+
+This is where you enter queries and commands. For example, to create or retrieve data. You can get help at any time by entering :help and pressing enter (or clicking the "Run" arrow to the right of the Editor).
+    Stream
+
+This is where the results of your queries appear. Each result has its own frame. Each frame appears above the previous. So this enables you to scroll down and view the results of a previous query if needed. You can clear the Stream at any time by using the command :clear.
+
+#### Labels, Nodes, & Relationships
+
+These represent the data in the database. Clicking on any of the icons at the top result in information about that option being displayed at the bottom of the Frame.
+
+#### Sidebar
+    Screenshot of the Neo4j browser displaying database information.
+
+The Sidebar has various options, such as viewing the details of your database, viewing/changing Neo4j Browser Settings, viewing Neo4j Documentation, and more.
+
+* Clicking on an option results in a wider sidebar sliding open, with details about that option.
+* For example, clicking the "Database" icon opens details about the database.
+  
+#### Frame Viewing Options
+    Screenshot of the Rows frame viewing option
+
+This enables you to view the data in different ways. 
+Clicking on Rows for example, will display the nodes and relationships in rows.
+
+    Here's an example of data being displayed in row format.

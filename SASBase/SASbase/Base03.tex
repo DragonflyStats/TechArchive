@@ -1,0 +1,31 @@
+%==============================================================%
+SAS Base Part 3
+
+
+\subsection*{Comments}
+You can insert comments into a SAS program to document the purpose of the program, to 
+explain segments of the program, or to describe the steps in a complex program or calculation.
+There are two forms of comment statement
+\begin{framed}
+\begin{verbatim}
+*text*
+/* test */
+\end{verbatim}
+\end{framed}
+SAS ignores text between comment symbols during processing.
+Important: avoid placing the /* comment symbols in columns 1 or 2.Some operating systems would interpret that
+as a request to end the sas job.
+
+\subsection*{Common Problems}
+
+\begin{itemize}
+\item[1] Missing Run Statements
+\item[2] Missing Semi-Colon
+\item[3] Unbalanced Quotation Marks
+\item[4] Invalid Options
+\end{itemize}
+
+\subsubsection*{Missing Semi-Colon}
+If a semi-colon is omitted at the end of a statement, SAS reads the statement as one long statement.
+The SAS log then lists errors that related to the combined statement, not the actual mistake.
+

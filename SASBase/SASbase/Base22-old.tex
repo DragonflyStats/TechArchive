@@ -1,0 +1,143 @@
+\section{SAS Base 22 : Reading Hierarchical Files}
+Raw data files can be hierarchical in structure, consisting of ea header records, and one or more
+detail records.
+
+A) Creating One Observation Per Detail Record (p653)\\
+B)
+C) Processing a DATA Step that creates OneObservation per header Records
+%-------------------%
+Retaining the Values of a Varaible (p654)\\
+Reading a DEtial Record (p655)\\
+Reading a Detail Record (p655)\\
+Dropping Variables (p656)\\
+Determining the End of the External File (p664)\\
+Chapter 22 Reading Hierarchical Files
+Creating One Observation Per Detail Record (p653)\\
+Retaining the Values of a variable (p654)\\
+%-------------------%
+\begin{framed}
+\begin{verbatim}
+data perm.people
+  infile census;
+  retain Address;
+ 	input type $1. @;
+\end{verbatim}
+\end{framed}
+
+
+Reading a Detail Record (p655)\\
+Dropping Variables (p656)\\
+Displaying your results (p659)\\
+Creating one observation per header record (p660)\\
+DO group actions for header recorders (p661)\\
+
+%-------------------%
+\begin{framed}
+\begin{verbatim}
+data perm.people
+  infile census;
+  retain Address;
+  input type $1. @;
+ 	if type = H then do;
+
+\end{verbatim}
+\end{framed}
+
+Reading Detail records (p662)\\
+Determining the End of the External File (p664)\\
+Processing a DATA step that creates one observation per header record (p655)\\
+
+
+\newpage
+
+
+SAS Base 22
+
+Reading Hierarchical Files
+
+Raw data files can be hierarchical in structure, consisting of ea header records, and one or more
+
+detail records.
+
+
+A) Creating One Observation Per Detail Record (p653)
+
+B)
+
+C) Processing a DATA Step that creates OneObservation per header Records
+
+Retaining the Values of a Varaible (p654)
+
+Reading a DEtial Record (p655)
+
+Reading a Detail Record (p655)
+
+Dropping Variables (p656)
+
+Determining the End of the External File (p664)
+
+
+Chapter 22 Reading Hierarchical Files
+
+Creating One Observation Per Detail Record (p653)
+
+ 
+
+
+
+Retaining the Values of a variable (p654)
+
+
+
+
+
+
+
+data perm.people
+
+  infile census;
+
+  retain Address;
+
+     input type $1. @;
+ 
+
+
+Reading a Detail Record (p655)
+
+Dropping Variables (p656)
+
+Displaying your results (p659)
+
+Creating one observation per header record (p660)
+
+DO group actions for header recorders (p661)
+
+ 
+
+
+
+
+
+
+
+data perm.people
+
+  infile census;
+
+  retain Address;
+
+  input type $1. @;
+
+     if type = ‘H’ then do;
+ 
+
+
+Reading Detail records (p662)
+
+Determining the End of the External File (p664)
+
+Processing a DATA step that creates one observation per header record (p655)
+
+
+

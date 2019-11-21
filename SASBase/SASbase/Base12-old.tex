@@ -1,0 +1,24 @@
+%-------------------------------------------------------------------12--%
+\section{SAS Base 12 Reading SAS Data Sets}
+
+Chapter 12 Reading SAS Data Sets\\
+Reading observations using direct access (p353)\\
+Writing Observations Explicitly (p354)\\
+Detecting The End of the Data Set (p355)\\
+Reading a Single Data Set\\
+Selecting Variables\\
+Reading Observations Using Direct ACCess\\
+Detecting the End of a Data Set\\
+
+Question 2
+\begin{framed}
+\begin{verbatim}
+data catalog.fastordr(drop=ordrtime);
+   set july.orders(keep=product units price_)
+   if ordrtime<4;
+   Total=units*price;
+run;
+\end{verbatim}
+\end{framed}
+
+

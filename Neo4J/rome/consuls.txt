@@ -1,0 +1,243 @@
+186	Sp. Postumius Albinus	Q. Marcius Philippus
+185	Ap. Claudius Pulcher	M. Sempronius Tuditanus
+184	P. Claudius Pulcher	L. Porcius Licinus
+183	M. Claudius Marcellus	Q. Fabius Labeo
+182	Cn. Baebius Tamphilus	L. Aemilius Paullus Macedonicus
+181	P. Cornelius Cethegus	M. Baebius Tamphilus
+180	A. Postumius Albinus Luscus	C. Calpurnius Piso
+suff.		Q. Fulvius Flaccus
+179	Q. Fulvius Flaccus	L. Manlius Acidinus Fulvianus
+178	M. Junius Brutus	A. Manlius Vulso
+177	C. Claudius Pulcher	Ti. Sempronius Gracchus
+176	Cn. Cornelius Scipio Hispallus	Q. Petillius Spurinus
+suff.	C. Valerius Laevinus	
+175	P. Mucius Scaevola	M. Aemilius Lepidus II
+174	Sp. Postumius Albinus Paullulus	Q. Mucius Scaevola
+173	L. Postumius Albinus	M. Popillius Laenas
+172	C. Popillius Laenas	P. Aelius Ligus
+171	P. Licinius Crassus	C. Cassius Longinus
+170	A. Hostilius Mancinus	A. Atilius Serranus
+169	Q. Marcius Philippus II	Cn. Servilius Caepio
+168	L. Aemilius Paullus Macedonicus II	C. Licinius Crassus
+167	Q. Aelius Paetus	M. Junius Pennus
+166	M. Claudius Marcellus	C. Sulpicius Galus
+165	T. Manlius Torquatus	Cn. Octavius
+164	A. Manlius Torquatus	Q. Cassius Longinus
+163	Ti. Sempronius Gracchus II	M'. Juventius Thalna
+162	P. Cornelius Scipio Nasica Corculum	C. Marcius Figulus
+suff.	P. Cornelius Lentulus	Cn. Domitius Ahenobarbus
+161	M. Valerius Messalla	C. Fannius Strabo
+160	L. Anicius Gallus	M. Cornelius Cethegus
+159	Cn. Cornelius Dolabella	M. Fulvius Nobilior
+158	M. Aemilius Lepidus	C. Popillius Laenas II
+157	Sex. Julius Caesar	L. Aurelius Orestes
+156	L. Cornelius Lentulus Lupus	C. Marcius Figulus II
+155	P. Cornelius Scipio Nasica Corculum II	M. Claudius Marcellus II
+154	Q. Opimius	L. Postumius Albinus
+suff.		M'. Acilius Glabrio
+153	Q. Fulvius Nobilior	T. Annius Luscus
+152	M. Claudius Marcellus III	L. Valerius Flaccus
+151	L. Licinius Lucullus	A. Postumius Albinus
+150	T. Quinctius Flamininus	M'. Acilius Balbus
+149	L. Marcius Censorinus	M'. Manilius
+148	Sp. Postumius Albinus Magnus	L. Calpurnius Piso Caesoninus
+147	P. Cornelius Scipio Africanus Aemilianus	C. Livius Drusus
+146	Cn. Cornelius Lentulus	L. Mummius Achaicus
+145	Q. Fabius Maximus Aemilianus	L. Hostilius Mancinus
+144	Ser. Sulpicius Galba	L. Aurelius Cotta
+143	Ap. Claudius Pulcher	Q. Caecilius Metellus Macedonicus
+142	L. Caecilius Metellus Calvus	Q. Fabius Maximus Servilianus
+141	Cn. Servilius Caepio	Q. Pompeius
+140	C. Laelius	Q. Servilius Caepio
+139	Cn. Calpurnius Piso	M. Popillius Laenas
+138	P. Cornelius Scipio Nasica Serapio	D. Junius Brutus Callaicus
+137	M. Aemilius Lepidus Porcina	C. Hostilius Mancinus
+136	L. Furius Philus	Sex. Atilius Serranus
+135	Ser. Fulvius Flaccus	Q. Calpurnius Piso
+134	P. Cornelius Scipio Africanus Aemilianus II	C. Fulvius Flaccus
+133	P. Mucius Scaevola	L. Calpurnius Piso Frugi
+132	P. Popillius Laenas	P. Rupilius
+131	P. Licinius Crassus Dives Mucianus	L. Valerius Flaccus
+130	L. Cornelius Lentulus	M. Perperna
+suff.	Ap. Claudius Pulcher	
+129	C. Sempronius Tuditanus	M'. Aquillius
+128	Cn. Octavius	T. Annius Rufus
+127	L. Cassius Longinus Ravilla	L. Cornelius Cinna
+126	M. Aemilius Lepidus	L. Aurelius Orestes
+125	M. Plautius Hypsaeus	M. Fulvius Flaccus
+124	C. Cassius Longinus	C. Sextius Calvinus
+123	Q. Caecilius Metellus Balearicus	T. Quinctius Flamininus
+122	Cn. Domitius Ahenobarbus	C. Fannius
+121	L. Opimius	Q. Fabius Maximus Allobrogicus
+120	P. Manilius	C. Papirius Carbo
+119	L. Caecilius Metellus Dalmaticus	L. Aurelius Cotta
+118	M. Porcius Cato	Q. Marcius Rex
+117	L. Caecilius Metellus Diadematus	Q. Mucius Scaevola Augur
+116	C. Licinius Geta	Q. Fabius Maximus Eburnus
+115	M. Aemilius Scaurus	M. Caecilius Metellus
+114	M'. Acilius Balbus	C. Porcius Cato
+113	C. Caecilius Metellus Caprarius	Cn. Papirius Carbo
+112	M. Livius Drusus	L. Calpurnius Piso Caesoninus
+111	P. Cornelius Scipio Nasica Serapio	L. Calpurnius Bestia
+110	M. Minucius Rufus	Sp. Postumius Albinus
+109	Q. Caecilius Metellus (Numidicus)	M. Junius Silanus
+108	Ser. Sulpicius Galba	M. Aurelius Scaurus
+107	L. Cassius Longinus Ravilla	C. Marius
+106	Q. Servilius Caepio	C. Atilius Serranus
+105	P. Rutilius Rufus	Cn. Mallius Maximus
+104	C. Marius II	C. Flavius Fimbria
+103	C. Marius III	L. Aurelius Orestes
+102	C. Marius IV	Q. Lutatius Catulus
+101	C. Marius V	M'. Aquillius
+1st century BC
+Year	Consul prior	Consul posterior
+100[58]	C. Marius VI	L. Valerius Flaccus
+99	M. Antonius	A. Postumius Albinus
+98	Q. Caecilius Metellus Nepos	T. Didius
+97	Cn. Cornelius Lentulus	P. Licinius Crassus
+96	Cn. Domitius Ahenobarbus	C. Cassius Longinus
+95	L. Licinius Crassus	Q. Mucius Scaevola
+94	C. Coelius Caldus	L. Domitius Ahenobarbus
+93	C. Valerius Flaccus	M. Herennius
+92	C. Claudius Pulcher	M. Perperna
+91	L. Marcius Philippus	Sex. Julius Caesar
+90	L. Julius Caesar	P. Rutilius Lupus
+89	Cn. Pompeius Strabo	L. Porcius Cato
+88	L. Cornelius Sulla Felix	Q. Pompeius Rufus
+87	Cn. Octavius	L. Cornelius Cinna
+suff.		L. Cornelius Merula
+86	L. Cornelius Cinna II	C. Marius VII
+suff.		L. Valerius Flaccus
+85	L. Cornelius Cinna III	Cn. Papirius Carbo
+84	Cn. Papirius Carbo II	L. Cornelius Cinna IV
+83	L. Cornelius Scipio Asiaticus	C. Norbanus
+82	C. Marius	Cn. Papirius Carbo III
+81	M. Tullius Decula	Cn. Cornelius Dolabella
+81	Dictator: L. Cornelius Sulla Felix	
+80[59]	L. Cornelius Sulla Felix II	Q. Caecilius Metellus Pius
+79	P. Servilius Vatia Isauricus	Ap. Claudius Pulcher
+78	M. Aemilius Lepidus	Q. Lutatius Catulus
+77	D. Junius Brutus	Mam. Aemilius Lepidus Livianus
+76	Cn. Octavius	C. Scribonius Curio
+75	L. Octavius	C. Aurelius Cotta
+74	L. Licinius Lucullus	M. Aurelius Cotta
+73	M. Terentius Varro Lucullus	C. Cassius Longinus
+72	L. Gellius Publicola	Cn. Cornelius Lentulus Clodianus
+71	P. Cornelius Lentulus Sura	Cn. Aufidius Orestes
+70	Cn. Pompeius Magnus	M. Licinius Crassus
+69	Q. Hortensius Hortalus	Q. Caecilius Metellus Creticus
+68	L. Caecilius Metellus	Q. Marcius Rex
+suff.	Servilius Vatia[60]	
+67	C. Calpurnius Piso	M'. Acilius Glabrio
+66	M'. Aemilius Lepidus	L. Volcatius Tullus
+65[61]	consules designati	
+P. Cornelius Sulla	P. Autronius Paetus
+L. Aurelius Cotta	L. Manlius Torquatus
+64	L. Julius Caesar	C. Marcius Figulus
+63	M. Tullius Cicero	C. Antonius Hybrida
+62	D. Junius Silanus	L. Licinius Murena
+61	M. Pupius Piso Frugi Calpurnianus	M. Valerius Messalla Niger
+60	Q. Caecilius Metellus Celer	L. Afranius
+59	C. Julius Caesar	M. Calpurnius Bibulus
+58	L. Calpurnius Piso Caesoninus	A. Gabinius
+57	P. Cornelius Lentulus Spinther	Q. Caecilius Metellus Nepos
+56	Cn. Cornelius Lentulus Marcellinus	L. Marcius Philippus
+55	Cn. Pompeius Magnus II	M. Licinius Crassus II
+54	L. Domitius Ahenobarbus	Ap. Claudius Pulcher
+53	Cn. Domitius Calvinus	M. Valerius Messalla Rufus
+52	Cn. Pompeius Magnus III	Q. Caecilius Metellus Pius Scipio
+51	Ser. Sulpicius Rufus	M. Claudius Marcellus
+50	L. Aemilius Lepidus Paullus	C. Claudius Marcellus Minor
+49	C. Claudius Marcellus Maior	L. Cornelius Lentulus Crus
+48	C. Julius Caesar II	P. Servilius Isauricus
+47	Q. Fufius Calenus	P. Vatinius
+46	C. Julius Caesar III	M. Aemilius Lepidus
+45	C. Julius Caesar IV	sine collega
+suff.	Q. Fabius Maximus	C. Trebonius
+suff.	C. Caninius Rebilus	
+44	C. Julius Caesar V	M. Antonius
+suff.	P. Cornelius Dolabella	
+43	C. Vibius Pansa Caetronianus	A. Hirtius
+suff.	C. Julius Caesar (Octavianus)	Q. Pedius
+suff.	P. Ventidius Bassus	C. Carrinas
+42	M. Aemilius Lepidus II	L. Munatius Plancus
+41	L. Antonius Pietas	P. Servilius Isauricus II
+40	Cn. Domitius Calvinus II	C. Asinius Pollio
+suff.	L. Cornelius Balbus	P. Canidius Crassus
+39[62]	L. Marcius Censorinus	C. Calvisius Sabinus
+suff.		P. Alfenus Varus (after October–December)
+suff.	C. Cocceius Balbus (December)	
+38[62]	Ap. Claudius Pulcher (January–June)	C. Norbanus Flaccus (January–August)
+suff.	L. Cornelius Lentulus (July–December)	
+suff.		L. Marcius Philippus (September–December)
+37	M. Vipsanius Agrippa	L. Caninius Gallus
+suff.		T. Statilius Taurus
+36[63]	L. Gellius Publicola (January–August)	M. Cocceius Nerva (January–June)
+suff.		Q. Marcius (July–December)
+suff.	L. Nonius Asprenas (September–December)	
+35[62]	L. Cornificius (January–August)	Sex. Pompeius (January–June)
+suff.	P. Cornelius Dolabella (September–December)	
+suff.		T. Peducaeus (July–December)
+34[64]	M. Antonius II (1 January only)	L. Scribonius Libo (January–June)
+suff.	L. Sempronius Atratinus (2 January–June)	
+suff.	L. Aemilius Lepidus Paullus (July–December)	C. Memmius (July–August)
+suff.		M. Herennius Picens (September–December)
+33[64]	Imp. Caesar Divi f. II (1 January only)	L. Volcacius Tullus (January–April)
+suff.	L. Autronius Paetus (2 January–April)	
+suff.	L. Flavius (May–June or August)	C. Fonteius Capito (May–June or August)
+suff.	M. Acilius Glabrio (July–August or September)	
+suff.	L. Vinicius (September–December)	
+suff.		Q. Laronius (October–December)
+32	Cn. Domitius Ahenobarbus	C. Sosius
+suff.	L. Cornelius Cinna	M. Valerius Messalla
+31	M. Antonius III (only in the east)	Imp. Caesar Divi f. III
+suff.	M. Valerius Messalla Corvinus	
+suff.	M. Titius	
+suff.	Cn. Pompeius	
+30	Imp. Caesar Divi f. IV	M. Licinius Crassus
+suff.		C. Antistius Vetus
+suff.		M. Tullius Cicero
+suff.		L. Saenius
+29	Imp. Caesar Divi f. V	Sex. Appuleius
+suff.		Potitus Valerius Messalla
+28	Imp. Caesar Divi f. VI	M. Vipsanius Agrippa II
+27	Imp. Caesar Divi f. Augustus VII	M. Vipsanius Agrippa III
+26	Imp. Caesar Divi f. Augustus VIII	T. Statilius Taurus II
+25	Imp. Caesar Divi f. Augustus IX	M. Junius Silanus
+24	Imp. Caesar Divi f. Augustus X	C. Norbanus Flaccus
+23[65]	Imp. Caesar Divi f. Augustus XI (January–1 July)	Cn. Calpurnius Piso (served the entire year)[66]
+suff.	L. Sestius Albanianus Quirinalis (1 July–December)	
+22	M. Claudius Marcellus Aeserninus	L. Arruntius[67]
+21	M. Lollius	Q. Aemilius Lepidus
+20	M. Appuleius	P. Silius Nerva
+19[68]	C. Sentius Saturninus
+(until some point between 1 August and 12 October)	sine collega
+suff.	M. Vinicius (before 12 October–December)	Q. Lucretius Vespillo (before 12 October–December)
+18	Publius Cornelius Lentulus Marcellinus	Cn. Cornelius Lentulus
+17	C. Furnius	C. Junius Silanus
+16	L. Domitius Ahenobarbus	P. Cornelius Scipio
+suff.		L. Tarius Rufus
+15	M. Livius Drusus Libo	L. Calpurnius Piso
+14	M. Licinius Crassus Frugi	Cn. Cornelius Lentulus Augur
+13	Ti. Claudius Nero I	P. Quinctilius Varus
+12[69]	M. Valerius Messalla Appianus (died 6 March)	P. Sulpicius Quirinius (January–after 29 August)
+suff.	C. Valgius Rufus (March–after 29 August)	
+suff.	C. Caninius Rebilus (until died in office)	L. Volusius Saturninus (until December)
+11	Q. Aelius Tubero	Paullus Fabius Maximus
+10	Africanus Fabius Maximus	Iullus Antonius
+9	Nero Claudius Drusus	T. Quinctius Crispinus Sulpicianus
+8	C. Marcius Censorinus	C. Asinius Gallus
+7	Ti. Claudius Nero II	Cn. Calpurnius Piso
+6	D. Laelius Balbus	C. Antistius Vetus
+5[70]	Imp. Caesar Divi f. Augustus XII (January–after 11 April)	L. Cornelius Sulla (January–after 11 April)
+suff.	Q. Haterius (before 1 July–December)	L. Vinicius (until 16 July or 13 August)
+suff.		C. Sulpicius Galba (until end of year)
+4	C. Calvisius Sabinus	L. Passienus Rufus
+suff.	C. Caelius (Rufus?)	Galus Sulpicius
+3	L. Cornelius Lentulus	M. Valerius Messalla Messallinus
+2[71]	Imp. Caesar Divi f. Augustus XIII (January–August)	M. Plautius Silvanus (January–June)
+suff.		L. Caninius Gallus (July–December)
+suff.	C. Fufius Geminus (September–October)	
+suff.	Q. Fabricius (November–December)	
+1	Cossus Cornelius Lentulus	L. Calpurnius Piso
+suff.	A. Plautius	A. Caecina Severus

@@ -1,0 +1,61 @@
+ 
+
+Correlation
+One-way ANOVA
+One sample t-test
+Paired t-test
+Binomial test
+Two independent samples t-test
+ 
+Correlation
+A correlation is useful when you want to see the linear relationship between two (or more) normally distributed interval variables.  
+For example, using the hsb2 data file we can run a correlation between two continuous variables, read and write. 
+ 
+proc corr data = "c:\mydata\hsb2";
+  var read write;
+run;
+One-way ANOVA
+A one-way analysis of variance (ANOVA) is used when you have a categorical independent variable (with two or more categories) and a normally distributed interval dependent variable and you wish to test for differences in the means of the dependent variable broken down by the levels of the independent variable. 
+For example, using the hsb2 data file, say we wish to test whether the mean of write differs between the three program types (prog). 
+We will also use the means statement to output the mean of write for each level of program type.  Note that this will not tell you if there is a statistically significant difference between any two sets of means.
+ 
+proc glm data = "c:\mydata\hsb2";
+    class prog;
+   model write = prog;  
+   means prog;
+run;
+ 
+ 
+One sample t-test
+A one sample t-test allows us to test whether a sample mean (from a normally distributed interval variable) significantly differs from a hypothesized value. 
+For example, we wish to test whether the average writing score (write) differs significantly from 50.  We can do this as shown below.
+ 
+proc ttest data = "c:\data" h0 = 50;  
+     var write;
+run;
+ 
+Paired t-test
+A paired (samples) t-test is used when you have two related observations (i.e., two observations per subject) and you want to see if the means on these two normally distributed interval variables differ from one another.  For example, using the hsb2 data file we will test whether the mean of read is equal to the mean of write.
+ 
+proc ttest data = "c:\mydata\hsb2";
+  paired write*read;
+run;
+ 
+Binomial test
+A one sample binomial test allows us to test whether the proportion of successes on a two-level categorical dependent variable significantly differs from a hypothesized value. 
+For example, using the hsb2 data file, say we wish to test whether the proportion of females (female) differs significantly from 50%, i.e., from .5. 
+We will use the exact statement to produce the exact p-values.
+ 
+proc freq data = "c:\mydata\hsb2";
+  tables female / binomial(p=.5);
+  exact binomial;
+run;
+ 
+Two independent samples t-test
+An independent samples t-test is used when you want to compare the means of a normally distributed interval dependent variable for two independent groups. 
+For example, using the hsb2 data file, say we wish to test whether the mean for write is the same for males and females.  
+ 
+proc ttest data = "c:\mydata\hsb2";
+  class female;
+  var write;
+run;

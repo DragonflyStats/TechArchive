@@ -1,0 +1,164 @@
+\section{Chapter 14 Transforming Data with SAS Functions}
+Understanding SAS Functions (p415)\\
+Uses of SAS Functions (p416)\\
+General form of SAS Functions (p417)\\
+Target Variable (p418)\\
+Converting Data with Functions (p418)\\
+Introduction to Converting Data (p418)\\
+\begin{framed}
+\begin{verbatim}
+data hrd.newtemp;
+    	set hrd.temp;
+    	Salary=payrate*hours;
+run;
+\end{verbatim}
+\end{framed}
+%---------------------%
+\begin{verbatim}
+Potential Problems of Omitting INPUT or PUT (p419)
+Automatic Character-to-Numeric Conversion (p419)
+When Automatic Conversion Occurs (p420)
+Restriction for WHERE conversion (p421)
+Explicit Character-to Numeric Conversion (p421)
+Automatic Number to character conversion (p423)
+Matching the Data Type (p426)
+Manipulating SAS Date Values with Functions (p427)
+SAS Date Functions (p428)
+SAS stores dates, times and date times as numeric values.
+Function
+Typical Use
+MDY
+TODAY
+DATE
+TIME
+\end{verbatim}
+%------------------%
+\begin{framed}
+\begin{verbatim}
+date=mdy(mon,day,yr);
+now=today();
+now=date();
+curtime=time()
+\end{verbatim}
+\end{framed}
+%------------------%
+YEAR,QTR,MONTH and DAY Function (p429)\\
+Weekday Function (p432)\\
+MDY Function (p433)\\
+SASs Month, Day and Year functions\\
+DATE and TODAY Functions (p436)\\
+INTCK Function (p437)\\
+INTNX Function (p438)\\
+\begin{verbatim}
+·         DAY
+·         WEEKDAY
+·         WEEK
+·         TENDAY
+
+·         SEMIMONTH
+·         MONTH
+·         QTR
+·         SEMIYEAR
+·         YEAR
+
+DATDIF and YRDIF Functions (p440)
+Introduction to Modifying Character values (p441)
+Character Functions (p442)
+
+·         SCAN
+·         SUBSTR
+·         TRIN
+·         CATX
+·         INDEX
+·         FIND
+·         UPCASE
+·         LOWCASE
+·         PROPCASE
+·         TRANWRD
+
+
+Scan Function (p442)
+Specifying Delimiters (p443)
+Specifying Multiple Delimiters (p443)
+Default Delimiters (p443)
+SCAN Function Syntax (p444)
+\end{verbatim}
+\begin{framed}
+\begin{verbatim}
+data hrd.newtemp(drop=name);
+   set hrd.temp;
+   LastName = scan(name,1);
+   FirstName=scan(name,2);
+   MiddleName=scan(name,3);
+run;
+\end{verbatim}
+\end{framed}
+
+Specifying the Variable Length (p445)\\
+SCAN vs SUBSTR (p445)\\
+SUBSTR (p445)\\
+Replacing text using SUBSTR (p447)\\
+Positioning the SUBSTR Function (p447)\\
+The TRIM function (p449)\\
+The CATX Function (p451)\\
+This function allows you to concatenate character strings.\\
+INDEX Function (p452)\\
+Finding a string regardless of case (p454)\\
+FIND function (p454)\\
+LOWCASE Function (p456)\\
+PROPCASE Function (p457)\\
+TRANWRD Function (p458)\\
+This function replaces or removes all occurrences of a pattern of characters within a character string.The translated characters can be located anywhere in the string.\\
+ROUND Function (p460)\\
+This function rounds values to the nearest specified unit.\\
+Nesting SAS functions (p461)\\
+Chapter Summary (p462)\\
+
+
+SAS Base 14
+Use of SAS Functions
+-create sample statistics
+-create SAS data values
+-convert U.S. ZIP codes to state postal codes
+-round values
+-generate random numbers
+-extract a portion of the character value
+-covert data from one type to another
+General Forms of SAS Functions
+Arguments Variables List s and Arrays
+Coverting Data with Functions
+Introduction
+Potential Problems
+Automatic Character to Numeric Conversion\\
+When Automatic Conversion Occurs\\
+Restriction of WHERE Expressions\\
+Explicit Character-to-Numeric Comvervsion\\
+Automatic Numeric-to-Character Conversion\\
+Explicit Numeric-to-Character Conversion\\
+Matching the Data Type\\
+WEEKDAY Function\\
+MDY Function\\
+DATA and TODAY Function\\
+INTCK Function\\
+INTNX Function\\
+DATDIF and YRDIF Function\\
+(p460)
+\begin{framed}
+\begin{verbatim}
+data work.after;
+ set work.before;
+ Examples = int(examples);
+run;
+\end{verbatim}
+\end{framed}
+
+(p461)
+
+\begin{framed}
+\begin{verbatim}
+data work.after;
+ set work.before;
+ Examples = int(examples,.2);
+run;
+\end{verbatim}
+\end{framed}
