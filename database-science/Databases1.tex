@@ -1,0 +1,295 @@
+\documentclass[]{article}
+\usepackage{amsmath}
+\usepackage{framed}
+
+%opening
+\title{Databases}
+\author{Kevin O'Brien}
+
+\begin{document}
+
+\maketitle
+% http://homepages.gold.ac.uk/marian-ursu/db_index.html
+% http://www.coursehero.com/file/5892158/exam-99-00/
+
+% Query Optimiser
+% Recovery Control
+% ANSI / SPARC Architecture - three levels of abstraction
+% Fan Trap
+%----------------------------------------------------------------------- %
+\section{Introduction to Databases}
+
+
+\begin{enumerate}
+\item Introduction to Database Systems (motivation for database systems, storage systems, architecture, facilities, applications). 
+\item Database modelling (basic concepts, E-R modelling, Schema deviation). 
+\item The relational model and algebra, SQL (definitions, manipulations, access centre, embedding). 
+\item Physical design (estimation of workload and access time, logical I/Os, distribution). 
+\item Modern database systems (extended relational, object-oriented). 
+\item Advanced database systems (active, deductive, parallel, distributed, federated). 
+\item DB functionality and services (files, structures and access methods, transactions and concurrency control, reliability, query processing).
+\end{enumerate}
+
+
+
+
+Databases
+One of the prime uses of computers, since their inception, has been the manipulation of data. A database is a software application that enables the storage of data. Databases by the millions have been created and manipulated by computers for decades.  Information is a critical factor for competitive advantage in business today. Typically large organizations use multiple databases to perform business operations.
+As computers have become more sophisticated, so has the software used to drive their functions. In recent years, significant advances have been made in data mining, data warehousing and data analytics. The Economist’s special report on the “Data Deluge” considered this issue in detail.
+Database management Systems
+A database management system (DBMS) is a suite of software applications that together make it possible for people or businesses to store, modify, and extract information from a database. Database management systems can be found in all walks of life, such as ATMs, flight reservations, Libraries etc.
+Relational Databases
+A relational database consists of a collection of tables that store particular sets of data. The invention of this database system has standardized the way that data is stored and processed. The concept of a relational database derives from the principles of relational algebra, realized as a whole by the father of relational databases, E. F. Codd. Most of the database systems in use today are based on the relational system.
+The history of the relational database began with Codd's 1970 paper, A Relational Model of Data for Large Shared Data Banks. This theory established that data should be independent of any hardware or storage system, and provided for automatic navigation between the data elements. In practice, this meant that data should be stored in tables and that relationships would exist between the different data sets, or tables.
+The Relational Database Management System
+Today the relational database management system (RDBMS)  is the most commonly used database format. Oracle Corporation created the first commercial relational database in 1979. IBM followed suit in 1982 with the SQL Data System. Microsoft was the last major company to jump in with SQL Server 4.2 in 1992. Microsoft's Access database program is based is also an implementation of an RDBMS.
+ MySQL is a popular choice of database for use in web applications, such as Flickr and Facebook, and is often used in conjunction with Linux, Apache and PhP.  MySQL was operated as an open source system by the MySQL foundation in Sweden, but has since been bought by Oracle Corporation.
+An RDBMS is a database that stores data in tables with relationships to other tables. These relationships between tables must be defined when constructing the database . In comparison, other  database management system types often do not require such definitions.
+Typically large sophisticated sets of data require an RDBMS solution, whereas smaller data collections can be managed with other types of DBMS.
+The Relation
+The relation, which is a two-dimensional table, is the primary unit of storage in a relational database. A relational database can contain one or more of these tables, with each table consisting of a unique set of rows and columns.
+A single record is stored in a table as a row, also known as a tuple, while attributes of the data are defined in columns, or fields, in the table. The characteristics of the data, or the column, relates one record to another. Each column has a unique name and the content within it must be of the same type.
+The data that is stored in tables are organized logically based on a particular purpose that minimizes duplication, reduces data anomalies, and reinforces data integrity. The process by which data is organized logically is called normalization.
+Normalization
+Normalzation simplifies the way data is defined and regulates its structure. There are five forms in the normalization process, with each form meeting a more stringent condition. The first normal form, 1NF, has the least data integrity, while the fifth normal form, or 5NF, structures the data with the least anomalies and best integrity.
+Relationships    
+Tables can be related to each other in a variety of ways. Functional dependencies are formed when an attribute of one table relates to attributes of other tables.
+The simplest relationship is the one-to-one relationship, in which one record in a table is related to another record in a separate table. A one-to-many relationship is one in which one record in a table is related to multiple records in another table.
+ A many-to-one relationship defines the reverse situation; more than one record in a single table relates to only one record in another table. Finally, in a many-to-many relationship, more than one record in a table relates to more than one record in another table.  RDBMSs can’t  support such a relationship directly.
+Keys     
+A key is an entity in a table that distinguishes one row of data from another. The key may be a single column, or it may consist of a group of columns that uniquely identifies a record.
+Tables can contain primary keys which identify records and differentiate records from one another, A primary key can be an individual attribute, or a combination of attributes.  Often a Primary Key is specially constructed to differentiate cases. A student card number is an example of a primary key.
+
+Table Name : Student ID
+
+
+
+
+
+
+Student Card
+First Name
+Family Name
+Course Code
+97666033
+Gregory
+Conway
+DN010
+97686011
+Brian
+Murphy
+DN010
+97799010
+Brian
+Murphy
+DN010
+97801012
+Kevin
+Comerford
+DN010
+…..
+….
+….
+….
+In the above table, there are two students called Brian Murphys. The student card number acts to differentiate the two, hence it is the primary key.
+Foreign keys relate tables in the database to one another. A foreign key in one table is generally a primary key in another; the foreign keys generally define parent-to-child relationships between tables. In this case , Course Code was a foreign key in the last table, while being a primary key in this table.
+Table Name :  Courses
+
+
+
+
+Course Code
+Title
+Admin
+DN009
+Electrical Engineering
+Kobrien
+DN010
+Chemical Engineering
+DCrean
+DN011
+Mathematical Science
+Kobrien
+DN010
+Statistics and IT
+CWhittle
+…..
+….
+….
+Structured Query Language
+One of the most popular database application computer languages these days is Structured Query Language (SQL). This language powers simple and complex database management protocols, from basic data input and deletion to complicated queries, manipulation, and reporting of the highest order.
+Many individual desktop or laptop computers run database programs powered by SQL. SQL is widely used by many database software systems, including MySQL, SQL Server™, Postgre SQL, and the Oracle® Database. While Structured Query Language is arguably easier to use than traditional computer programming languages, it is also considered to be a very powerful and often complex technology.
+SQL is both the American National Standards Insitute (ANSI) and International Organization for Standardization (ISO) standard for accessing data in RDBMS.
+SQL has many uses. For example, it can be used to insert or change information in database tables. It can also be used to remove that data. Another common method of using Structured Query Language involves changing the structure of the database itself.
+SQL commands
+SQL utilizes a set of commands to manipulate the information in a relational database. Among the most common examples are INSERT, SELECT, and UPDATE. As the name indicates, INSERT is used to input data into database tables. SELECT is used to get select data from tables. The UPDATE command is used to make alterations to existing database tables and records. All the necessary Structured Query Language commands in a corresponding RDBMS can typically be executed through an SQL code editor.
+SQL is based on set theory; relational operators such as “and”, “or”, “not”, and in are used to perform operations on the data.
+The follow piece of SQL code is called a query, related to the table “courses”.  A query allows the person or application looking to retrieve data from the relational database, using the select command.
+
+select Course Code,  Title,    Admin
+from   Courses
+ where Admin ='Kobrien'
+
+ 
+Programmers design SQL to be fast and efficient. As powerful as SQL is, however, it has its limits. It is primarily a query-based language, and that accurately describes its limitations as well. The queries SQL runs can be as demanding as programmers or systems managers can imagine, but in the end, SQL won't do more than it is asked to do.
+As a consequence of its limited functionality , SQL performs its designated tasks very quickly indeed. Data retrieval, even of large amounts of data, is nearly instantaneous. Data manipulation takes a bit longer in millisecond terms, but the difference won't likely be noticeable to human users. In this case, limited functionality is not a drawback, but an advantage.
+Database Administration
+Essentially, the main role of a database administrator (DBA) has to do with overseeing the installation and ongoing function of software on a system designed for use by a number of users. There are several specific responsibilities that the typical database administrator will perform in just about any corporate environment.
+A basic responsibility for just about every database administrator involves the installation of new databases, and ensuring  that every PC attached to the network is configured to access the new database.
+As part of the database installation, the database administrator will set up login credentials to authorized persons, defining the access privileges associated with each authorized user. Controlling access to personal information, with respect to data privacy, is a very important role of the DBA.
+Database administrators often handle the process of creating backup records of the information contained in the databases on the system. This involves more than setting up an automatic backup and assuming that the backup is proceeding according to plan. The competent database administrator will check the backup files to make sure the information is complete, the integrity of the data is secure, and that the saved files can easily be accessed and loaded in the event that something happens to the main database.
+In more recent years, the role of the database administrator has expanded in some companies. The administrator may be called upon to take a basic design and customize the fields or functions to more effectively serve the needs of the corporation. While these types of projects are more commonly associated with a database analyst or designer, it is not uncommon for a database administrator in a small company to assume these roles.
+Questions
+Write a brief description of each of the following
+∙•••••••• Relational Database management system  (including well known brands)
+∙•••••••• Tables and Primary and Foreign Keys
+∙•••••••• SQL and SQL Commands
+∙•••••••• The role of the Database administrator.
+Relational Databases
+Relational Databases overcame the flaws of their predecessors.
+
+Deductive Queries
+
+A knowledge bases system is a system that incorporates some knowledge about a certian application area and that is able to explain or to provide advice for a given problem or situation in that given application area.
+
+For instance, a KBS could be built for diagnosing diseases.
+
+Deductive databases
+Database management systems
+
+Storage
+Retrieval
+Control
+
+The Query facility
+The data directory is a catalogue of all of the data in a databse. It contains the data definition, and its main function is to answer questions about the availability of data items, their source or their exact meaning.
+
+
+Predictive analytics encompasses a variety of techniques from statistics, data mining and game theory that analyze current and historical facts to make predictions about future events.
+In business, predictive models exploit patterns found in historical and transactional data to identify risks and opportunities. Models capture relationships among many factors to allow assessment of risk or potential associated with a particular set of conditions, guiding decision making for candidate transactions.
+
+Predictive analytics is used in financial services, insurance, telecommunications, retail, travel, healthcare, pharmaceuticals and other fields.
+One of the most well-known applications is credit scoring, which is used throughout financial services. 
+
+Scoring models process a customer’s credit history, loan application, customer data, etc., in order to rank-order individuals by their likelihood of making future credit payments on time.
+
+
+
+%----------------------------------------------------------------------- %
+\newpage 
+%Section 1
+\section{Section 1: Introduction to DB systems}
+%----------------------------------------------------------------------- %
+\newpage
+
+\section{Section 2: Database Modelling}
+\subsection{Entity Relationship Diagrams}
+An ER model is an abstract way of describing a database. In the case of a relational database, which stores data in tables, some of the data in these tables point to data in other tables - for instance, your entry in the database could point to several entries for each of the phone numbers that are yours. 
+
+
+%----------------------------------------------------------------------- %
+\newpage
+
+\section{Section 3: The Relational Model and Relational Algebra}
+
+\subsection{Structured Query Language}
+\begin{itemize}
+\item SQL stands for Structured Query Language. SQL is used to communicate with a database. According to ANSI (American National Standards Institute), it is the standard language for relational database management systems. \item SQL statements are used to perform tasks such as update data on a database, or retrieve data from a database. 
+\item Some common relational database management systems that use SQL are: Oracle, Sybase, Microsoft SQL Server, Access, Ingres, etc. Although most database systems use SQL, most of them also have their own additional proprietary extensions that are usually only used on their system. \item However, the standard SQL commands such as "\texttt{Select}", "\texttt{Insert}", "\texttt{Update}", "\texttt{Delete}", "\texttt{Create}", and "\texttt{Drop}" can be used to accomplish almost everything that one needs to do with a database. 
+\end{itemize}
+
+\subsection{Table Basics}
+
+A relational database system contains one or more objects called tables. The data or information for the database are stored in these tables. Tables are uniquely identified by their names and are comprised of columns and rows. Columns contain the column name, data type, and any other attributes for the column. Rows contain the records or data for the columns. 
+
+\subsection{Exercise}
+Informally define each of the following concepts in the context of the relational data model:
+\begin{itemize}
+\item[a)] Relation,							
+\item[b)] Intension, 									
+\item[c)] Cardinality.							
+\end{itemize}
+
+a) Relation: is a table with columns and rows in which structured data is stored.\\
+b) Intension: is the structure of a relation plus the domains and the restrictions on possible values, which, in general, is fixed in time.\\
+c) Cardinality (of a relation):  is the number of tuples in the relation.
+
+%---------------------------------------------------------------------------------- %
+
+\subsection{First Normal Form (1NF) }
+
+\subsection{Boyce Codd Normal Form (BCNF)}
+Boyce Codd Normal Form (BCNF) is considered a special condition of third Normal form. A table is in BCNF if every determinant is a candidate key. A table can be in 3NF but  not in BCNF. This occurs when a non key attribute is a determinant of a key attribute.
+%----Section 3------------------------------------------------------------------- %
+\newpage
+\subsection{Worked Example}
+Consider the database formed by the following tables:
+
+\begin{verbatim}
+Hotel		(hotelNo, hotelName, city)
+Room		(roomNo, hotelNo, type, price)
+Booking		(hotelNo, guestNo, dateFrom, dateTo, roomNo)
+Guest		(guestNo, guestName, guestAddress)
+\end{verbatim}
+
+where	\texttt{Hotel} contains hotel details and \texttt{hotelNo} is the primary key; \texttt{Room} contains room details for each hotel and \texttt{(roomNo, hotelNo)} forms the primary key; \texttt{Booking} contains details of the bookings and \texttt{(hotelNo, guestNo, dateFrom)} forms the primary key; and \texttt{Guest} contains guest details and \texttt{guestNo} is the primary key.
+
+\textbf{Questions}\\
+a) Define the notion of foreign key.[1]\\
+b) Choose the foreign keys in the table Room and write the SQL command for the creation of this table, including the definition of the primary and foreign keys.[4] \\
+
+\textbf{Solutions}\\
+a) The foreign key is a set of attributes within one table (called referencing table) that matches the candidate key of some table, possibly the same (called referred table).\\
+b) HotelNo in table Room can be a foreign key pointing to the table Hotel (matching the primary key hotelNo).\\
+
+\begin{framed}
+\begin{verbatim}	
+	CREATE TABLE Room(
+	RoomNo INTEGER,
+	HotelNo VARCHAR, 
+	Type VARCHAR,
+	Price DECIMAL,
+	PRIMARY KEY (RoomNo, HotelNo),
+	FOREIGN KEY(HotelNo) REFERENCES Hotel ON DELETE CASCADE);
+\end{verbatim}
+\end{framed}
+%----------------------------------------------------------------------- %
+\newpage 
+%Section 4
+\section{Section 4: Physical Design}
+
+%----------------------------------------------------------------------- %
+\newpage 
+%Section 4
+\section{Section 5: Modern Database Systems}
+
+\subsection{ Objected-Oriented Database Model}
+%----------------------------------------------------------------------- %
+\newpage 
+
+\section{Section 6: Advanced Database Systems}
+\subsection{Distributed Database}
+A distributed database is a database in which storage devices are not all attached to a common processing unit such as the CPU,[1] controlled by a distributed database management system (together sometimes called a distributed database system). It may be stored in multiple computers, located in the same physical location; or may be dispersed over a network of interconnected computers. Unlike parallel systems, in which the processors are tightly coupled and constitute a single database system, a distributed database system consists of loosely-coupled sites that share no physical components
+
+%----Section 6------------------------------------------------------------------- %
+
+\subsection{Deductive Data Model}
+A Deductive database is a database system that can make deductions (i.e., conclude additional facts) based on rules and facts stored in the (deductive) database. Datalog is the language typically used to specify facts, rules and queries in deductive databases. Deductive databases have grown out of the desire to combine logic programming with relational databases to construct systems that support a powerful formalism and are still fast and able to deal with very large datasets. 
+
+
+%----------------------------------------------------------------------- %
+\newpage
+\section{Section 7: DB Functionality and Services}
+
+\subsection{Transaction Processing}
+Transaction processing is information processing that is divided into individual, indivisible operations, called transactions. 
+
+Each transaction must succeed or fail as a complete unit; it cannot remain in an intermediate state.
+
+Since most, though not necessarily all, transaction processing today is interactive the term is often treated as synonymous with online transaction processing.
+
+%----Section 7------------------------------------------------------------------- %
+\subsection{Impedance Mismatch}
+The object-relational impedance mismatch is a set of conceptual and technical difficulties that are often encountered when a relational database management system (RDBMS) is being used by a program written in an object-oriented programming language or style; particularly when objects or class definitions are mapped in a straightforward way to database tables or relational schema.
+
+\end{document}

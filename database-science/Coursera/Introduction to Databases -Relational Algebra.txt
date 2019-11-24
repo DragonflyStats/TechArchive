@@ -1,0 +1,11 @@
+Relational Algebra Expressions
+
+Schema with two relations R and S
+
+R(A,B)
+S(B,C)
+
+SemiJoin
+AntiJoin
+Intersection
+Natural Join

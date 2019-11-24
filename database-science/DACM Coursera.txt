@@ -1,0 +1,9 @@
+DACM Coursera
+
+Nathan Kutz 
+(University of Washington)
+
+Spectral Analysis
+Time Series Analysis
+Principal Component Analysis
+Orthogonal Decomposition

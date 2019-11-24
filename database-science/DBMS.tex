@@ -1,0 +1,243 @@
+Databases Management Systems (DBMS)
+
+Databases Management Systems (DBMS)
+The Relational Database
+The Metabase
+The Object Oriented DBMS
+Data Warehousing
+Structured Query Language
+Data mining
+Data mining tools
+Data Mining Techniques
+Important Data Mining concepts
+Predictive Analytics
+Information Analytics
+Statistical Data Analysis
+Data mining algorithms
+Data Marts
+Mining a Data Warehouse
+Business intelligence analytics
+Multidimensional database
+Data Analysis
+%-----------------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------------------%
+
+The Relational Database
+
+A relational database consists of a collection of tables that store particular sets of data. The invention of this database system has standardized the way that data is stored and processed. The concept of a relational database derives from the principles of relational algebra, realized as a whole by the father of relational databases, E. F. Codd. Most of the database systems in use today are based on the relational system.
+%-----------------------------------------------------------------------------------------%
+%-----------------------------------------------------------------------------------------%
+
+
+
+\section{Database Administration}
+Database administrators design, implement, maintain and repair an organisations database. The role includes developing and designing the database strategy, monitoring and improving database performance and capacity, and planning for future expansion requirements. They may also plan, co-ordinate and implement security measures to safeguard the database.
+
+A database administrator may
+\begin{itemize}
+\item undertake daily administration, including monitoring system performance, ensuring successful backups, and developing/implementing disaster recovery plans
+\item manage data to give users the ability to access, relate and report information in different ways
+\item develop standards to guide the use and acquisition of software and to protect valuable information
+\item modify existing databases or instruct programmers and analysts on the required changes
+\item test programs or databases, correct errors and make necessary modifications
+\item train users and answer questions
+\end{itemize}
+
+%-----------------------------------------------------------------------------------------%
+\newpage
+%\chapter{Introduction to databases and data analytics}
+
+
+ 
+
+The history of the relational database began with Codd's 1970 paper, A Relational Model of Data for Large Shared Data Banks. This theory established that data should be independent of any hardware or storage system, and provided for automatic navigation between the data elements. In practice, this meant that data should be stored in tables and that relationships would exist between the different data sets, or tables.
+
+
+ 
+
+The relation, which is a two-dimensional table, is the primary unit of storage in a relational database. A relational database can contain one or more of these tables, with each table consisting of a unique set of rows and columns. A single record is stored in a table as a row, also known as a tuple, while attributes of the data are defined in columns, or fields, in the table. The characteristics of the data, or the column, relates one record to another. Each column has a unique name and the content within it must be of the same type.
+
+
+ 
+
+Tables can be related to each other in a variety of ways. Functional dependencies are formed when an attribute of one table relates to attributes of other tables. The simplest relationship is the one-to-one relationship, in which one record in a table is related to another record in a separate table. A one-to-many relationship is one in which one record in a table is related to multiple records in another table. A many-to-one relationship defines the reverse situation; more than one record in a single table relates to only one record in another table. Finally, in a many-to-many relationship, more than one record in a table relates to more than one record in another table.
+
+
+ 
+
+A key is an entity in a table that distinguishes one row of data from another. The key may be a single column, or it may consist of a group of columns that uniquely identifies a record. Tables can contain primary keys which differentiate records from one another, and primary keys can be an individual attribute, or a combination of attributes. Foreign keys relate tables in the database to one another. A foreign key in one table is a primary key in another; the foreign keys generally define parent-to-child relationships between tables.
+
+
+ 
+
+The data that is stored in tables are organized logically based on a particular purpose that minimizes duplication, reduces data anomalies, and reinforces data integrity. The process by which data is organized logically is called normalization. Normalization simplifies the way data is defined and regulates its structure. There are five forms in the normalization process, with each form meeting a more stringent condition. The first normal form, 1NF, has the least data integrity, while the fifth normal form, or 5NF, structures the data with the least anomalies and best integrity.
+
+
+ 
+
+Stored data is manipulated using a programming language called Structured Query Language, or SQL. Many varieties of SQL exist. SQL is based on set theory; relational operators such as and, or, not, and in are used to perform operations on the data. The operations that can be used in a relational database include insert, select, update, and delete privileges.
+
+
+ 
+
+Today, the relational database management system (RDBMS), is the most commonly used database format. Oracle Corporation created the first commercial relational database in 1979. IBM followed suit in 1982 with the SQL Data System. Microsoft was the last major company to jump in with SQL Server 4.2 in 1992.
+
+The Metabase
+The ease with which we can gather information today, is unsurpassed. Technology has made finding needed information not only simpler, but also much quicker. We can find out at least some information about nearly any given subject, in a few moments, with just a few clicks, using our computers.
+ 
+A metabase is an option for storing some of that information. If you are familiar with the term database, a metabase is very similar. In fact, the basic definition is nearly the same. The difference is that a metabase goes beyond a place to store data, and stores data that concerns other data. You may have heard the phrase “data about data,” used to describe a metabase. It’s not as complicated as it may seem, but makes sense given that a wide variety of data concerns other data.
+ 
+For example, a website that collects information about computer vulnerabilities is convenient. A database filled with information about things that might harm your computer or violate your security is very useful. However, one that includes resources on how to prevent or repair such vulnerabilities is ultimately more useful. The latter is considered a metabase. It contains data — such as how to prevent, fix, or patch threats — about other data: the vulnerabilities.
+ 
+A metabase may also be used for many other types of data. Medical information, including not only symptoms, possible tests and treatments; but also the probable side effects of prescriptions or procedures, including drug interactions, is vastly more beneficial than a simple database of disease names. Keeping such information in a metadata repository so it is easily accessible to those who need it is not only expedient, but may also even save lives.
+ 
+The most convenient aspect of a metabase is that it allows the user to many different types of data all in one place instead of having to search several different resources in order to gather the same information. As you can see, a metabase or repository for data about other data, is an important tool. It allows not only the collection but also the dissemination of information, from everyday items of interest to vital resources.
+ 
+In the business setting, a metabase can be useful in a variety of ways. One can be used by employees to do their work more efficiently. Alternatively, a metabase may be the best option when used by clients, offering them the best possible experience when doing business with your company.
+The Object Oriented DBMS
+An object-oriented database management system (OODBMS) helps programmers make objects created in a programming language behave as a database object. Object-oriented programming is based on a series of working objects. Each object is an independently functioning application or program, assigned with a specific task or role to perform. An object-oriented database management system is a relational database designed to manage all of these independent programs, using the data produced to quickly respond to requests for information by a larger application.
+ 
+Analogy
+To illustrate an OODBMS, we can use a simple commercial kitchen with three staff members: head chef, cook and second cook. The cook is responsible for steak and the second cook is responsible for fries and salad. Both are busy working on their functions, even without any orders. The head chef is the object-oriented database management system, the cook and second cook are both objects. A customer places an order for steak, fries and salad which the waiter hands over to the head chef. The head chef calls out the order. The cook quickly provides the cooked steak to the plate, at the same time the second cook adds the fries and salad and tells the chef the order is done. They both are able to provide exactly what is required immediately, because they were performing their individual tasks in advance.
+ 
+Each item could have been done by a single application or the head chef, but it would have taken more time and split resources in multiple directions, further reducing response time. The objects or cooks can be used as separate programs, but the response time is faster and the information is provided in one cohesive package when coordinated by the chef or OODBMS.
+ 
+The increased utilization of object-oriented programming languages like Python, Java, C#, Visual Basic, .Net, C++, Objective-C and Smalltalk have all increased the popularity of object-oriented database management system.
+ 
+An object-oriented database management system is generally best used in business applications where there is a requirement for high performance processing in an complex environment. Industries with a high demand for this type of programming typically are in the engineering, telecommunications, specialized financial services and scientific research fields.
+ 
+The Object Data Management Group is a group of object database and mapping vendors, academics and others who came together to create a set a standard specifications for an object-oriented programs. Such a standard would potentially improve the portability of applications written for object-oriented database management system, and thereby reduce the cost incurred in creating new code each time. The group disbanded in 2001, but various groups and initiatives are still attempting to define a standard to allow for cross functional applications.
+Data Warehousing
+Data warehousing is combining data from multiple and usually varied sources into one comprehensive and easily manipulated database. Common accessing systems of data warehousing include queries, analysis and reporting. Because data warehousing creates one database in the end, the number of sources can be anything you want it to be, provided that the system can handle the volume, of course. The final result, however, is homogeneous data, which can be more easily manipulated.
+ 
+Data warehousing is commonly used by companies to analyze trends over time. In other words, companies may very well use data warehousing to view day-to-day operations, but its primary function is facilitating strategic planning resulting from long-term data overviews. From such overviews, business models, forecasts, and other reports and projections can be made. Routinely, because the data stored in data warehouses is intended to provide more overview-like reporting, the data is read-only. If you want to update the data stored via data warehousing, you'll need to build a new query when you're done.
+ 
+This is not to say that data warehousing involves data that is never updated. On the contrary, the data stored in data warehouses is updated all the time. It's the reporting and the analysis that take more of a long-term view.
+ 
+Data warehousing is not the be-all and end-all for storing all of a company's data. Rather, data warehousing is used to house the necessary data for specific analysis. More comprehensive data storage requires different capacities that are more static and less easily manipulated than those used for data warehousing.
+ 
+Data warehousing is typically used by larger companies analyzing larger sets of data for enterprise purposes. Smaller companies wishing to analyze just one subject, for example, usually access data marts, which are much more specific and targeted in their storage and reporting. Data warehousing often includes smaller amounts of data grouped into data marts. In this way, a larger company might have at its disposal both data warehousing and data marts, allowing users to choose the source and functionality depending on current needs.
+Structured Query Language
+One of the prime uses of computers, since their inception, has been the manipulation of data. Databases by the millions have been created and manipulated by computers for decades. As computers have become more sophisticated, so has the software used to drive their functions. One of the most popular database application computer languages these days is Structured Query Language (SQL). This language powers simple and complex database management protocols, from basic data input and deletion to complicated queries, manipulation, and reporting of the highest order.
+ 
+Many individual desktop or laptop computers run database programs powered by SQL. These days, SQL is the norm for such things. However, it is also powerful enough to handle enterprise functionality for mainframes, servers, and enterprise protocols. It is this kind of data manipulation activity that gets the big names of Oracle and IBM involved.
+ 
+These two companies, more than any other, have pioneered the adoption of SQL as the primary database manipulation language. As powerful as SQL is, however, it has its limits. It is primarily a query-based language, and that accurately describes its limitations as well. The queries SQL runs can be as demanding as programmers or systems managers can imagine, but in the end, SQL won't do more than it is asked to do. Data management departments that want more expandable database functionality would do well to look to BASIC, C, C++, or various Web-based languages instead.
+ 
+Still, if database querying and reporting are what you need the most, the chances are excellent that the database application you use to perform such tasks runs on SQL. Programmers design SQL to be fast and efficient. One pleasant consequence of its limited functionality is that it performs its designated tasks very quickly indeed. Data retrieval, even of large amounts of data, is nearly instantaneous.
+ 
+Data manipulation takes a bit longer in millisecond terms, but the difference won't likely be noticeable to human users. In this case, limited functionality is not a drawback, but an advantage.
+ 
+It's not only Oracle and IBM that are designing in SQL these days, however. Many others are doing so as well. Not surprisingly, Microsoft is at the head of this class. The Windows creator has its own version of SQL, which is more server-based and consequently called Microsoft SQL Server. Microsoft's wildly popular Access database program runs this version of SQL. Other familiar SQL-based database programs include FileMaker Pro, FoxPro, and the open source-based MySQL.
+ 
+Predictive Analytics 
+In business, predictive analytics is the process of using historical data to analyze past patterns and predict future patterns. This process is used in business to discover potential opportunities, and to assess their prospective risks and rewards. The basis of predictive analytics is to use the relationships between various types of data to estimate the potential or the risk of a given set of conditions.
+ 
+Predictive analytics attempts to explain, analyze, and predict behavior by mathematical or scientific means. A company may capture and analyze its customer data, and, using pattern recognition, game theory, odds algorithm, or statistics, attempt to predict future customer behavior based on what that behavior has been in the past. Data mining techniques have advanced the field by enabling the data to be sorted and categorized in various ways. The greater the level of granularity to which the data can be categorized, the more useful and accurate it will be in predicting future outcomes.
+ 
+Customer relationship management (CRM) relies on predictive analytics to understand the purchasing behavior of customers. By using customer data captured at the time of sale, and applying the various statistical techniques, companies can better understand how to market and sell new products to existing customers. They can also understand how best to motivate people who are not yet customers to try their products or frequent their stores. The retail and direct marketing business segments have long used CRM techniques, and are often at the forefront of new applications.
+ 
+Predictive analytics is commonly used in industries such as financial services and insurance. In financial services, companies will use credit scoring to predict the likelihood that a consumer will default on a loan. The assessment is based on information about the customer’s credit history and the loan application, compared with the same data from similar customers in the past. The insurance industry will attempt to determine the likelihood of a loss, based on the profile of the applicant and the past performance of customers with similar profiles.
+ 
+Other industries that use predictive analytics to increase their profitability include health care and pharmaceuticals, retail, telecommunications, and travel. Even the Internal Revenue Service employs predictive analytics to try to predict and identify income tax fraud. Accounting firms use this method to attempt to identify fraud in the financial statements of the companies they audit.
+ 
+In addition to predicting consumer behavior, predictive analytics can be used to assess aggregate demand at the store, region, or national level. It can be used to predict the performance of an entire industry under certain economic conditions. The government may use it to predict factors that impact the entire economy, such as unemployment or housing starts.
+Information Analytics
+
+Information analytics is a term used to describe the collection and analysis of data. The use of powerful computers to identify patterns and trends in a data set is not new, but has been greatly enhanced in the past few years. As a result, the quality of the output is high enough to be used as a tool in the decision making process.
+ 
+The most common use of information analytics is to study business data with a combination of statistical analysis and data mining techniques. The purpose of this type of analysis is to identify trends that can result in action. It is very common for statisticians to identify trends or patterns in behavior that are interesting. However, in a business setting, the organization needs to be aware of patterns that can be used to generate revenue or decrease losses.
+ 
+Every company interested in information analytics needs to invest in both staff and technology. Information analytics is typically organized as part of a business intelligence within the information technology department. Staff members working with analytics have typically completed post-secondary education in statistics, advanced mathematics, information technology, or programming. It is not uncommon for all the staff to have master's and doctoral degrees in any of these fields. The level of skill and knowledge required to effectively use these tools, design queries, and analyze the results are quite high.
+ 
+From a technological perspective, a business intelligence or statistical data management tool is required to perform the types of complex analysis required. In addition to specialized software, there is a substantial investment in hardware or connectivity necessary. In an ideal scenario, business data from the enterprise resource planning (ERP) system is accessible with the analysis tool. A common optional method is to duplicate the relevant data into a separate data warehouse used strictly for reporting and data mining or analysis activity.
+ 
+Setting up this structure is quite complicated and requires a project team with staff who have expertise in both software implementation, data management, infrastructure, and related tools. If a separate environment is created for data analysis, additional hardware will need to be purchased, supported, and maintained.
+ 
+The primary purpose of information analytics is to use existing data to gain valuable insights into customer behavior and motivation. From an organizational perspective, it is essential to use this information to help in the decision making process. The correct use of this type of data can help firms decide what types of products to launch, when, and in which markets.
+Statistical Data Analysis
+Statistical data mining, also known as knowledge or data discovery, is a computerized method of collecting and analyzing information. The data-mining tool takes data and categorizes the information to discover patterns or correlations that can be used in important applications, such as medicine, computer programming, business promotion, and robotic design. Statistical data mining techniques use complex mathematics and complicated statistical processes to create an analysis.
+ 
+Data mining involves five major steps. The first data mining application collects statistical data and places the information in a warehouse-type program. Next, the data in the warehouse is organized and creates a management system. The next step creates a way to access the managed data. Then, the fourth step develops software to analyze the data, also known as data mining regression, while the final step facilitates using or interpreting the statistical data in a practical way.
+ 
+Generally, data mining techniques integrate analytical and transaction data systems. Analytical software sorts through both types of data systems using open-ended user questions. Open-ended questions allow countless answers so programmers are not influencing the results of the sorting. Programmers create lists of questions to assist in categorizing the information using an overall focus.
+ 
+Sorting is then based on developing classes and clusters of data, associations found in the data, and attempts to define patterns and trends based on the associations. For example, Google collects information on users' purchasing habits to assist in placing online advertising. Open-ended questions used to sort this buyer data focus on buying preferences or viewing habits of Internet users.
+ 
+Computer scientists and programmers focus on the analysis of the statistical data that is collected. Creation of decision trees, artificial neural networks, nearest neighbor method, rule induction, data visualization, and genetic algorithms all use the statistically-mined data. These classification systems assist in interpreting the associations discovered by the analytical data programs. Statistical data mining involves small projects that can be done on a small scale on a home computer, but most data mining association sets are so large and the data mining regression so complicated that they require a supercomputer or a network of high-speed computers.
+ 
+Statistical data mining collects three general types of data, including operational data, non-operational data, and meta data. In a clothing store, operational data is basic data used to run the business, such as accounting, sales, and inventory control. Non-operational data, which is indirectly related to the business, includes estimates of future sales and general information about the national clothing market. Meta data concerns the data itself. A program using meta data might sort store customers into classifications based on gender or geographic location of the clothing buyers or the customers favorite color, if that data was collected.
+ 
+A data mining application can be extremely sophisticated and the statistical data mining tool may have widespread practical applications. The study of disease outbreaks is one example. A 2000 data mining project analyzed the disease outbreak of cryptosporidium in Ontario, Canada to determine the causes of the increase in disease cases. The results of the data mining assisted in linking the bacteria outbreak to local water conditions and the lack of proper municipal water treatment. A field called "biosurveillance" uses epidemiological data mining to identify outbreaks of a single disease.
+ 
+Computer programmers and designers also employ the study of probability and statistical data analysis to develop machines and computer programs. The Google Internet search engine was designed using statistical data mining. Google continues to collect and use data mining to create program updates and applications.
+Data mining algorithms
+Data mining algorithms are programmed queries and programs used to identify patterns and trends in data sets. The primary use of data mining is to determine customer needs and preferences, based on their actual activity. Although the information is based on past performance, it can be an excellent indicator of customer behavior and trends.
+ 
+Two excellent examples of data mining algorithms are the clustering and nearest neighbor predictors.
+ 
+Clustering is a term used to describe an activity where individual units or data share important attributes. Separating the laundry is a logical example of this behavior. The person sorting the laundry is functioning as the algorithm. He or she separates the laundry into piles by attributes: colors, dry cleaning, and whites are all separated.
+ 
+The actual decision making process involved in this activity is the details of the algorithm. First, the data set must be limited to items relevant to the exercise. Shoes are not included in laundry sorting, although they may be in the same physical space. The decision must be made in advance about what characteristics will be used to separate the laundry and the size of each pile.
+ 
+Nearest neighbor predictor is based on the identification of closely matching examples. The criteria must be provided in the initial stages, specifying what the item or data is and what the definition of nearest will include. This type of algorithm follows a similar pattern to logical thought process.
+ 
+The primary benefit of data mining algorithms is the ability of the program to create and identify patterns within a huge volume of data. The ability to identify neighbors in a particular setting is easy to do in a small group. However, data collected from all the sales transactions completed within the year or in a district requires special programs and logic to do with any accuracy.
+ 
+People who can create data mining algorithms to meet users needs work in business intelligence or data mining. This is a very complex expansion of statistics growing in popularity as organizations seek to yield a more tangible return from the data they have collected. An efficient developer can create a set of data mining algorithms that accurately identify patterns in behavior, and use this information to predict future actions. This information is very valuable for business, organizations, and governments.
+
+ 
+Data Marts
+Data warehousing has become increasingly important to modern companies as the amount of data necessary to remain competitive and make informed decisions about the future of a company has become greater and greater. A company's entire data warehouse often consists of a collection of data marts, sets of data that typically are focused on a particular department or area of the company. Combined into a data mart warehouse, these data marts help support the information system of the entire company.
+ 
+A data mart might be dedicated to customer data or sales information, or it could be constructed specifically to support a company's human resources department. In some cases, data marts are compiled from data from the main data warehouse. Many companies, though, take a bottom-up approach to data warehousing and instead build the overall data warehouse by compiling data mart data into smaller systems, then combining them into a company-wide data warehouse.
+ 
+One important factor in building a data mart is usability. Because the data mart usually is aimed at supplying information to a specific department for a specific purpose, the data must be easily accessed and processed. A company's Information Technology department or Management Information Systems specialists often focus on this area, ensuring that an easy-to-use interface exists so that employees, including managers and other high-level personnel, can access the data mart data and use it within the course of their jobs.
+ 
+Individual data mart design depends on the specific needs of the company or the individual department. Most data is organized into relational databases, with a database management system implemented company-wide in order to let individual employees easily access data, generate reports or perform other necessary day-to-day functions. Some companies require more complex data processing that makes use of multidimensional databases. Still others use database functionality that allows multidimensional data analysis while still using the simpler and less costly relational database management system.
+ 
+For the most part, data warehouses are built by adding data as it comes into the company's systems. Updates to data are not as important to an overall view of company performance as data that has been added to and compiled over a longer period of time. Managers can use data from the data mart to view company trends, sales patterns and efficiency of individual departments and to make forecasts about future performance. At this strategic planning level, the data mart and data warehouse are invaluable to those planning the futur
+ 
+Mining a Data Warehouse
+Data warehouse mining is the analysis of information contained in one or more databases in order to make the information useful. These databases, or data warehouses, are a central depository for data. Companies aggregate the information they collect on their customers in a data warehouse. Once the information has been collected, it is "mined," and useful information is extracted from it to produce information that can help the company make business decisions that will increase profits or reduce costs. Retailers frequently use data warehouse mining to analyze and predict the behavior of their customers.
+ 
+For example, when a shopper goes to the supermarket and gives the cashier her frequent shopper card, information about her purchases is collected and stored in the company's data warehouse. A supermarket chain will have millions of pieces of data on what people buy, when, in what quantities, and at what price. A store may know that 50,000 packages of frozen peas were sold last year, but that information alone is not particularly helpful. If the data warehouse mining reveals, however, that 75% of those frozen peas were sold during months when fresh peas were not available, or that 10% of the peas were sold in the two weeks leading up to Thanksgiving, the company may be able to use that information to increase their annual sales of frozen peas.
+ 
+Companies can employ data warehouse mining techniques to predict future sales. Data mining can also help them to estimate the impact of stocking and pricing decisions. At the supermarket, data mining might keep the stores from running out of frozen peas in the event of a poor crop of fresh peas in a given year.
+ 
+Data mining regression is a data mining technique that is used to show what is likely to happen to a data value if something in the equation is changed. Using the supermarket example, regression would predict the level of frozen pea sales if fresh peas increased in price. Regression uses historical data and applies a formula to it, which predicts future behavior.
+ 
+Companies will often use a data warehouse mining software application to collect and mine their data. The correct application is determined by the amount of data they have and the type of analysis they want to do. Choosing the correct data mining tool is critical to gathering and interpreting useful data.
+
+Business intelligence analytics
+Business intelligence analytics combines two of the leading concepts in information technology into a powerful tool for both businesses and organizations. In order to utilize these concepts in a productive way, the organization requires skilled, dedicated business analysts, business intelligence software, and powerful analytics tools. The primary purpose of a business intelligence analytics system is to identify trends and patterns in consumer behavior. This information is used to increase profitability, focus the company on client's needs, and provide enhanced accuracy in cost benefit analysis.
+ 
+Business analysis staff members typically have a university degree in information technology, business administration, or data management. An increasing number of colleges are offering business analysis training programs, as this career is expected to experience above average growth. The primary task of a business analyst is to review the business processes used and look for technology that will reduce the time, effort, and cost of completing those tasks. In many firms, the business analyst has several years of experience working in the actual business department. This experience is valuable, as it provides insight into the tasks required, tools available, and the challenges to completing the job well.
+Business intelligence software is also known as data mining or data management software. This type of tool is used to provided a dedicated reporting area. Typically, the data from the organization is downloaded into the business intelligence analytics software tool. A series of queries and relational database tables are created to provide the basis for the analysis.
+ 
+Many firms develop an information technology strategy that includes the use of business intelligence software in the decision making process. In order to really achieve a solid return on investment on this type of software, the firm should have at least 10 years of detailed data on sales, purchases, staff costs, and other items that impact the overall cost of providing a service or good. Data cubes and reports can then be built to show trends, identify product success and failures, and provide a more holistic view of company activity.
+ 
+Data analytics is true statistical analysis software and is best utilized by staffers who have formal post-secondary training in statistics and analysis. This software is often used to identify trends in the data collected over a period of time. Since much of the data used for this type of analysis is also required for a business intelligence tool, some firms have combined the tools and features of these two software products into one.
+ 
+In the hands of skilled employees, a business intelligence analytics tool provides both snapshots of company activity and in-depth analysis of the same data. The ability to provide staff members with personalized reports on performance in their areas of responsibility is a very powerful force in a business environment. Couple that with detailed analysis for senior management on the costs associated with various endeavors, and the firm has the tools required to make excellent business decisions.
+Multidimensional database
+A multidimensional database is a form of database that is designed to make the best use of storing and utilizing data. Usually structured in order to optimize online analytical processing (OLAP) and data warehouse applications, the multidimensional database can receive data from a variety of relational databases and structure the information into categories and sections that can be accessed in a number of different ways. Even persons who have relatively little experience working with a database often find that a multidimensional database, or MDB, requires only a short time to master.
+ 
+While just about every relational database is structured for keyword searches and building a query by specifying fields and perimeters, the multidimensional database goes one step further. Rather then building a query, a user simply poses the question in everyday verbiage. This approach is used with several online help tools associated with software programs such as word processing and spreadsheet applications, as well as several of the more popular search engines currently in use.
+ 
+When it comes to using a multidimensional database for internal business purposes, the main advantage is the ease of obtaining data quickly and succinctly. For instance, if an end user wanted to determine how many widget sales were generated during the third quarter of the past year in a given sales territory, this data could be obtained from a multidimensional database with a simple question. By asking “How may widgets were sold during third quarter 2007 within the Southwest Territory?” the end user does not have to go through the steps of building a report, specifying fields, and restricting content within those fields to selected criteria. The use of one simple question will accomplish the task.
+ 
+The exact means of formulating a question will determine on several factors. One key element is the sorting and type of data within a multidimensional database. Any question that contains a request for information that is not found within the database will not result in a direct response, although many MDBs will respond with data based on what data that is available. This means that if an end user asks “How many widgets were sold in Nenagh last month?” the database will only be able to provide a focused response if each sale includes the state of origin and the database was configured to understand which month and year “last month” indicates. If not, the multidimensional database will probably respond with some partial answers, or ask for clarification.
+Data Analysis
+Data analysis is a practice in which raw data is ordered and organized so that useful information can be extracted from it. The process of organizing and thinking about data is key to understanding what the data does and does not contain. There are a variety of ways in which people can approach data analysis, and it is notoriously easy to manipulate data during the analysis phase to push certain conclusions or agendas. For this reason, it is important to pay attention when data analysis is presented, and to think critically about the data and the conclusions which were drawn.
+
+
+Raw data can take a variety of forms, including measurements, survey responses, and observations. In its raw form, this information can be incredibly useful, but also overwhelming. Over the course of the data analysis process, the raw data is ordered in a way which will be useful. For example, survey results may be tallied, so that people can see at a glance how many people answered the survey, and how people responded to specific questions.
+
+In the course of organizing the data, trends often emerge, and these trends can be highlighted in the writeup of the data to ensure that readers take note. In a casual survey of ice cream preferences, for example, more women than men might express a fondness for chocolate, and this could be a point of interest for the researcher. Modeling the data with the use of mathematics and other tools can sometimes exaggerate such points of interest in the data, making them easier for the researcher to see.
+
+Charts, graphs, and textual writeups of data are all forms of data analysis. These methods are designed to refine and distill the data so that readers can glean interesting information without needing to sort through all of the data on their own. Summarizing data is often critical to supporting arguments made with that data, as is presenting the data in a clear and understandable way. The raw data may also be included in the form of an appendix so that people can look up specifics for themselves.
+
+When people encounter summarized data and conclusions, they should view them critically. Asking where the data is from is important, as is asking about the sampling method used to collect the data, and the size of the sample. If the source of the data appears to have a conflict of interest with the type of data being gathered, this can call the results into question. Likewise, data gathered from a small sample or a sample which is not truly random may be of questionable utility. Reputable researchers will always provide information about the data gathering techniques used, the source of funding, and the point of the data collection in the beginning of the analysis so that readers can think about this information while they review the analysis.
+
+

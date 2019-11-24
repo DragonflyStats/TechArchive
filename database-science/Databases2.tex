@@ -1,0 +1,38 @@
+\documentclass[]{article}
+\usepackage{amsmath}
+\usepackage{framed}
+
+%opening
+\title{Databases}
+\author{Kevin O'Brien}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+%------------------------------------------------------------------------ %
+\section{Candidate Keys}
+In the relational model of databases, a candidate key of a relation is a minimal superkey for that relation; that is, a set of attributes such that
+\begin{itemize}
+\item the relation does not have two distinct tuples (i.e. rows or records in common database language) with the same values for these attributes (which means that the set of attributes is a superkey)
+\item there is no proper subset of these attributes for which (1) holds (which means that the set is minimal).
+\end{itemize}
+The constituent attributes are called prime attributes. Conversely, an attribute that does not occur in ANY candidate key is called a non-prime attribute.
+Since a relation contains no duplicate tuples, the set of all its attributes is a superkey if NULL values are not used. It follows that every relation will have at least one candidate key.
+The candidate keys of a relation tell us all the possible ways we can identify its tuples. As such they are an important concept for the design of database schema.
+
+
+%------------------------------------------------------------------------ %
+\section{Referential Integrity}
+Referential integrity is a property of data which, when satisfied, requires every value of one attribute (column) of a relation (table) to exist as a value of another attribute in a different (or the same) relation (table).
+
+For referential integrity to hold in a relational database, any field in a table that is declared a foreign key can contain either a null value, or only values from a parent table's primary key or a candidate key.
+
+In other words, when a foreign key value is used it must reference a valid, existing primary key in the parent table. For instance, deleting a record that contains a value referred to by a foreign key in another table would break referential integrity. 
+
+Some relational database management systems (RDBMS) can enforce referential integrity, normally either by deleting the foreign key rows as well to maintain integrity, or by returning an error and not performing the delete. Which method is used may be determined by a referential integrity constraint defined in a data dictionary.
+%------------------------------------------------------------------------ %
+
+
+\end{document}
