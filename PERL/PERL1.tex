@@ -1,0 +1,284 @@
+Contents
+
+
+Perl Introduction and History
+Perl stands for "practical extraction and report language." It was created by Larry Wall in the mid 1980's to help him create quick and dirty programs that extract data from a variety of files and organized them into reports. It combined many of the features that could be found in Unix scripting tools, such as the shell, sed, grep, awk, and tr, with C-like control structures and operators. Although it was created as a Unix tool, Perl is now available on all major computing platforms. It does, however, retain its Unix flavor. 
+Perl was not really intended to be a general purpose scripting language, but its C-like syntax allowed it to be used like one, and programmers quickly seized on that facet of the language to make it the first widely used, general purpose scripting language. Because of its flexibility as an interpreted tool that can behave like C, and its built-in support for many system-level commands, Perl also quickly became a favorite of Unix system administrators. As new application areas became popular, such as graphical user interfaces and the web, modules were added to Perl to support these applications. Because of its availabilty on many platforms, Perl often became one of the first scripting languages used to support these applications. However, in many cases more specialized scripting languages were later developed for these applications, thus making Perl less pre-dominant these days in some of these areas. For example, Php has largely supplanted Perl as the language of choice for supporting server-side web scripting, and Jython or Tcl would be a more likely candidate for GUI scripting. 
+These days Perl is still widely used for data extraction and reporting, and by system administrators for performing a myriad of systems programming tasks. Perl is currently undergoing a major transformation from Perl 5 to Perl 6. Perl 6 will be the first, non-backwards compatible version of Perl, and is designed to fix some of Perl's quirkiness, such as its non-traditional syntax for function headers (Perl 5 does not have named parameters) and object-oriented programming, as well as increase the power of some of its constructs, such as increasing the power of regular expressions and adding support for statically typed variables. Perl 6 also breaks from the past in that it has a specification document, whereas Perl 5 and earlier versions were more informally defined and interpreters simply were required to pass a set of test suites. Perl 5 is still the predominantly used version of Perl, and it will be the version used in this course. The design of Perl 6 began in 2000, and a decade later it has still not gained widespread acceptance, although eventually it almost certainly will. 
+Perl has had a significant influence on subsequent scripting languages, especially with respect to regular expressions. Regular expressions allow you to specify a pattern that you want some data to match and they provide an extremely flexible way of manipulating strings. Regular expressions were widely known and used by researchers before Perl and existed in many Unix utilities and tools. However, it was Perl that popularized regular expressions and made them a tool widely used by mainstream programmers. 
+
+Perl Advantages and Disadvantages 
+Pluses: Viewed in its best light, Perl is a language that encapsulates the best features of the shell, sed, grep, awk, tr, and C. If you are familiar with these tools, you can write very powerful Perl programs rather quickly and easily. In particular, you can write programs that duplicate the functionality of shell scripts but are all in one file (indeed, they are all in one language) and thus are much more efficient. 
+Minuses: Perl is a jumble. It contains many, many features from many languages and programs. It contains many differing constructs that implement the same functionality. For example, there are at least 5 ways to perform a one-line if statement. While this is good for the programmer, it is extremely bad for everyone but the programmer (and bad for the programmer who tries to read his own program in 6 months). 
+Perl also has made many poor syntactic decisions that lead to both language inconsistencies and awkward constructs. For example, most built-in Perl commands, such as the open command, require commas to be placed between the arguments. However, the print command requires that commas not be placed between its first two arguments when writing to a file. This decision was made to make it possible for the Perl interpreter to know whether output was being written to a file or stdout but the inconsistency of requiring that there not be a comma can cause a programmer grief when the programmmer automatically inserts a comma as a matter of habit. Examples of awkward program constructs include the lack of named parameters for subroutines and the requirement that variables be "declared" as scalars, arrays or dictionaries by prefixing them with a $, @, or % sign. 
+These language issues have led to Perl being called a "write-only" language. There are other minuses as well, but I won't go into them further. You can discover them for yourself. A colleague of Dr. Plank, Norman Ramsey, responded to an email sent to him about perl, and his response is worth quoting in it's entirety: 
+Perl is a brilliant mistake, of a kind being repeated over and over again today. It follows an unfortunate trend in computing documentation---we no longer explain how our programs or languages work, we just provide encyclopedic compendia of things you can do with them. Users don't have to understand anything; they just pattern match on these enormous documents until they see something that looks sort of like what they want, then they hack on it until it produces the right answer for some inputs, then they declare victory. (This is why some students can take 50 hours to complete a 2-hour homework assignment.) Perl accommodates this style perfectly. 
+So this is the mistake. The brilliance is in including so many things people want to do, and in a form that is almost familiar, so they can pattern-match more easily. In fact, the familiarity is really an illusion, and if you're going to program in perl, you can hack without understanding, or you can restrict yourself to a subset you can understand. But if you're going to do the latter, why not program in sh, awk, and sed to begin with? 
+I've never used apl, so I can't compare. 
+I have---the thing with apl is that although it is *all* weird, it is weird in a very consistent way. You don't have the illusion of familiarity. You do have a huge set of unreadable glyphs, but they come with a very small set of simple rules for decrypting them, the most important of which are the right-to-left scan rule and the fact that user-defined functions take at most two arguments. 
+I just got to a part in my manual where they advocate using && as an if statement. 
+I got past that. I gave up on perl the day I learned I couldn't write a function to return an open file handle (e.g., an open socket) (bvz-that shortcoming was subsequently fixed). Now I use it only when forced. 
+The Bottom Line: The debate as to which is better: Perl, Python or the latest and greatest scripting language is a heated one. Python has better language design. Perl has the most familiar regular expression syntax. I won't get into it, but if you look, you can find all sorts of opinions. Of course, it's best to formulate your own opinions by learning all of them.... 
+
+Perl help
+Unfortunately, perl is huge, so I'll only be able to give you but a flavor of it. Here are a number of good online sources of help: 
+1. The perl manual is online in the form of the perl man pages, which are broken up into a number of subsections. Do "man perl." 
+2. Typing perldoc module-name will provide documentation about a specific Perl module. 
+3. A good page for finding Perl tutorials is http://perl.about.com/od/perlmanuals/. 
+4. A good online Perl reference with a more comprehensive set of notes than mine is http://www.cs.cf.ac.uk/Dave/PERL/. The notes were last updated in 2005 so they may not have some of the more recent additions to Perl. 
+Two books I would recommend in case you want more are "Learning Perl" by Schwartz, Phoenix, and d foy, and "Programming Perl" by Wall, Christiansen, and Orwant. Both are published by O'Reilly & Associates. 
+
+Invoking Perl
+You can invoke the perl interpreter on a perl program as follows: 
+perl program-name cmd-line-args
+Alternatively, you can put the path of perl's interpreter on the first line of the perl program, preceded by #!, such as: 
+#!/usr/bin/perl
+
+...Perl code...
+In this case you can make the program executable in Unix by performing a chmod +x. You should be careful about using the #! form however if you are planning to port your perl code to different platforms, because: 1) the perl interpreter resides in different directories on different Unix platforms, and it can even change on your own platform from time to time, and 2) the perl interpreter will almost certainly reside in a non-standard location on a Windows machine. There are differences between versions of perl. If you are uncertain of which version of perl you are using you can type perl -v and it will print out version information and exit. 
+There is not an interactive interpreter for perl but you can simulate interactivity by typing perl -de 1 which invokes perl's debugger. The -d flag invokes the debugger, and the -e flag gives the debugger an executable statement to begin with. In this case the executable statement is the expression "1". You can then type a single line of perl commands and execute them. That is handy when you have just a few commands to test but isn't so handy if you want to define a test function. 
+You can access the command line arguments through an array called @ARGV and the current environment variables in a hash called %ENV. 
+Finally the conventional suffix for a perl file is .pl. 
+
+Handy Perl Development Options 
+When developing a Perl program it is a good idea to invoke the perl interpreter with the -w option. This option causes perl to warn you about things which may be legal but that could have the potential for erroneous results. For example if a file named mult.pl contains the single line: 
+$a = 5 * "12fred34"
+then running perl with the -w flag should produce output that looks something like: 
+UNIX> perl -w temp.pl
+Argument "12fred34" isn't numeric in multiplication (*) at temp.pl line 1.
+Name "main::a" used only once: possible typo at temp.pl line 1.
+The meaning of the first warning message should be apparent. The meaning of the second warning message is that perl has noticed that you used $a only once in your program. Since it does not really make sense to define a variable and then never use it, perl thinks that you may have mis-spelled the variable name and hence issues a warning. 
+When developing the script I recommend that you use the -w option but be sure that you take it out of anything that you submit for the labs or actually put into use. The reason for that last bit of advice is that if you are running the script in the background, spurious output can result in the script being halted because it is not connected to an output device. 
+
+Comments
+Comments begin with the pound sign (#). They can begin anywhere on a line and extend to the newline. 
+#this is a comment at the left margin
+print $red;	# and this is a comment starting elsewhere
+Note the semicolon after the print statement. Just like in C, all simple statements end with a semicolon. 
+
+Variables, Data Types, and I/O
+Perl has 4 basic variable types we will cover--scalars, arrays, hashes, and references. Variables do not have be explicitly declared, just used and the type is inferred, nor do variables have to be initialized. If a variable is used prior to an assignment of a value, perl gives it the value undef, which is NOT null but is the undefined value. Later we will talk about testing for this value. For now you just need to know that using such a value will not usually cause an error but may not give the desired results. 
+
+Scalar variables and data types
+Scalar variables are variables which contain a single value such as the numbers 4, 984, -432.625 or the strings "a","a fox is in the hen house", "\thound\n". Perl variables are dynamically typed, which means that the type of a variable is determined by the type of the value currently assigned to it. Dynamic typing contrasts with the static typing of compiled languages. Static typing means that the variable's type must be declared in advance to the compiler and that during the execution of the program, the variable may be assigned values of that type only. Perl also performs dynamic casting, meaning that it will cast a value to a different type if the current operator requires it. For example, 3 * "8" will evaluate to 24, because Perl will dynamically cast the string "8" to the integer 8. 
+Scalar variables can be assigned values using the = just like in other programming languages. Some typical assignments might be 
+$x = 19;
+$str = "this is the house";
+$dog = "collie";
+$pi = 3.1415;
+$arc = $pi * $x;
+$dir = `ls`;  # returns a string containing the list 
+              # of files in the current directory
+Note that wherever a scalar is used it is always preceded by a dollar sign. 
+
+Strings 
+Single, double, and back (``) quotes all produce strings. Double quotes denote a string and substitutions, called variable interpolation are performed. A substitution is performed when an element of the string is preceded by a $ or @ sign (hashes, which start with a %, cannot be interpolated into a string). In this case Perl treats the element as a scalar or array, and substitutes the value of that variable into the string. Hence the following two assignments: 
+$dog = "collie"
+$comment = "I love my $dog"
+produces the result "I love my collie". If you interpolate an array, the array elements will be separated with spaces (an example will be given in the section on arrays). 
+Normally the variable name used in the substitution will be followed by a whitespace, but when that is not possible, you can use curly braces ({}) to tell perl where the variable name begins and ends: 
+$dog = "collie"
+$comment = "I love my ${dog}'s smile" # $comment = "I love my collie's smile"
+If you want a $, @, ", or \ to appear in a doubly quoted string, you need to escape it with the backslash character (\). 
+Single quotes are a string but substitutions are not performed. None of the above four characters must be escaped in a singly quoted string. If you want a single quote to appear in your string, you must use a doubly quoted string. 
+Backquotes result in the quoted string being evaluated as though it were a command and the result is returned as a string. 
+
+Booleans/undef
+In perl, undefined variables have the special value undef. undef can be used in expressions and often makes life convenient. When you try to use undef as a string, you get the empty string (''), when you try to use it as a number, you get zero, and when you try to use it as a boolean, you get false. 
+Like C, perl does not have built-in boolean values. The following values are considered to represent the value false if used in a boolean expression: 
+1. 0 
+2. Anything that casts to a string containing a single 0 (e.g., "0" but not "00") 
+3. The empty string ('') 
+4. undef 
+Everything else is true. Therefore, all numbers but zero are true, as are all strings but the empty string ("") and "0". 
+If you want to know whether a value is undef or a variable is undefined, you can use the defined function (e.g., defined($a)). If the value is anything but undef, defined will return 1. Otherwise it returns undef.
+
+Standard I/O 
+You can print strings to the console using either print or printf. print takes one or more comma separated arguments, converts them to strings, concatenates them together into a single string with intervening spaces, and prints the string. It does not generate a newline so you must include a newline character (\n) if you want to get a newline. printf works just as it does in C: 
+print "hello world";   # prints "hello world" without a newline
+$x = 10;
+print "The answer is ", $x, "\n";  # prints "The answer is 10" with a newline
+printf("%6d\n", $x);  # prints "    10" with a newline
+You can read a line of input using the <STDIN> operator. The <> operator is often called the diamond operator in Perl and you will use it to get input from both stdin and input files. STDIN is a pre-defined file handle. We will talk more about file handles in the section on file handling. If you have no command line arguments, then it is okay to omit STDIN from the diamond operator, because the diamond operator will read from stdin by default. For example: 
+$line = <>;      # same as $line = <STDIN>
+If you plan to allow command line arguments, then you must use <STDIN>. Otherwise the <> operator will treat each of your command line arguments as though it were a file name and try to open each of them (of course if your command line arguments are all filenames, that may be a good thing). 
+The <> operator reads an entire line of input, including the newline character. You can get rid of the newline character using the chomp function: 
+$line = <>
+chomp($line);     # removes the \n character, if one exists, from $line
+More commonly the two operations are combined by perl programmers and written as: 
+chomp($line = <>);
+Perl does not provide a way to read individual fields from a line, but it does provide a set of powerful string manipulation functions that allow you to split a line into fields. You can read about these functions in the section on regular expressions. 
+Finally the <> operator returns undef when it reaches end of file. Here is a simple program to read from stdin and echo it to the screen (i.e., a Perl version of the Unix utility cat): 
+# chomp is not necessary in the following code, since I immediately add
+# back a new line character, but it is useful to see the common while loop
+# idiom for reading input from stdin or a file
+while (chomp($line = <>)) {
+  print "$line\n";   
+}
+
+Arrays
+Arrays in perl are best described as ordered lists. There is no need to preplan for the size of an array as perl will modify the size to fit the situation. This does not mean that perl will automatically reduce the size of an array but you can force that to happen. There are 2 aspects to arrays. The elements of the array and the array itself. When referring to the array as a whole use the @ notation (@myarray). When referring to an element of an array, we are actually referring to a scalar so use the $ notation ($myarray[2]). The array elements are always accessed using integers. Arrays are 0-indexed which means that the first element is 0 ($myarray[0]). 
+To make assignments to arrays we can assign values to individual elements, as for scalars: 
+$x[0] = 19;
+$str[2] = "this is the house";
+$dog[1] = "collie";
+$dog[2] = $dog[1];
+$dog[-1] = "hound";  # assign "hound" to the last element of @dog
+Notice that we can use negative indices to index from the back of an array. Negative indices start with -1, so the last element in the array is -1, the next to last is -2, and so on. 
+We can also use lists to perform an assignment to the entire array 
+@dogs=("collie","sheppard","hound","mutt");
+# qw creates a quoted word list that is equivalent to the previous list
+@dogs=qw(collie, sheppard, hound, mutt); 
+@nums=(2,4,6,9);
+@another=();	# an empty array
+@dir = `ls`;    # an array of the filenames in the current directory 
+This list form of assignment may not be familiar to you, but is commonly used in scripting languages. The qw keyword creates a "quoted word" list that allows you to create a list of quoted strings, without having to put quotes around all the list elements. 
+You can also "unpack" an array by assigning to lists containing variables: 
+@nums = (2,4,6,9);
+($a,$b,$c) = @nums;  # $a=2 $b=4 $c=6
+($x,@fewer) = @nums; # $x=2 @fewer=(4,6,9)
+($t1,$t2,$t3,$t4) = @fewer # $t1=4 $t2=6 $t3=9 $t4 is undef
+("this","that") = @dogs;  # MAKES NO SENSE
+As this example demonstrates, perl is very nice about how it makes the assignments. If there are more elements on the right side than on the left side, the extra elements are ignored. If there are more elements on the left than on the right, the extra elements are assigned the undefined value, and perl will not issue you any warnings. However, if you try to do something nonsensical, as in the last statement that tries to assign the array @dogs to the list of constants ("this", "that"), then perl will complain. 
+If you interpolate an array into a string, the array elements will be separated by spaces: 
+@nums = (2,4,6,9);
+$text = "@nums\n";   # $text = "2 4 6 9"
+A very handy aspect of perl is that you can get the length of the array by using the keyword scalar to cast an array to a scalar: 
+@nums = (2,4,6,9)
+$len = scalar @nums; # $len=4
+Alternatively you can get the last index of the array using the notation $#arrayname. For example $#nums returns 3. However, you would more commonly access the last element of an array using the index -1. 
+Being a language that really tries to cover all the bases when it comes to everyday programming, perl has some functions which manipulate arrays. 
+pop removes the last (i.e., "top") element from the array and returns that value: 
+@dogs=("collie","sheppard","hound","mutt");
+pop(@dogs); # @dogs=("collie","sheppard","hound")
+push appends a new element to the end of the array (i.e., "pushes" a new element onto the "top" of the array): 
+push(@dogs,"bowser"); # @dogs = ("collie","sheppard","hound","bowser")
+shift removes the first element of the array, much like a queue: 
+shift(@dogs); # @dogs = ("sheppard","hound","bowser")
+unshift inserts an element at the front of the array: 
+unshift(@dogs,"queeny"); # @dogs = ("queeny","sheppard","hound","bowser")
+These functions can be used on the right hand side of an assignment as well as by themselves. 
+
+Hashes
+Hashes are associative arrays. They have no real concept of order but instead consist of key-value pairs. The keys and the data stored in the hash can be of any type and are similar to arrays in assignment and accessing. An entire hash is referenced using the percent notation (%myhash) and an element is referenced using the dollar sign ($myhash{"john"}). Because hashes have no order but instead are key-value pairs, when we initialize hashes or elements of hashes we need to consider this. 
+%dogs=("black","labrador","red","setter","white","poodle");
+# the => provides a way to pair up keys and values so that
+# the code is more readable
+%dogs=(black => "labrador", # no need to use quotes for keys
+       red => "setter",     # when using the => notation
+       white => "poodle");
+$dogs{"brown"} = "hound";
+$dogs{brown} = "hound";  # no need to use quotes for keys when using them to access a value
+$my_dog = $dogs{red}   # $my_dog = "setter"
+# the following variable interpolation produces the string
+# "my sweet hound". 
+$comment = "my sweet $dogs{brown}"  
+Note that when referencing a single element of a hash, we use braces {} instead of brackets. 
+Perl provides a number of handy functions for hashes: 
+exists($dogs{white}): exists tells you whether or not a hash contains the given key. It returns true if the given key is in the hash and undef otherwise. 
+delete($dogs{red}): delete removes the given key and its associated value from the hash. delete does nothing if the key is not in the table. In particular, it does not generate an exception. 
+keys(%dogs): keys returns a list of the hash's keys, in some arbitrary order. When given an empty hash, keys returns an empty list. 
+@colors=keys(%dogs) # @colors = ("black","white","red","brown") in some
+		    # order
+
+References
+A reference is much like a pointer in C except that Perl's "address-of" operator is \. A reference is a scalar value and so the variable that holds it is prefixed with a $. You can de-reference the scalar value using the appropriate type operator--$, @, or %. Here are several examples: 
+$a = 10;
+$b = \$a;
+$$b = 20;   # $a = 20
+
+@nums = (2,4,6,9);
+$b = \@nums;     # b is a reference to the array @nums
+print $$b[2];    # prints 6
+push(@$b, 15);   # Use the @ to dereference $b and push a new element onto
+                 # @nums. @nums becomes (2,4,6,9,15)
+The syntax for references is complex, and it is easy to make mistakes with references. However, they are important for a couple of reasons. First, as you will find out when we discuss functions, you must use references if you want to pass an array or hash as an argument to a function. 
+Second, they are good for creating "records". Perl does not have a formal mechanism for creating records, so most programmers use hashes to represent records. Suppose you tried to create a number of records by creating a hash for each record and appending each hash to an array. The code might look as follows: 
+@a = ();
+%b = ( name => "brad", age => 30 );
+push(@a, %b);
+%b = ( name => "aaron", age => 40 );
+push(@a, %b);
+You might think that you now have an array with two entries that point to two hash tables. You would be wrong. You actually have an array that has eight elements and looks something like: 
+@a = ("name", "brad", "age", 30, "name", "aaron", "age", 40)
+The problem is that when you have a named hash and you try to append it to an array, its key/value pairs get concatenated as a list. 
+In this case what you need is a way to create a reference to a hash table and append the reference to the array. You can create an anonymous hash table that returns a reference by using {}'s rather than ()'s to define your hash table. For example: 
+$new_rec = { name => brad, age => 23 };
+Here is how we can use anonymous hash tables to read records with a name and an age from a file and store them in an array: 
+@emp_records = ();
+while (chomp($employee = <>)) {
+  # split splits a string according to some pattern and returns the
+  # fields as a list. In this case we 
+  # are assuming that fields are separated by a single white space character
+  @data = split / /, $employee;  
+  $new_rec = { name => $data[0], age => $data[1] };
+  push(@emp_records, $new_rec); 
+}
+This code fragment produces an array of references to hash tables, which are simulating our employee records. 
+We can also create anonymous arrays that return a reference via the [] operator: 
+$new_array = [10, 20, 30];
+You will have more opportunities to see references when we deal with functions. 
+To recap: 
+1. Create a named array or hash table using ()'s. 
+2. Create anonymous arrays that return a reference using []'s. 
+3. Create anonymous hash tables that return a reference using {}'s 
+
+Operators
+Perl uses many operators to compare strings and numeric values. Those of you who have done C programming are familiar with many of these and the rest of you may have seen similar usages when using another scripting or programming language. For numeric values the following are the most common operators and their purpose 
+Operator 
+Purpose 
+Example 
++ 
+addition 
+$a= 3 + 4; #$a = 7 
+- 
+subtraction 
+$b= 7 - 3; #$b = 4 
+* 
+multiplication 
+$c= 3 * 4; #$c =12 
+/ 
+floating point division 
+$d= 10 / 3; #$d = 3.333333... 
+% 
+modulo (always integer) 
+$e= 10 % 3; #$e = 1
+$e= 10.43 % 3.9; #$e = 1 
+** 
+exponentiation 
+$f= 5 ** 3; #$f = 125 
+Also available are the normal range of numerical comparisons operators. These operators return 1 if the comparison is true and something which, if coerced to an integer, evaluates as 0 if false; 
+Operator 
+Purpose 
+==
+equal
+!=
+not equal
+<
+less than
+> 
+greater than 
+<= 
+less than or equal to 
+>= 
+greater than or equal to 
+Like C, you cannot do numerical comparisons with strings. If you try, perl will convert the string to some numeric value. Leading whitespace is ignored and trailing non-numeric values are discarded. Thus " 23.928asldf543" becomes 23.928 and "johnson" and "johnson4" become 0. This same thing will happen if you try to use a string any place perl is expecting a numeric value. 
+The comparison operators for strings are different from those for numeric values. They are in fact string representations of those other operators. 
+Operator 
+Purpose 
+eq 
+equal 
+ne 
+not equal 
+lt 
+less than 
+gt 
+greater than 
+le 
+less than or equal to 
+ge 
+greater than or equal to 
+"." is a handy string operator that concatenates two strings. It does not modify either string. Rather it returns a new string which consists of the two operands concatenated together. 
+ 
+$line="This"." is"; # $line = "This is"
+$line=$line." my country"; # $line = "This is my country"

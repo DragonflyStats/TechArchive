@@ -1,0 +1,774 @@
+Contents
+
+
+For/if/while
+For, if and while clauses work like their C counterparts, except the body of the clause must be enclosed in curly braces. For example, here is a simple code fragment to print the even numbers between 0 and 9: 
+
+for ($i = 0; $i < 10; $i++) {
+  if (($i % 2) == 0) {
+    printf("%d\n", $i);
+  }
+}
+Instead of using "else if" as in C, you should use "elsif". For example, here is a code fragment to convert a numeric grade to a letter grade: 
+
+if ($grade > 90) {
+  print("grade = A\n");
+}
+elsif ($grade > 80) {
+  print("grade = B\n");
+}
+else {
+  print("grade = C\n");
+}
+Perl also has a handy foreach construct that allows you to iterate through arrays or other list-like structures, such as the lines in a file. Here's a simple code fragment to sum the elements in an array: 
+
+$sum = 0;
+foreach $num (@nums) {
+  $sum += $num;
+}
+print "sum = $sum\n";
+If the array is empty to start with, then the block of statements is never executed. 
+Here's a code fragment that treats stdin like an array by using a foreach construct to iterate through each of the lines in stdin and echo them to the screen: 
+foreach $line (<>) {
+  print $line;
+}
+The loop stops automatically when EOF is reached. 
+
+String Manipulation Using Regular Expressions 
+Recall that one of Larry Wall's principal objectives in designing Perl was to make it easy to extract data from files. To do so, he needed a mechanism that made it easy to manipulate strings. Regular expressions provide such a mechanism. 
+A regular expression is a pattern that specifies a substring that you would like to find in a string. The simplest regular expressions are those formed from characters, such as "a" or "brad". To determine whether a pattern matches a substring within a string, you can use Perl's matching operator, =~ and enclose the regular expression in slashes: 
+$name = "vander zanden, brad t.";
+if ($name =~ /brad/) {
+  print "$name has the substring \"brad\"\n";
+}
+=~ is a boolean operator that returns true if the regular expression matches a portion of the string pointed to by the left hand side variable and undef otherwise. In contrast, !~ can be used to test for non-matches: 
+$sentence = "The quick brown fox";
+$sentence !~ /white/;  # true, because white does not appear in $sentence
+Regular expressions can be made much more expressive than just a collection of characters. For example, suppose I wanted to match any person whose last name begins with "vander zanden,". I do not know which characters may be in the person's first or middle name, nor do I know how many characters will be in that person's name. To specify that I want to match any character but a newline (\n), I use a period (.). To specify that the name must have at least one character (i.e., one or more characters), I use a plus sign (+). 
+
+if ($name =~ /vander zanden,.+/) {
+  print "$name has a person with the last name of vander zanden";
+}
+I probably want to know what the person's first and middle name is, i.e., I want to be able to extract the person's first and middle name from the string. If I put parentheses around the portion of the pattern that I want extracted, then Perl will store the matched substrings in variables named $0, $1, $2, ... $n. $0 contains the substring matched by the entire pattern within slashes (//), so you do not have to put parentheses around the whole pattern. In the above example I just want the first and middle name, so I put the parentheses around the .+ portion of the pattern. To make the code fragment more interesting, I will now read names from stdin and print the first and middle names of people whose last name is "vander zanden": 
+
+foreach $name (<>) {
+    if ($name =~ /vander zanden,(.+)/) {
+        # $1 refers to the pattern matched by (.+)
+	print "first name is $1\n";
+    }
+}
+If you execute this code, you will notice that the first name has leading spaces in front of it, which you probably do not want. For example, if the line is: 
+
+vander zanden,    brad
+then the output will be: 
+
+first name is     brad
+To eliminate leading spaces from the first name, we can precede the pattern that matches the first name with the pattern " *". The asterisk, *, indicates zero or more occurrences of the pattern, which in this case is a space. The " *" pattern will absorb any leading spaces: 
+foreach $name (<>) {
+    # " *" has been added to match leading whitespace, thus eliminating
+    # it from the first name pattern
+    if ($name =~ /vander zanden, *(.+)/) {
+        print "first name is $1\n";
+    }
+}
+Finally, suppose I wish to capture the first and middle names as separate strings. I will make the assumption that the first and middle names are each single words, that the first and middle names are separated by one or more spaces, and that the middle name optionally ends with a period. Remember that a period is a special character that matches any character, so I must escape the period with a backslash if I want a character to match only a period. I can use the character '?' to denote an optional part of the pattern (technically, '?' means 0 or 1 occurrences of the pattern). Here is the pattern: 
+
+                            |---the period is optional
+/vander zanden, *(.+) +(.+\.?)/
+      first name--^^ ^^ ^^^^^---middle name
+                     |-- one or more spaces separates the first and middle names
+Here is what $1 and $2 contains when matched against the following strings: 
+
+"vander zanden,   brad   t."    # $1 = brad, $2 = t.
+"vander zanden, brad tanner"    # $1 = brad, $2 = tanner
+To recap, here is what you have seen in this section: 
+1. Regular expressions can consist of one or more characters 
+2. . matches any character, except the '\n' character (thus Perl will cease searching at the end of a line) 
+3. * means 0 or more occurrences of a pattern 
+4. + means 1 or more occurrences of a pattern 
+5. ? means an optional pattern (technically, 0 or 1 occurrences of a pattern) 
+6. () captures the substring that matches the pattern enclosed in parentheses. The captured strings are stored in the variables $1, $2, etc. 
+
+Character Classes 
+Regular expressions provide an excellent mechanism for type checking user-supplied input. When you do this type-checking, you will often want to match specific characters, such as alphabetic characters or numbers. Three handy symbols for specifying character classes are the [] grouping operator, the ^ negation operator, and the - range operator: 
+1. The [] operator says that any character occurring within the brackets may be matched. For example, [aeiou] represents any vowel. 
+2. The ^ operator, when placed as the first character in brackets ([]'s), means any character but the following set of characters. Hence [^aeiou] means any characters but the vowels, or equivalently, any consonant. 
+3. The - operator allows you to specify a sequential list of characters within the ascii character set. Hence [a-z] represents lower case letters, [A-Z] represents upper case letters, [a-zA-Z] represents all lower and upper case letters, and [0-9] represents any digit. 
+Using character classes, I can now specify patterns for formatted strings, such as social security numbers or phone numbers: 
+[0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]  #social security number
+This pattern is rather hard to read, so Perl has introduced shorthand notations for certainly commonly occurring character classes: 
+character code
+informal meaning
+formal meaning
+\d
+numeric digits
+[0-9]
+\w
+alphanumeric characters
+[a-zA-Z0-9_]
+\s
+whitespace characters
+[\f\t\n\r ]
+\D
+anything but a digit
+[^\d]
+\W
+anything but an alphanumeric character
+[^\w]
+\S
+anything but a whitespace
+[^\s]
+\w is often referred to as the word character. Unfortunately, Perl does not have a word class representing letters only. 
+Here are some examples using character classes: 
+data type
+pattern
+a non-negative integer
+\d+
+any integer
+-?\d+
+a hexadecimal number
+-?[\dA-F]+
+any floating point number
+-?\d+\.\d+
+a date of the form mm-dd-yy
+\d\d?-\d\d?-\d\d
+a street address with a leading number and a name whose first character must be upper case
+\d+\s+[A-Z][A-Za-z ]*
+
+Repetition and Alternation 
+You have already seen a number of ways to specify repeating patterns in strings, but often you want to specify a fixed number of repetitions, or a range of repetitions. For example, social security numbers have groups of 3, then 2, and finally 4 numbers. You can use the following notation to allow patterns to repeat a specific number of times: 
+{n}
+The pattern repeats exactly n times
+{n,m}
+The pattern repeats anywhere from n-m times
+{n,}
+The pattern repeats at least n times
+Here are a few simple examples: 
+data type
+pattern
+A 5 digit zip code
+\d{5}
+A date of the form mm-dd-yyyy
+\d{1,2}-\d{1,2}-\d{4}
+A social security number
+\d{3}-\d{2}-\d{4}
+Another thing that you will often want to do is specify alternative patterns. For example, a middle name may be either fully written out, or may be a single character followed by a period. The | alternation character allows you to specify alternative patterns. For example: 
+data type
+pattern
+A middle name that is either fully spelled out or a single initial followed by a period
+[A-Z][a-z]+|[A-Z]\.
+the business days of the week
+(monday|tuesday|wednesday|thursday|friday)
+
+Anchors
+When type checking a string that has been input by a user, you often do not want any extraneous garbage in the string. For example, if the user inputs a zip code, you do not want any extraneous characters before or after the zip code. In other words, you want your pattern to match only if the string input by the user has exactly five digits. You can specify these types of boundaries by using anchors. The following anchors are available: 
+^
+The string must start with this pattern
+$
+The string must end with this pattern
+\b
+The string must begin or end with the pattern, depending on whether the \b is at the beginning or end of the pattern (often called the word boundary anchor)
+\B
+The string must not begin or end with the pattern, depending on whether the \B is at the beginning or end of the pattern
+
+
+Here are some examples: 
+data type
+pattern
+A string that must contain only a zip code--no extraneous characters are allowed
+/^\d{5}$/
+A line that must start and end with an h1 header
+/^<h1>.*</h1>$/
+A word that must exactly match "nels". "nelson" and "funnels" will not match
+/\bnels\b/
+A word that begins with the string "vander"
+/\bvander/
+The idiom /^...$/ is very useful for typechecking strings and ensuring that no extraneous garbage is included in the string. You should get used to using it. 
+
+Option Modifiers
+There are a number of searching situations that can be expressed by a complicated regular expression, but which occur so commonly that it is better to write a simple regular expression and tell Perl to modify its normal searching strategy. Some of these common situations include: 
+1. Matching a name in which people may or may not capitalize letters 
+2. Trying to capture a pattern that spans multiple lines, especially one using the . character. Normally Perl stops searching at a newline character. 
+3. Matching any line in a multi-line string (i.e., a string with \n characters) that starts or begins with a pattern (i.e., that uses ^ or $), as opposed to just the start of the string. 
+4. Iterating through a string and looking for every match. Normally Perl stops after the first match. 
+5. Formatting a string with spaces so that the pattern is easier to read. Normally putting spaces into a pattern causes Perl to think that the space is part of the pattern and that the substring must have a matching space. You can make the pattern somewhat easier to read by using parentheses to group subpatterns, but then you may not want Perl to record the substrings matched by these subpatterns. 
+You can alter Perl's search strategy by putting one or more option modifiers at the end of the slashes (//'s) that delimit the regular expression. The available options are: 
+option
+meaning
+i
+ignores case
+s
+matches subpatterns across newlines. Especially useful in capturing content that matches the pattern (.*)
+m
+finds substrings that match the ^ and $ anchors at newline boundaries, and not just at the start of the string
+x
+ignores spaces in the pattern, thus allowing you to pretty print the pattern by using spaces to separate subgroups. You must escape the space character with a backslash (write "\ ") or use \s to specify whitespace that is part of the pattern.
+g
+tells Perl to save its place in the string so that you can iterate through the string and match the same pattern multiple times.
+Here are some examples using these option modifiers: 
+task
+code
+search for the name Brad Vander Zanden without worrying about capitalization
+$name =~ /Brad Vander Zanden/i;
+capture h1 header content that spans multiple lines
+$text =~ /<h1>(.*)</h1>/s;
+iterate through a string looking for the first names of any person whose last name is Vander Zanden. Ignore case and assume that first names are single names separated by a single whitespace character. Note that if a name starts at the beginning of the string, and hence has no space before it, it will not be captured. Can you fix this bug? 
+while ($text =~ / ([a-z]*) Vander Zanden/ig) {
+    print "first name is $1\n";
+} 
+iterate through a multi-line string looking for the first names of any person whose last name starts with "Vander Zanden,", subject to the following conditions: 
+1. "Vander Zanden," must start at the beginning of a new line (use the m modifier) 
+2. Ignore case (use the i modifier) 
+3. Ignore spaces before the first name (absorb space with \s*) 
+4. Assume that the remainder of the name goes to the end of the line (use $) 
+5. Pretty print the pattern by separating groups with spaces (use x and remember to put a \s between Vander and Zanden) 
+while ($text =~ /Vander \s Zanden, \s* (.*)$/igmx) {
+    print "first name is $1\n";
+} 
+
+Nongreedy Searching 
+Perl normally tries to create the longest string that could possibly match a pattern. For example, suppose you have the following pattern and string: 
+$text = "<b>brad</b> and <b>nels</b> went to the store";
+while ($text =~ /<b>(.*)</b>/g) {
+  print ("$1\n");
+}
+Here is the desired and actual output: 
+Desired Output   Actual Output
+brad             brad and <b>nels
+nels
+Perl has made a greedy match with the first string. Since . can match anything, including the characters in the "</b>" tag, it greedily matches until it reaches the second "</b>". This problem is a common one with the . character. 
+These greedy match problems occur only with the repetition characters, which are *, +, {n,m}, {n,}. You can tell Perl to match the shortest string possible by adding a ? after the repetition operator. This type of match is called a nongreedy match. We can correct the above problem by using the nongreedy match operator: 
+while ($text =~ /<b>(.*?)<\/b>/g) {
+  print ("boldfaced text: $1\n");
+}
+Because a ? can also be used to specify an optional occurrence of something, its use can seem ambiguous. The rule for interpreting the ? character is as follows: 
+1. If it follows one of the repetition operators, *, +, {n,m}, {n,}, then it means make a non-greedy match. 
+2. If it follows any other character or grouping operator, such as ()'s or []'s, then it denotes an optional character or group. 
+
+The Grouping Operator () 
+You have already been introduced to the grouping operator, but there are some additional items you should know about the grouping operator: 
+1. Nested parentheses ()'s: When parentheses are nested, you figure out the number of the group by counting left parentheses. For example: 
+2. # captures a date of the form mm-dd-yyyy
+3. $date =~ "06/14/2008";
+4. $date =~ /(\d{2})-(\d{2})-(\d{2}(\d{2}))/;
+5.           ------- ------- --------------
+6.                                 -------
+7.  group:      1       2    3        4
+8. # $1 = "06", $2 = "14", $3 = "2008", $4 = "08"
+9. Persistence of memory: If a match fails, then $0, $1, $2, etc. retain their values from the last successful match. 
+10. Naming groups using lists: You can assign the groups to named variables by putting a list of variables to the left of the =~ operator: 
+11. ($month, $day, $year, $yr) = $date =~ /(\d{2})-(\d{2})-(\d{2}(\d{2}))/;
+12. Noncapturing parentheses: Sometimes you use a grouping operator to make the pattern clearer or to avoid issues with the precedence of the pattern operators. In these cases you may not want to capture the content. You can tell Perl to not capture the content by starting the ()'s with the ?: operator. For example: 
+13. # names 1 and 2 may be separated by an optional "and" or "or"
+14. ($name1, $name2) = $names =~ /([a-z]+) (?:and|or)? ([a-z]+)/;
+In this case, $name1 is assigned the contents of the first group, the second group is ignored, and $name2 is assigned the contents of the third group. 
+15. Named captures: Keeping track of the numbers of groups can be error-prone, especially if you are adding or removing groups as you debug a pattern. To eliminate these problems, Perl versions 5.10 and later permit named captures where you attach a name directly to a group. The syntax is (?<label>pattern) and the labels can be accessed in a hash table named %+. Hence if your label is name1, you can access it via the reference $+{name1}. For example, the above name pattern could be rewritten as: 
+use 5.010;
+$names =~ /(?<name1>[a-z]+) (and|or)? (?<name2>[a-z]+)/;
+print "$+{name1}\n";
+print "$+{name2}\n";
+The use statement tells the Perl interpreter that version 5.10 or later is required. If the interpreter has a lower version number, it will print an error message and terminate. 
+16. Repeated patterns: Sometimes you want a particular sub-pattern to repeat and you would like to capture the first instance of the sub-pattern and then repeat it later in the overall pattern. For example, suppose I want to capture all the content between header tags in html. While I could write 6 different patterns, one each for h1-h6, an easier way to do it is capture the header number using the regular expression <h([1-6])>) and then repeat that pattern. Perl makes the group content available via the operators \1, \2, \3, etc. Hence I can write the following code fragment to match any header from h1-h6: 
+# capture content between any tags labeled h1-h6
+while ($text =~ /<h([1-6])>(.*?)<\/h\1>/igs) {
+  print "$2\n";
+}
+
+Interpolating into Regular Expressions
+Sometimes you will want to create dynamic regular expressions. For example, suppose that you want to write a "super" grep that allows you to enter multiple search terms for searching a file. The search terms would be entered using a command line argument and you would need to insert these search terms into your regular expression. You can do that using the normal variable interpolation into strings. For example: 
+# Read lines from stdin one by one and see if they match any of the 
+# search terms provided by the user. If so, then print out the line number
+# and the matching string
+$line_num = 0;
+foreach $line (<>) {
+    $line_num++;
+    foreach $term (@ARGV) {
+        if ($line =~ /($term)/) {
+           print ($line_num: $1);
+        }
+    }
+}
+
+Regular Expression Substitution
+You can modify a string variable by applying a vi-like substitution. The operator is again "=~" , and the substitution is specified as 
+s/search pattern/replace pattern/
+For example: 
+$line = "brad went to the store and bought some ice cream";
+# replace "ice cream" with "chocolate ice cream"
+$line =~ s/ice cream/chocolate ice cream/;
+Frequently, you want to replace all the substrings that match the search pattern with the replacement pattern. In this case you must use the g option modifier; otherwise Perl only replaces the first occurrence of the pattern. For example, to replace all occurrences of the tag "<b>" with the tag "<strong>" I could write: 
+$text =~ s///g;
+$text =~ s///g;
+The other modifiers-i, m, s, x-work as before. 
+You can also re-arrange a string by using the () operator to capture content and then re-arrange that content in the replacement pattern. You use the operators \1, \2, \3, etc. to access the content. For example, to re-arrange a date of the form "mm-dd-yy" into a date of the form "dd-yy-20yy" I could write: 
+$date =~ s/(\d{1,2})-(\d{1,2})-(\d{2})/\2-\1-20\3/;
+
+Splitting Strings 
+A very useful function in Perl is split, which splits up a string into fields and places the fields into an array. split expects a regular expression, which determines the separator to be used in splitting the fields. The syntax for split() is: 
+split(/pattern/, string)
+For example: 
+# split a string using a single blank character between fields
+$line = "brad vanderzanden m 2 3 64";
+@employee = split(/ /, $line); # @employee = ("brad", "vanderzanden", "m", "2", "3", "64")
+
+# split a comma-delimited string into fields
+$line = "brad,vander zanden,m,2/3/64";
+@employee = split(/,/, $line); # @employee = ("brad","vander zanden","m","2/3/64")
+split provides a very powerful way of splitting a string into its constituent fields, but you must be careful about the way you specify your patterns, since extra white space can create all sorts of problems. Here are some common problems and how to fix them: 
+1. problem:There may be more than one whitespace character between fields, or the user placed tabs rather than spaces between the fields. If you specify that there will only be one space between each field, your array will have funny results. For example: 
+2. $line = "brad     vander zanden";
+3. @employee = split(/ /, $line); # @employee=('brad','','','','','vander','zanden')
+The four empty strings are caused by the fact that there are 5 spaces between "brad" and "vander". The first space marks the end of "brad". The second space marks the end of the second field, and since there are no characters between these two spaces, you get an empty string as your second field. The same thing happens with spaces 2-3, 3-4, and 4-5, thus yielding 4 empty fields. 
+The solution is to use "\s+" to absorb excess whitespace: 
+$line = "brad     vander zanden";
+@employee = split(/\s+/, $line); # @employee=('brad','vander','zanden')
+4. problem: Forgetting about white space when another delimiter is used. Often times delimiters may be surrounded by white space. For example, a comma-delimited list might be entered as: 
+5. $info = "Balajee, Patrick, Michael, Josh, Leaf";
+6. @personal = split(/,/, $info); # @personal = ("Balajee", " Patrick", " Michael", " Josh", " Leaf")
+If you just use the delimiter, in this case a comma, as your split pattern, then the fields will absorb the extra space, as shown in the above example. 
+The solution is to put "\s*" both in front of and after your delimiter, to ensure that excess white space gets absorbed (make sure you do not use "\s+", unless you know that whitespace will occur before or after the delimiter): 
+$info = "Balajee, Patrick, Michael, Josh, Leaf";
+@personal = split(/\s*,\s*/, $info); # @personal = ("Balajee", "Patrick", "Michael", "Josh", "Leaf")
+7. problem: The string has leading or trailing white space. If the string has leading whitespace, even the pattern "\s+" will not be enough to absorb the leading whitespace. Perl will create one empty string at the beginning of your array, because it will treat the leading whitespace as a separator between an empty field and the first actual field in your string. Thus if your string is 
+8. "    Brad Vander Zanden"
+your result will be the list ('', 'Brad', 'Vander', 'Zanden'). 
+Python has a trim function that removes the leading and trailing whitespace. Unfortunately, Perl does not, so the solution is to trim this whitespace using a substitution pattern: 
+$line = "     brad vander   zanden    ";
+# strip leading and trailing whitespace using the ^/$ operators and \s*
+$line =~ s/^\s*(.*?)\s*$/\1/;
+@personal = split(/\s+/, $line); # @personal = ("brad", "vander", "zanden")
+
+Joining Strings 
+Less common but still handy is the ability to concatenate the elements of an array or list-like structure into a string, separated by a delimiter. For example, many spreadsheets expect comma separated values (CSV format). Perl's join function provides this functionality. For example, if you have an array whose elements you would like to write out as a comma delimited string, you could write: 
+@info = ("brad", "vander zanden", "m", "2/3/64");
+$line = join(",", @info); # $line = "brad,vander zanden,m,2/3/64"
+The join command also comes in handy when you want to read in a file and concatenate the lines, so that you can do multi-line searches or substitutions: 
+$text = join("", );
+ 
+
+Functions
+In Perl you can define functions using the sub keyword, which is short for "subroutine". Functions may be placed anywhere in your program but it's probably best to put them all in one place, either at the beginning of the file or at the end of the file. A function has the form: 
+sub function_name
+{
+    print "Well, Hullo there!!!\n Isn't it absolutely peachy today?\n";
+}
+Pre-6 versions of Perl do not allow functions to have explicit parameter lists (although they can be passed a list of parameters). Perl 6 introduces formal parameter lists, but until Perl 6 interpreters become widely available, you should continue to specify your functions without parameter lists. 
+Here are a number of sample function calls: 
+print_header;      # A function with no parameters
+&print_header;     # Functions once had to be prefixed with an &, but no more
+print_body($name, $amt, $date);  # A function call with parameters
+$max = max($a, $b, $c, $d); # A function with a return value
+($min, $max) = minmax($a, $b, $c, $d) # A function that returns a list of values
+In older Perl code you may see subroutine calls prefixed with an & character in front of the function name. It is no longer necessary to specify the & character. Also note that you can use lists to return multiple values from a function. This often comes in handy, especially if you want to return both a result and an error flag. 
+
+Parameters
+When a function is called, parameters are passed as a list in the special @_ array variable. The following function prints out the parameter list that it was called with. 
+sub printargs
+{
+    print "@_\n"; # the elements of interpolated arrays are separated with spaces
+}
+
+printargs("balajee", "kannan");     # Prints "balajee kannan"
+printargs("Balajee", "and", "Kannan"); # Prints "Balajee and Kannan"
+Just like any other array, the individual elements of @_ can be accessed with the square bracket: 
+sub print_args
+{
+    print "Your first argument was $_[0]\n";
+    print "and your second argument was $_[1] \n";
+}
+The array variable @_ is different from the $_ scalar variable (if you have not seen the $_ variable before, don't worry--we will discuss it later). Also, the indexed scalars $_[0], $_[1], etc. have nothing to with the scalar $_, which can also be used without fear of a name clash. 
+The lack of a formal parameter list makes it easy to handle variable length parameters, such as might be found in a print function, or a function that computes the maximum of a set of arguments. For example, a max function might be written as: 
+sub max {
+  if (scalar @_ == 0) { return undef; }
+  $max = $_[0];
+  foreach $element (@_) {
+    if ($max < $element) { $max = $element; }
+  }
+  return $max;
+}
+
+Returning values
+Typically you return a value from a function explicitly using the return statement. However, if you fail to use a return statement, the result of a function is always the last expression evaluated. For example: 
+sub max
+{
+        if ($_[0] > $_[1])
+        {
+               $_[0];  # it would be clearer to write "return $_[0];"
+        }
+        else
+        {
+               $_[1];  # it would be clearer to write "return $_[1];"
+        }
+}
+
+$biggest = max(37, 24); 
+print "$biggest";       # prints 37
+The print_args function in the previous section also returns a value, in this case 1. This is because print was the last statement executed by print_args and the result of a successful print statement is always 1. 
+
+Local variables
+By default, Perl assumes that any variable you use in a function is a global variable, even if it is the first time the variable has been defined anywhere in the program (the only exception is the @_ parameter array, which is considered to be a local variable). For example, suppose you write the following code: 
+sub max {
+  ($a, $b) = @_;
+  return $a > $b ? $a : $b;
+}
+print max(10, 30), "\n";  # prints 30
+print '$a = ', $a, "\n";  # prints "$a = 10"
+print '$b = ', $b, "\n";  # prints "$b = 30"
+Notice that $a and $b are defined after the max function has returned, even though your top-level program never defined $a or $b. The reason is that Perl assumes that variables used in a function are global variables, and if they are being defined for the first time, adds them to the global namespace. 
+In many cases you would like to limit a variable's scope to the function, or in other words, declare it as a local variable. This can be done using the my keyword:
+sub max {
+  my ($a, $b) = @_;
+  return $a > $b ? $a : $b;
+}
+print max(10, 30), "\n";  # prints 30
+print '$a = ', $a, "\n";  # prints "$a ="
+print '$b = ', $b, "\n";  # prints "$b ="
+Now $a and $b are declared as local variables to the function max and hence are undefined when the last two print statements are executed. Each of them returns the value undef when accessed, thus resulting in the printed strings "$a =" and "$b =". 
+In older Perl code you may see the local keyword used to declare local variables instead of the my keyword. The local keyword also declares a variable as local, but it establishes dynamic, rather than static scoping for the variable. Dynamic scoping means that when a function refers to a non-local variable, the variable's value is determined by searching through the call stack and locating the first function that declares that variable. The value for that variable will then be returned. In contrast static scoping determines the variable's value by looking for the variable in an enclosing function, or the top-level if there is no enclosing function. All modern, compiled languages, including C and Java, using static scoping.
+
+Reference Parameters 
+In Perl you cannot directly pass arrays or associative arrays to functions. If you try to do so, then Perl will concatenate the contents to produce a single array of arguments. For example: 
+    sub sum_arrays {
+      my (@a, @b) = @_;    # @a = (10, 20, 30, 40, 50, 60), @b = undef
+      my ($i, @sum) = (0, ());
+      for ($i = 0; $i < scalar @a, $i++) {
+	 push(@sum, $a[$i] + $b[$i]);
+      }
+    }
+    @x = (10, 20, 30);
+    @y = (40, 50, 60);
+    @z = sum_arrays(@x, @y);  # @z = (10, 20, 30, 40, 50, 60)
+You will need to pass a reference to an array if you want to access it in a subroutine. Recall that a reference is much like a pointer in C except that the "address-of" operator is \. Also recall that a reference is a scalar value and that it can be de-referenced suing the appropriate type operator--$, @, or %. Here's how you would write the code to pass two arrays via reference to the sum_arrays function: 
+    sub sum_arrays {
+      my ($a, $b) = @_;    # @a = (10, 20, 30, 40, 50, 60), @b = undef
+      my ($i, @sum) = (0, ());
+      for ($i = 0; $i < scalar @$a; $i++) {
+	 push(@sum, $$a[$i] + $$b[$i]);
+      }
+      return @sum;
+    }
+    @x = (10, 20, 30);
+    @y = (40, 50, 60);
+    @z = sum_arrays(\@x, \@y); # @z = (50, 70, 90)
+ 
+
+Files
+These notes have previously discussed how to access STDIN to obtain input from standard input. STDIN is actually a pre-defined filehandle, which is the data type perl uses for accessing files. Perl also provides the predefined file handles STDOUT and STDERR. 
+You can open a file for input and then place its file handle in the <> operator in order to read from it, just like STDIN. Moreover, you can open a file for output and print to it. Filehandles do not have any special character preceding them, as do arrays and hashes. Therefore, it is recommended that you always use all caps for filehandles to prevent them from interfering with any future reserved words. 
+By default the open function opens a file for input. The first parameter is the filehandle, which allows the programmer to refer to the file in the future. The second parameter is an expression denoting the filename. If the filename is given as a string, then the filename is taken literally without shell expansion. So the expression '~/notes/todolist' will not be interpreted correctly. If you want to force shell expansion then use angled brackets: that is, use <~/notes/todolist> instead. Here are several example open statements: 
+open(INFO, $file);
+open(INFO, "employees");  # employees should be a file in the current directory
+# perform file expansion and open the file idaho in the directory 
+# associated with the user ~bvz
+open(INFO, <~bvz/idaho>); 
+The open statement can also open a file for output or for appending. To do this, either prefix the filename with a > for output and a >> for appending, or use the three argument form of open with the > or >> passed in as the second argument and the filename as the third argument: 
+open(INFO, ">$file");  # Open for output
+open(INFO, ">>$file"); # Open for appending
+open(INFO, "<$file");  # Also open for input
+
+use 5.006;
+open(INFO, ">", $file); # Open for output
+open(INFO, ">>", $file); # Open for appending
+# Use shell expansion and open for output
+open(INFO, ">", <~bvz/idaho.bak>); 
+The three argument version was added in Perl 5.6, so it does not work in earlier versions. The three argument version is safer because it avoids quirkly behavior if $file has an unusual string, such as ">foo" (with the two argument version, you would inadvertently open "foo" for appending, rather than ">foo" for output). The three argument version also allows you to output files using shell expansion. If the file name is provided as a command line argument, then the shell will already have performed shell expansion. Hence in this case you can treat the file name as a string argument and do not need to use angle braces. For example: 
+# echo a file's contents to stdout
+cat.pl:
+  open(INPUT, $ARGV[1]);
+  foreach $line () { print $line; }
+
+# ~bvz/idaho gets expanded to "/Users/bvz/idaho" on my machine and that
+# is the string passed to $ARGV[1]
+UNIX> perl cat.pl ~bvz/idaho 
+ 
+To print something to a file that has already been opened, pass the file's file handle to the print statement as the first extra parameter. Do not put a comma between the file handle and the first string to be written to the file. For example: 
+# Writes line to the file specified by filehandle INFO. 
+print INFO "This line goes to the file.\n";  
+
+# Even when using more conventional fct call notation you do not put a 
+# comma between the file handle and the first argument to be printed
+print (INFO "another line", "to the file.\n"); 
+You can return an open file handle from a subroutine and store it in a scalar variable. For example:
+sub openHandle {
+  ($filename) = $_[0];
+  open MYHANDLE, ">$filename";
+  return MYHANDLE
+}
+
+$handle = openHandle($ARGV[0]);
+print $handle "hi brad\n";
+close $handle;
+The close function tells Perl to close the file and make the file handle available for reuse. However, after the close statement, the defined function will still return true when passed the file handle as an argument, so do not assume it becomes undef. 
+
+die and warn 
+You cannot assume that your program will always be able to successfully open a file. The open command returns either 1 or undef to indicate whether or not the open command succeeded. You can either attempt to recover from such an error, perhaps by prompting the user for another filename, or you can cause the program to exit using the die function. die takes a string argument, prints it, and then exits the program with a non-zero error code. You cannot control the error code. The typical way you will see die used in conjunction with an open statement is as follows: 
+open($file) or die "Cannot open $file: $!\n";
+Here are a few important things to know about die: 
+1. After a system command fails, the variable $! contains the error message created by the system command. This is the same error message accessed by perror in C. Do not use $! if you are die'ing from a user-defined error, since then you will get a message that is left over from a previous system command. 
+2. If you terminate the string with a newline character (\n), then die will also print the program name and line at which the error occurred. For the above program, the error message might look like: 
+3. Cannot open /Users/bvz/idaho: No such file or directory at temp.pl line 1.
+4. Normally if you are terminating the program because a system command failed, you terminate the die string with a newline character. If you are terminating the program because of a user-defined error, you do not terminate the string with a newline character, because the user does not need to know where the error occurred. 
+If you want to print a warning message rather than terminate the program, use warn instead of die. 
+
+Sorting
+Sorting is such a common operation for manipulating data that most scripting languages provide a built-in sort function for sorting lists. Perl is no exception. Its sort function alphabetically orders the elements of a list in ascending order and returns a new list with the ordered elements (the original list is unchanged). For example, the following code sorts standard input by reading it into an array and printing the sorted array: 
+@a = ();
+while ($l = <STDIN>) { push(@a, $l); }
+print sort(@a);
+Since files can be treated as arrays, the following code would perform the same sort more simply: 
+print sort(<STDIN>);
+If you wanted to sort the array in descending order, you could write: 
+reverse sort(<STDIN>);
+It might seem like it is inefficient to sort the array and then reverse it, but this idiom is so common that Perl interpreters use tricks to do an efficient descending sort. 
+Suppose instead that you wanted to sort a list of numbers. The following Perl code would not produce the desired result:
+@a = (1000, 100, 200, 10);
+@a = sort @a;  # @a = (10, 100, 1000, 200)
+The reason for the strange output is that Perl compares the elements as strings, and any string that begins with "1" will be alphabetically less than any string that begins with "2". 
+You can tell Perl to perform numerical sorting using the so-called spaceship operator <=>:
+@a = (1000, 100, 200, 10);
+@a = sort {$a <=> $b} @a;  #a = (10, 100, 200, 1000)
+The code in the curly braces ({}) is an inline, anonymous function. The variables $a and $b are pre-defined for this comparison function by Perl. 
+The <=> operator compares the two values $a and $b numerically, returning 1 if $a > $b, -1 if $a < $b and 0 otherwise. The cmp operator does the same thing for alphabetical sorting. For example, suppose I have strings of the form "firstname lastname phone" and I want to sort by lastname, with ties being broken by sorting firstname. The following code would do the trick:
+@a = ("brad vanderzanden 269-8596", "joe camel 658-5869", "aaron camel 685-3969");
+@a = sort { @one = split / /, $a;
+            @two = split / /, $b;
+            if ($one[1] eq $two[1]) {
+                return $one[0] cmp $two[0];
+            }            
+            else {
+                return $one[1] cmp $two[1];
+            }
+          } @a;
+print join("\n", @a);
+print "\n";
+The output is:
+aaron camel 685-3969
+joe camel 658-5869
+brad vanderzanden 269-8596
+Since the comparison function above is rather large to write as an in-line function, you can define it separately and then provide the name of the function to sort. For example, if you moved the above in-line code to a function named compare_recs, you could write the sort as follows: 
+sub compare_recs {
+    @one = split / /, $a;
+    @two = split / /, $b;
+    if ($one[1] eq $two[1]) { return $one[0] cmp $two[0]; }
+    else { return $one[1] cmp $two[1]; }
+}
+sort compare_recs @a;
+Several things should be noted about this code: 
+1. I did not have to declare $a and $b as local variables, because Perl makes a special exception in this case and pre-defines the two arguments as $a and $b. 
+2. When I called sort, I did not use parentheses and I did not put a comma between the function name and the array name. The reason is that if I used parentheses or used a comma, then Perl would think that I wanted to create a list consisting of the string "compare_recs" and the elements of @a, and I would end up with a sorted list that includes the string "compare_recs". 
+Here are two final examples. The first example is an alphabetical sort that ignores case: 
+@names = ("brad", "Frank", "nels", "Yifan", "smiley", "aaron");
+sort { "\L$a" cmp "\L$b" } @a;
+
+result
+@names = ("aaron", "brad", "Frank", "nels", "smiley", "Yifan")
+The "\L" character directs Perl to convert the rest of the string to lowercase characters (the original values remain unchanged because Perl passes copies of the values to the comparison function). Similarly "\U" directs Perl to convert the rest of the string to uppercase characters. There are other such directives for modifying the case of characters in a string, and you can look them up in any perl reference. 
+The second example sorts employee records. Let's assume that we have employee records with the fields name and age and we wish to sort the records into alphabetical order. Recall that we use anonymous hash tables with references to represent such records, so name and age will be the two keys in each hash. If we assume that the references to these hashes are stored in an array named emp_records, then the follow code will sort the records by employee name: 
+# The $$ de-references the hash and allows us to treat the hash reference
+# as a scalar
+@sorted_emp_records = sort { $$a{"name"} cmp $$b{"name"}} @emp_records;
+for $rec (@sorted_emp_records) {
+  printf "%-10s %3d\n", $$rec{"name"}, $$rec{"age"};
+}
+
+Object Oriented Programming in Perl
+The syntax for object oriented programming is somewhat different from conventional object-oriented languages, such as C++ and Java. For starters, there is no class keyword for creating a new class (Perl 6 introduces a class keyword to make it easier to create more conventional looking classes). Instead classes are defined as packages using the package keyword. Each class is normally stored in a separate file, hence there is one package per file. 
+Hashes are the data structure usually chosen to represent objects in Perl. Perl uses a blessing mechanism to associate a hash reference with a package. Once the hash has been "blessed", it is possible to use special object syntax to call methods associated with the package. It is easiest to explain Perl's object mechanism using a concrete example. The following example creates a package called Student that contains a constructor named new, an accessor named getName, and an accessor named setName: 
+{ package Student;
+   
+  # constructor
+  sub new {
+    # the first parameter is a string generated by Perl that represents 
+    # the class name. The remaining parameters are arguments passed to the 
+    # constructor by the user. In this case there is one user-provided argument,
+    # representing the student's name. The student's name is an
+    # optional argument. Recall that if there are more variables in a list
+    # then there are elements in an array, the excess variables will be
+    # assigned the value undef
+    my ($class, $name) = @_;  
+    my $self = {};           # reference to the hash table
+    bless($self, $class);    # associate the reference with the package
+
+    # name is an optional argument so we check to see if it is undef, and if
+    # so, initialize name to be the empty string
+    $self->{name} = ($name || "");  
+    return $self;
+  }
+
+  #accessor function for name
+  sub getName {
+    my $self = @_[0];      # the first argument is a reference to the object
+    return $self->{name};  # make sure we de-reference the argument using ->
+                           # we could also write $$self{name} 
+  }
+  sub setName {
+    # the first argument is a reference to the object and the second argument
+    # is the new name for the student
+    my ($self,$name) = @_;  
+
+    $self->{name} = $name;  # remember to de-reference the argument using ->
+  }
+}
+
+# use the constructor name to create a new student. $student1 is a reference
+# to the object returned by the constructor.
+$student1 = new Student("brad");
+
+# use -> syntax to access a method. Like in C, you can use the -> operator
+# to access the elements of an object
+print ($student1->getName(), "\n");
+print ($student1->{name})  # frowned on, but shows that Perl has no access protection
+
+# here's an example where we do not provide the constructor with
+# a name for the student 
+$student2 = new Student();
+$student2->setName("nels");
+print ($student2->getName(), "\n");
+There are a number of things to observe about Perl's object mechanism: 
+1. A constructor can be named anything you want, but by convention it is named new. The constructor should contain a bless command, and should return a reference to the newly created object. The first argument to a constructor is a string that represents the name of the class. This string is automatically created by Perl when you call the constructor. It is a good idea not to hard code the class name, in case the constructor is being called by a subclass. In this case, the class name should be the name of the subclass (an example of how a subclass could call the superclass's constructor is shown in the inheritance section). 
+2. The bless command associates a reference, which is usually a reference to a hash, with a class. The class name (really the package name) should be a string. 
+3. Once you have used the bless command, you can call methods using the -> operator. 
+4. Methods take as their first parameter a reference to the object. Perl automatically passes this reference to the method, so you access user-provided arguments starting at $_[1]. 
+5. To create a new object, you use the syntax: 
+6. constructor_name package_name
+In the above example, the constructor was named new and the package name was Student, so the code to create a new student was: 
+$student1 = new Student("brad");
+However, if the constructor was called makeStudent, then the code to create a new student would have been: 
+$student1 = makeStudent Student("brad");
+7. Perl has no access protection. By default, all members are public. If you provide accessor and settor methods, you have to rely on the user to access instance variables through their methods. 
+8. For larger projects you would not store a class in the same file as the file that uses the class. If you put the class definition in a separate file, you should observe the following conventions: 
+1. The file must have a .pm suffix, rather than a .pl suffix. The reason why is explained in the section on modules. 
+2. You no longer have to put {}'s around the package, since you now want the package at the top-level. 
+3. You will need to terminate your file with the expression "1;". The reason why is explained in the section on modules. 
+
+Inheritance 
+Inheritance in Perl is obtained using the @ISA array. The @ISA array specifies one or more superclasses, thus permitting multiple inheritance. For example, to define a new class, called HonorsStudent, whose superclass is Student, we could write: 
+{ package HonorsStudent;
+  @ISA = ("Student");
+
+  # You should try to use the same constructor name as the superclass.
+  # First call the superclass constructor
+  # and then add new fields. Note that we must assign the result
+  # of the superclass constructor call to $self, or else the rest
+  # of the code will not work properly
+  sub new {
+    my ($class, $name) = @_;
+    # we can access a method by the same name in the superclass by 
+    # prefixing the pseudo-class SUPER and ::
+    $self = SUPER::new($class, $name);
+    $self->{awards} = [];  # awards is a reference to an anonymous array
+    return $self;
+  }
+
+  # push the award onto the awards array
+  # It might seem like you should be able to write:
+  #    push (@$self->{awards}, $award)
+  # since $self->{awards} returns a reference and the @ would cast the
+  # reference to an array. This code causes Perl to complain however, and
+  # hence the code first assigns the reference to a variable named $ref,
+  # and then casts $ref to an array
+  sub addAward { 
+    my ($self, $award) = @_;
+    $ref = $self->{awards};
+    push(@$ref, $award);
+  }
+
+  sub getAwards {
+    my ($self) = @_;
+    return $self->{awards};
+  }
+}
+
+$student3 = new HonorsStudent("yifan");
+$student3->addAward("phi kappa beta");
+print $student3->getName(), "\n";
+$awards = $student3->getAwards();
+foreach $award (@$awards) {
+    print "award = $award\n";
+}
+There are a few things to note about Perl's inheritance mechanism: 
+1. The superclass should already have a constructor that blesses the object, so you should first call the superclass constructor before doing anything else. Now you can see why it is a bad idea to hard code the class name into the bless function. If you are creating an HonorsStudent object, you want the object reference linked to the HonorsStudent package, not the Student package. 
+2. If Perl cannot find a method name in the subclass package, it will search the package names in the @ISA array to locate the method name. It will exhaustively search the ISA hierarchy associated with the first superclass before moving onto the second superclass, and hence name conflicts are resolved by using the first method found. 
+3. It is okay to omit a constructor, since the superclass constructor will get called. 
+4. Usually you will need to import the superclass package as well as define/modify the @ISA array. You can use the base module to both import the superclass and define/modify the @ISA array: 
+5. { package HonorsStudent;
+6.   use base("Student");
+7.   ...
+8. }
+
+Perl Modules
+The previous section introduced you to packages. Sometimes you may want to create a collection of functions, such as a library of functions, without creating an object. Packages can also be used to perform this task. In general, packages provide a way to divide up your namespace so that you can write functions or variables with the same name and not have them conflict with one another. In Perl packages that are meant to be libraries of functions are typically called modules. 
+When creating modules, here is a list of things to keep in mind: 
+1. The file should have the same name as a package. 
+2. By convention you should use an uppercase letter for the first character of the package name. 
+3. The file should have a .pm extension, which stands for "Perl Module", rather than a .pl extension. When Perl searches for modules, it searches for files with a .pm extension, so .pl files will be ignored. 
+4. The file must end with an expression that returns a true value. Typically you end the file with the expression "1;". 
+5. Typically you will inherit from the Exporter class, which provides a set of functions for handling the exporting of functions and variables. 
+6. Typically you will only export functions, not variables. 
+7. If you use the Exporter class, then you will export functions via the @EXPORT and @EXPORT_OK arrays. The @EXPORT array lists the names of the default functions to export, and the @EXPORT_OK array lists additional functions that can be exported if the importing module specifically lists them in a use directive. 
+8. If your module represents a class, then you do not have to use the Exporter class. Perl will do the right thing, as long as you use object oriented notation to refer to the module (e.g., you create objects by writing "new Student"). 
+Here is an example package: 
+package Brad;  # no quotes
+
+# use the Exporter module to inherit functions required to export functions
+# and variables 
+require(Exporter);  
+
+@ISA = ("Exporter");  
+
+# The default list of functions to export. These functions will be imported
+# into any module that uses "brad"
+@EXPORT = ("arraySum"); 
+
+# Additional functions that can be exported from "brad". These functions will
+# be imported only if they are explicitly named in a use statement
+@EXPORT_OK = ("arrayPrint");
+
+# sum the parameter list
+sub arraySum {
+  $sum = 0;
+  foreach $element (@_) {
+    $sum += $element;
+  }
+  return $sum;
+}
+
+# print the parameter list
+sub arrayPrint {
+  foreach $element (@_) {
+    print("element = $element\n");
+  }
+} 
+
+1;  # modules must return a true value 
+You can import the functions from a module into your namespace with the use directive. Here are several examples of the use directive: 
+use Brad;  # imports arraySum -- do not use quotes or the .pm extension
+use Brad qw(arrayPrint);  # imports arrayPrint but not arraySum
+use Brad qw(:DEFAULT arrayPrint); # imports arraySum and arrayPrint
+Here are a few things to keep in mind when using the use directive: 
+1. If you do not provide a list of functions to the use directive, then the list of functions from the @EXPORT list will be imported into the namespace. 
+2. If you provide a list of functions to the use directive, then only those functions on the list are imported into the namespace. Functions on the @EXPORT list that are not in this list will not be imported. 
+3. If you use the keyword :DEFAULT in your function list, then all functions from the @EXPORT list will be imported into the namespace. 
+Perl has many pre-defined modules that you can import into your program, such as the CGI module for assisting with CGI scripts. You can also download a wide variety of modules from the Comprehensive Perl Archive Network (CPAN) site. 
+
+Editing Files from the Command Line
+Sometimes you want to write a quick-and-dirty Perl script to perform a substitution in one or more files. For example, you might want to change all instances of "brad" to "bvz". You could write a Perl program to do this, but Perl provides a simple way to do this from the command line. For example, the following line will change all instances of "brad" to "bvz" in files with .html extensions and it will save the original files in files with a ".bak" extension. 
+UNIX> perl -p -i.bak -e 's/brad/bvz/g;' *.html
+Here is what each of the options does: 
+The -p option tells Perl to create a small program of the form: 
+while (<>) {  
+print;
+}
+When you do not specify a variable for the <> operator, it reads the line into a default variable called $_. Similarly, when you do not specify a string or variable to print, Perl prints the contents of $_. 
+1. The -i option tells Perl to create backup files with a ".bak" extension. If you omit the -i option, then Perl will write to stdout rather than modifying the file. If you want Perl to write to the file without saving a backup, specify the -i option without any extension. The -i flag sets a special variable called $^I to ".bak". The $^I variable is what tells Perl to store backup copies in files with a ".bak" extension. 
+2. The -e option tells Perl that the following string is a piece of executable code that should be inserted before the print statement. You can specify multiple executable statements in the string by separating them with semi-colons, or you can use multiple -e flags. Your program now looks like: 
+3. $^I = ".bak";
+4. while (<>) {
+5.   s/brad/bvz/g;
+6.   print;
+7. }
+The $_ variable gets modified in the substitution command since you did not explicitly provide the substitution command with a variable. 
+If you need to do more extensive editing of files, you can set the $^I variable explicitly in a Perl program and do your editing using a similar while loop that reads from files using the <> operator and prints to them using the print statement. 
+
+Reading perl programs
+Perl lets you do lots more than what I've detailed. If you start reading random perl programs, you'll notice the use of default variables, such as $_, in procedures, regular expressions, foreach clauses, etc. The best thing I can say is to read the manual before trying to read programs. I'm not a huge fan of many of these shortcuts, because I find it tends to destroy readability, but you make your own decisions. 
