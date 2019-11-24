@@ -1,0 +1,21 @@
+%http://math.jacobs-university.de/oliver/teaching/iub/resources/octave/octave-intro/octave-intro.html#SECTION00062000000000000000
+Calculate all the roots of the polynomial
+
+$\displaystyle \frac{147}{60}\zeta^6 -6\zeta^5 + \frac{15}{2}\zeta^4
+- \frac{20}{3}\zeta^3 + \frac{15}{4}\zeta^2 - \frac{6}{5}\zeta +
+\frac{1}{6} .
+$
+Hint: Use the command compan.
+Plot these roots as points in the complex plane and draw a unit circle for comparison. (Hint: hold, real, imag).
+
+Solution:
+
+  bdf6 = [147/60 -6 15/2 -20/3 15/4 -6/5 1/6];
+  R = eig(compan(bdf6));
+  plot(R,'+'); hold on
+  plot(exp(pi*i*[0:.01:2]));
+  if any(find(abs(R)>1))
+    fprintf('BDF6 is unstable\n');
+  else
+    fprintf('BDF6 is stable\n');
+  end

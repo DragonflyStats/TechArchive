@@ -1,0 +1,77 @@
+\documentclass{beamer}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphics}
+
+\begin{document}
+%-------------------------------------------------- %
+\begin{frame}
+\bigskip
+{
+\Huge
+\[ \mbox{Octave}  \]
+}
+{
+\huge
+\[ \mbox{Matrices Manipulations (Exercise C.6)}  \]
+}
+
+{
+\LARGE
+\[ \mbox{www.stats-lab.com}  \]
+\[ \mbox{Twitter: @StatsLabDublin} \]
+}
+
+\end{frame}
+%-------------------------------------------------- %
+\begin{frame}
+\frametitle{Octave: Matrices Manipulations}
+{
+\Large
+Suppose we have the $4 \times 4$ matrix C.
+}
+{\Large
+\[C = \left( \begin{array}{cccc}
+2& 7& -5& 5\\
+4&-2 & 7& -1\\
+6&-3 & 0& 3 \\
+4&-2 & 7& 1
+\end{array} \right)
+\]
+}
+{
+\Large
+\begin{enumerate}
+\item Replace all negative values of matrix C with 0. (Call this matrix $C1$)
+\item Replace all negative values of matrix C with the absolute value of those values. \\(Call this matrix $C2$.)
+\end{enumerate}
+}
+\end{frame}
+%-------------------------------------------------- %
+\begin{frame}
+\frametitle{Octave: Matrices Manipulations}
+\LARGE
+\textbf{Exercise 1}: Replace all negative values of matrix C with 0. \\
+
+\begin{itemize}
+\item The \texttt{max()} command, comparing each value to 0.
+\end{itemize} 
+
+\end{frame}
+%-------------------------------------------------- %
+\begin{frame}
+\frametitle{Octave: Matrices Manipulations}
+\LARGE
+\textbf{Exercise 2}: Replace all negative values of matrix C with the absolute value of those values.\\
+
+\begin{itemize}
+\item The \texttt{max()} command, comparing each value to the negation of that value.
+\end{itemize} 
+
+\end{frame}
+%-------------------------------------------------- 
+
+%-------------------------------------------------- %
+
+\end{document}

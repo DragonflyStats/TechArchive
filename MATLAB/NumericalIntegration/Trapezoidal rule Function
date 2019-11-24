@@ -1,0 +1,35 @@
+\section{Trapezoidal rule}
+Write a program to integrate an arbitrary function $ f$ in one variable on an interval $ [a,b]$ numerically using the trapezoidal rule with  $ h
+= (b-a)/N$ :
+
+\[ \displaystyle \int_a^b f(x)   dx \approx h\left( \frac{f(a)+f(b)}{2} +
+\sum_{j=1}^{N-1} f(a+jh) \right).\]
+For a function $ f$ of your choice, check, by generating a doubly logarithmic error plot, that the trapezoidal rule is of order $ 2$ .
+Solution:
+
+\begin{framed}
+\begin{verbatim}
+  function S = trapez(fun,a,b,N)
+    h = (b-a)/N;
+    % fy = feval(fun,[a:h:b]); better:
+    fy = feval(fun,linspace(a,b,N+1));
+    fy(1) = fy(1)/2;
+    fy(N+1) = fy(N+1)/2;
+    S = h*sum(fy);
+  end
+
+  function y = f(x)
+    y = exp(x);
+  end
+
+  for k=1:15;
+    err(k) = abs(exp(1)-1-trapez('f',0,1,2^k));
+  end
+  loglog(1./2.^[1:15],err);
+  hold on;
+  title('Trapezoidal rule, f(x) = exp(x)');
+  xlabel('Increment');
+  ylabel('Error');
+  loglog(1./2.^[1:15],err,'x');
+\end{verbatim}
+\end{framed}

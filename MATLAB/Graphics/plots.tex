@@ -1,0 +1,327 @@
+\documentclass[12pt]{article}
+\usepackage{framed}
+\usepackage{graphicx}
+%opening
+
+
+\begin{document}
+
+% http://elec.otago.ac.nz/w/images/4/4a/MeshPlotsInMatlabScan.pdf
+%\maketitle
+
+\tableofcontents
+
+\section{The \texttt{MATLAB load} Command}
+
+There is more than one way to read data into MATLAB from a file. The simplest, though least flexible, procedure is to use the load command to read the entire contents of the file in a single step. The load command requires that the data in the file be organized into a rectangular array. No column titles are permitted. One useful form of the load command is
+
+\texttt{load name.ext}
+
+where ``name.ext'' is the name of the file containing the data. The result of this operation is that the data in ``name.ext'' is stored in the MATLAB matrix variable called name. The ``ext'' string is any three character extension, typically ``dat''.
+
+Any extension except ``mat'' indicates to MATLAB that the data is stored as plain ASCII text. A ``mat'' extension is reserved for \texttt{MATLAB} matrix files (see ``help load'' for more information).
+
+Suppose you had a simple ASCII file named $my_xy.dat$ that contained two columns of numbers. The following MATLAB statements will load this data into the matrix $my_xy$, and then copy it into two vectors, x and y.
+\begin{verbatim}
+load my_xy.dat;     %  read data into the my_xy matrix
+x = my_xy(:,1);     %  copy first column of my_xy into x
+y = my_xy(:,2);     %  and second column into y
+\end{verbatim}
+You don't need to copy the data into x and y, of course. Whenever the ``x'' data is needed you could refer to it as $my_xy(:,1)$. Copying the data into ``x'' and ``y'' makes the code easier to read, and is more aesthetically appealing. The duplication of the data will not tax MATLAB's memory for most modest data sets.
+
+The load command is demonstrated in the following example.
+
+If the data you wish to load into MATLAB has heading information, e.g., text labels for the columns, you have the following options to deal with the heading text.
+
+Delete the heading information with a text editor and use the load command :-(
+
+Use the fgetl command to read the heading information one line at at time. You can then parse the column labels with the strtok command. This technique requires MATLAB version 4.2c or later.
+
+Use the \texttt{fscanf} command to read the heading information.
+Of these options, using fgetl and strtok is probably the most robust and convenient. If you read the heading text into MATLAB, i.e., if you don't use the load command, then you will have to also read the plot data with fscanf.
+
+%--------------------------------------------------------%
+\newpage
+\section{\texttt{MATLAB} Plots}
+Before starting on any task, it is often useful to understand the data by
+visualizing it. For this dataset, you can use a scatter plot to visualize the
+data, since it has only two properties to plot (profit and population). (Many
+other problems that you will encounter in real life are multi-dimensional and
+can't be plotted on a 2-d plot.)
+\subsection{The basic plot command}
+
+Two-dimensional line and symbol plots are created with the plot command. In its simplest form plot takes two arguments
+
+\begin{verbatim}
+plot(xdata,ydata)
+\end{verbatim}
+where \texttt{xdata} and \texttt{ydata} are vectors containing the data. Note that xdata and ydata must be the same length and both must be the same type, i.e., both must be either row or column vectors. Additional arguments to the plot command provide other options including the ability to plot multiple data sets, and a choice of colours, symbols and line types for the data.
+
+
+To plot the example vectors above in a new figure:
+
+\begin{framed}
+\begin{verbatim}
+clear all 		% clear all previous variables
+X = [3 9 27]; 	% my dependent vector of interest
+t = [1 2 3]; 	% my independent vector
+figure 			% create new figure
+plot(t, X)
+\end{verbatim}
+\end{framed}
+
+\subsection{A simple line plot}
+
+Here are the MATLAB commands to create a simple plot of y = sin(3*pi*x) from 0 to 2*pi.
+\begin{framed}
+\begin{verbatim}
+x = 0:pi/30:2*pi;   	  %  x vector, 0 to 2*pi
+						  %  steps of pi/30
+y = sin(3*x);             %  vector of y values
+plot(x,y)                 %  create the plot
+xlabel('x (radians)');    %  label the x-axis
+ylabel('sine function');  %  label the y-axis
+title('sin(3*x)');        %  put a title on the plot
+\end{verbatim}
+\end{framed}
+The effect of the labeling commands, xlabel, ylabel, and title are indicated by the text and red arrows in the figure.
+
+\subsection{Logarithmic axis scaling}
+
+Log-log and semi-log plots are created with commands that act just like the plot command. These are summarized in the table below.
+\begin{center}
+\begin{tabular}{|c|c|}\hline
+Command Name	  & Plot type \\ \hline
+loglog	 & log(y) vs log(x) \\
+semilogx	 &y vs log(x) \\
+semilogy	& log(y) vs x\\ \hline
+\end{tabular}
+\end{center}
+\subsection{External Data Set}
+
+The dataset ex1data1.txt is loaded from the data file into the variables X
+and y:
+
+\begin{framed}
+\begin{verbatim}
+data = load('ex1data1.txt'); % read comma separated data
+X = data(:, 1); y = data(:, 2);
+m = length(y); % number of training examples
+\end{verbatim}
+\end{framed}
+
+See the m-file \texttt{plotData.m}
+\begin{framed}
+\begin{verbatim}
+figure; % open a new figure window
+plot(x, y, 'rx', 'MarkerSize', 10); % Plot the data
+ylabel('Profit in $10,000s'); % Set the y axis label
+xlabel('Population of City in 10,000s'); % Set the x axis label
+\end{verbatim}
+\end{framed}
+%---------------------------------------------------%
+\subsection{Passing multiple data pairs to the \texttt{plot()} command}
+
+The plot command will put multiple curves on the same plot with the following syntax
+\begin{verbatim}
+	plot(x1,y1,s1,x2,y2,s2,x3,y3,s3,...)
+\end{verbatim}
+
+where the first data set (x1,y1) is plotted with symbol definition s1, the second data set (x2,y2) is plotted with symbol definition s2, etc. The separate curves are labeled with the legend command as demonstrated in the following example.
+Note that x1, x2, ... etc need not be the same vector.
+
+Each pair of vectors, (x1,y1), (x2,y2), etc. must have the same length. In other words the length of x1 and y1 must be the same. The length of x2 and y2 must be the same, but can be different from the length of x1 and y1.
+
+
+\subsection{The legend command}
+
+The legend is used to label the different data curves when more than one curve is drawn on the same plot. The syntax is
+\begin{verbatim}
+legend('label1','label2',...)
+\end{verbatim}	
+Where label1, etc are strings used to create the legend. This is best demonstrated by an example, which follows.
+
+\subsection{An example of putting multiple curves on a plot}
+
+
+
+Here are the \texttt{MATLAB} commands to create a symbol plot with the data generated by adding noise to a known function. The original function is drawn with a solid line and the function plus noise is plotted with open circles.
+
+\begin{verbatim}
+x = 0:0.01:2;                 %  generate the x-vector
+y = 5*x.*exp(-3*x);           %  and the "true" function, y
+yn = y + 0.02*randn(size(x)); %  Create a noisy version of y
+plot(x,y,'-',x,yn,'ro');      %  Plot the true and the noisy
+
+
+ %  add axis labels and plot title
+xlabel('x (arbitrary units)');
+ylabel('y (arbitrary units)');
+title('Plot of y = 5*x*exp(-3*x) + noise');
+
+ %  add legend
+legend('true y','noisy y');
+\end{verbatim}
+
+%------------------------------------------------------%
+\subsection{Changing symbol or line types}
+
+The symbol or line type for the data can by changed by passing an optional third argument to the plot command. For example
+
+\begin{verbatim}
+plot(x,y,'o');
+\end{verbatim}
+
+plots data in the x and y vectors using circles drawn in the default color (yellow), and
+
+\begin{verbatim}
+plot(x,y,'r:');
+\end{verbatim}
+plots data in the x and y vectors by connecting each pair of points with a red dashed line.
+The third argument of the plot command is a one, two or three character string of the form `cs', where `c' is a single character indicating the colour and `s' is a one or two character string indicating the type of symbol or line. The color selection is optional. Allowable colour and symbols types are summarized in the following tables. Refer to ``help plot'' for further information.
+
+\subsection{A simple plot of data from a file}
+The \texttt{PDXprecip.dat} file contains two columns of numbers. The first is the number of the month, and the second is the mean precipitation recorded at the Portland International Airport between 1961 and 1990.
+
+Here are the \texttt{MATLAB} commands to create a symbol plot with the data from \texttt{PDXprecip.dat}.
+
+\begin{framed}
+\begin{verbatim}
+load PDXprecip.dat;     %  read data into PDXprecip matrix
+%  copy first column of PDXprecip into month
+month = PDXprecip(:,1);
+%  and second column into precip
+precip = PDXprecip(:,2);
+plot(month,precip,'o');     %  plot precip vs. month with circles
+% add axis labels and plot title
+xlabel('month of the year');
+ylabel('mean precipitation (inches)');
+title('Mean monthly precipitation at Portland International Airport');
+\end{verbatim}
+\end{framed}
+
+
+\begin{framed}
+\begin{verbatim}
+ %  read labels and x-y data
+[labels,month,t] = readColData('PDXtemperature.dat',4,5);
+plot(month,t(:,1),'ro',month,t(:,2),'c+',month,t(:,3),'g-');
+xlabel(labels(1,:));     % add axis labels and plot title
+ylabel('temperature (degrees F)');
+title('Monthly average temperature for Portland International Airport');
+
+%  add a plot legend using labels read from the file
+legend(labels(2,:),labels(3,:),labels(4,:));
+\end{verbatim}
+\end{framed}
+%------------------------------------------------------%
+\subsection{A simple symbol plot}
+
+This example shows you how to plot data with symbols. This type of plot is appropriate, for example, when connecting data points with straight lines would give the misleading impression that the function being plotted is continuous between the sampled data points.
+
+Here are the \texttt{MATLAB} commands to create a symbol plot with the data generated by adding ``noise" to a known function.
+Note that the ``.*'' operator is necessary when multiplying the vector x by the vector \texttt{exp(-3*x)}.
+
+\begin{framed}
+\begin{verbatim}
+x = 0:0.01:2;                 %  generate the x-vector
+noise = 0.02*randn(size(x));  %  and noise
+y = 5*x.*exp(-3*x) + noise;   %  Add noise to known function
+plot(x,y,'o');                %  and plot with symbols
+
+xlabel('x (arbitrary units)');          %  add axis labels and plot title
+ylabel('y (arbitrary units)');
+title('Plot of y = 5*x*exp(-3*x) + noise');
+\end{verbatim}
+\end{framed}
+\newpage
+\section{More Plots}
+\subsection{Surface Plot}
+One type of 3-D plot that may be useful is a surface plot, which requires you to generate some kind of x-y plane and then
+apply a 3rd function as the z dimension.
+\begin{framed}
+\begin{verbatim}
+clear all
+close all
+[x,y] = meshgrid([-2:.2:2]); % set up 2-D plane
+Z = x.*exp(-x.^2-y.^2); % plot 3rd dimension on plane
+figure
+surf(x,y,Z,gradient(Z)) % surface plot, with gradient(Z)
+% determining color distribution
+colorbar % display color scale, can adjust
+% location similarly to legend
+\end{verbatim}
+\end{framed}
+\subsection{Contour plots}
+The basic syntax for creating contour plots is \texttt{contour(X,Y,Z,levels)}. To trace a contour, contour requires a 2-D array Z that specifies function values on a grid. The underlying grid is given by X and Y, either both
+as 2-D arrays with the same shape as Z, or both as 1-D arrays where length(X) is the number of columns in Z and length(Y) is the number of rows in Z.
+
+In most situations it is more convenient to work with the underlying grid (i.e., the former representation).
+
+The meshgrid function is useful for constructing 2-D grids from two 1-D arrays. It returns two 2-D arrays
+X,Y of the same shape, where each element-wise pair specifies an underlying (x; y) point on the grid. Function
+values on the grid Z can then be calculated using these X,Y element-wise pairs.
+We need to specify the contour levels (of Z) to plot. You can either specify a positive integer for the
+number of automatically-decided contours to plot, or you can give a list of contour (function) values in the levels argument.
+\begin{framed}
+\begin{verbatim}
+figure; % Create a new figure window
+xlist = linspace(-2.0, 1.0, 100);
+% Create 1-D arrays for x,y dimensions
+ylist = linspace(-1.0, 2.0, 100);
+% Create 2-D grid xlist,ylist values
+[X,Y] = meshgrid(xlist, ylist);
+
+% Compute function values on the grid
+Z = sqrt(X.^2 + Y.^2);
+
+% Create contour plot with 2-D grids,
+% 4 contour levels, black solid contours
+
+contour(X, Y, Z, [0.5 1.0 1.2 1.5], 'k');
+\end{verbatim}
+\end{framed}
+We can force the
+aspect ratio to be equal with the following command:
+\begin{verbatim}
+axis equal; % Scale the plot size to get same aspect ratio
+\end{verbatim}
+Finally, suppose we want to zoom in on a particular region of the plot. We can do this by changing the
+axis limits. The input list to axis has form \texttt{[xmin xmax ymin ymax]}.
+\begin{verbatim}
+axis([-1.0 1.0 -0.5 0.5]); % Set axis limits
+\end{verbatim}
+
+\subsection{Contour Plot Example}
+To view a contour plot of the function
+
+\[z = xe^{(-x^2-y^2)}\]
+
+\noindent over the range $-2 \leq x \leq  2$, $-2 \leq  y \leq  3$, create matrix Z using the statements. Then, generate a contour plot of Z.
+\begin{framed}
+\begin{verbatim}
+
+[X,Y] = meshgrid(-2:.2:2,-2:.2:3);
+Z = X.*exp(-X.^2-Y.^2);
+
+
+[C,h] = contour(X,Y,Z);
+clabel(C,h)
+colormap cool
+\end{verbatim}
+\end{framed}
+
+
+\subsection{\texttt{plot3}}
+
+\texttt{plot3} allows you make plots in three dimensions. plot3 lloks at the arguments passed to it in groups of three. With  \texttt{plot3}, the sine and cosine curves can be used together to form a single plot.
+\begin{framed}
+\begin{verbatim}
+x=linspace(0,2*pi,40);
+y=sin(x);
+z=cos(x);
+plot3(y,z,x);
+\end{verbatim}
+\end{framed}
+The example shown above will generate a three dimensional spiral the uses the cosine and sine of x. Again the range of x had to be declared along with the number of points to use in the plot.
+\end{document} 

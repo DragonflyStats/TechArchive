@@ -1,0 +1,123 @@
+This section discusses input and output concepts related to MATLAB.
+
+\section{Some useful output commands}
+
+\begin{description}
+\item[\texttt{disp}]
+\item[\texttt{fprintf}]
+\end{description}
+The commands \texttt{load} and \textt{save} which read data from a file into a
+a matrix, and write a matrix to file.
+
+The load command works only if there are the same number of values in each line and the
+values are of the same type, so that the data can be stored in a matrix. The save command only writes a matrix to a file.
+
+\section{Appending to a file}
+%-----------------------------------%
+
+%8.1.1
+\section{Opening and closing a file}
+
+Permission Strings
+\begin{description}
+\item[r]
+\item[w]
+\item[a]
+\end{description}
+
+%------------------------------------%
+
+
+%8.1.2 
+\section{Reading from files}
+%------------------------------------%
+The \texttt{fgetl} function
+
+%------------------------------------%
+The \texttt{fopen} function opens the file for reading
+
+The \texttt{fprintf} function  reads from each line
+
+
+%------------------------------------%
+
+%8.1.3 Writing to files
+
+the \texttt{fprintf} function actually returns the number of bytes written to a file, so if you do not have to see that number, suppress the output with a semi-colon.
+
+
+\begin{framed}
+\begin{verbatim}
+load randmat.dat
+\end{verbatim}
+\end{framed}
+%------------------------------------%
+%8.1.4
+\section{Appending to Files}
+The fprintf function can also be used to append to an existing file.
+The permission string is `a`. For example
+\begin{framed}
+\begin{verbatim}
+fid= fopen(`filename`,`a`);
+\end{verbatim}
+\end{framed}
+%------------------------------------%
+\textbf{Exercise}\\
+create a $3 \times 5$ matrix of random integers, each in the range 1 to 100.
+Write this to a file called `myrandmat.dat` in a $3 \times 5$ format using \texttt{fprintf}
+, so that the file appears identical to the original matrix.
+load the file to confirm that it was created correctly.
+
+%------------------------------------%
+% 8.2 Writing and Reading Spreadsheet files
+
+\begin{framed}
+\begin{verbatim}
+pwd
+ranmat=randint(5,3,[1 100])
+xlswrite('ranexcel',ranmat)
+
+\end{verbatim}
+\end{framed}
+The xlsread function will read a spreadsheet file. For example, to read
+from the file just created
+\begin{framed}
+\begin{verbatim}
+ssnums =xls('ranexcel')
+\end{verbatim}
+\end{framed}
+In both cases the .xls extension on the filename is the default setting, so there is no need to specify it.
+
+
+%------------------------------------%
+% 8.3 using MAT files for variables
+
+In addition to the data file types, matlab has functions that allow reading
+and saving variables from files. These files are called MAT files (because 
+the extension on the filename is .mat) and they store the names and contents
+of variables. Variables can be written to MAT files, appended to them, and
+read from them.
+
+Remark ; MAT files are very different .
+%----------%
+% 8.3.1 Writing variables to MAT files
+
+
+%PAge 267
+\begin{framed}
+\begin{verbatim}
+
+mymat=rand(3,5)
+x=1:6;
+y=x.^2; 
+
+who
+
+Your Variables are
+
+\end{verbatim}
+\end{framed}
+
+% 8.3.3 Reading from a MAT file
+
+%------------------------------------------%

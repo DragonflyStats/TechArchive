@@ -1,0 +1,109 @@
+Basic Rules for all Syntax
+
+A command must begin in column 1.
+Continuation lines must be indented at least one space.
+A command ends with a "." (period).
+Case does not matter except in the name of the file.
+Quotes can be single or double but they must match.
+
+%=========================================%
+\section{Comments}
+You can add comments to your syntax files for describing what you're doing and why. Adding comments to syntax it is generally considered excellent practice.
+We usually add comments by putting them on a new line, preceding them with an asterisk (*) and ending them with a period (.). This is shown in lines 1 and 2 in the screenshot below.
+You can also insert a comment behind a command by adding a slash (/) in front of the asterisk. See line 4 in the screenshot.
+When you run lines of syntax containing comments, the latter are ignored by SPSS. Comments are shown in grey in the Syntax Editor window.
+
+%=========================================%
+\section{File Handles}
+These are aliases for referring to a file or directory
+
+\begin{itemize}
+\item Make it easier to reuse syntax even when file
+locations change, by just specifying the new file
+name or location once.
+
+\item file handle alias / name=„directory\filename‟.
+
+\item Either single or double quotes are fine
+
+\end{itemize}
+
+\textbf{Handle for File Names}
+\begin{framed}
+\begin{verbatim}
+file handle cars /name=„Y:\SPSS\Cars.sav‟.
+get file=cars.
+select if year<80.
+descriptives variables=mpg.
+get file=cars.
+select if year>=80.
+descriptives variables=mpg.
+*You may optionally use quotes when you use
+the file handle, e.g. get file=„cars‟
+\end{verbatim}
+\end{framed}
+
+\textbf{Handle for a Directory}
+
+\begin{framed}
+file handle workshop /name=„Y:\SPSS‟.
+get file= „workshop\cars.sav‟.
+select if year<80.
+descriptives variables=mpg.
+get file=„workshop\cars.sav‟.
+select if year>=80.
+descriptives variables=mpg.
+\end{framed}
+%======================================%
+\newpage
+
+I find the three variable definitions that I use the most are defining Variable Labels, Value Labels and Missing Data codes. The syntax is simple and logical for all three, so I’m going to just give you the basic code, which you can keep on hand and edit as you need.
+
+For a data set with the variables Gender, Smoke, and Exercise, with the following definitions:
+
+\begin{verbatim}
+Gender: 0=Male, 1=Female
+Smoke: 1=Never 2=Sometimes 3=Daily
+Exercise: 1=Never 2=Sometimes 3=Daily
+\end{verbatim}
+
+For all three variables, \texttt{999} = a user-defined missing value
+
+We could use the following code to give descriptive variable labels, encode the value labels, and define the missing data:
+\begin{framed}
+\begin{verbatim}
+VARIABLE LABELS
+GENDER ‘Participant Gender’
+SMOKE ‘Does Participant ever Smoke Cigarettes?’
+EXERCISE ‘How Often Does Participant Exercise for a30 Minute Period?’.
+\end{verbatim}
+\end{framed}
+
+Notice two things:
+\begin{enumerate}
+\item I could put all three Variable labels in the same Variable Label statement
+\item There is a period at the end of the statement. This is required.
+\end{enumerate}
+
+\begin{framed}
+\begin{verbatim}
+VALUE LABELS
+GENDER 0 ‘Male’ 1 ‘Female
+/SMOKE EXERCISE
+1 ‘Never’
+2 ‘Sometimes’
+3 ‘Daily’.
+
+MISSING VALUES
+GENDER SMOKE EXERCISE (999).
+\end{verbatim}
+\end{framed}
+
+
+
+%=====================================%
+\section{PART 3 - STATISTICAL PROCEDURES}
+
+Before you do any other analysis, run FREQUENCIES on all the variables you are going to use in your analysis so you know what your data looks like. Check the FREQUENCIES output for mis-codings and unusual outliers. (Hints: Be careful about running FREQUENCIES on variables with unique or nearly unique 
+values, e.g., ID or INCOME. Use the subcommand /FORMAT=ONEPAGE to save space.)
+Since all three variables have the same missing data code, I could include them all in the same statement.

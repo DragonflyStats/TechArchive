@@ -1,0 +1,169 @@
+\documentclass[12pt]{article}
+\usepackage{framed}
+\usepackage{amsmath}
+\usepackage{graphics}
+%opening
+\title{Octave Work Sheet}
+\author{StatsLabDublin  (www.stats-lab.com)}
+
+\begin{document}
+
+\maketitle
+
+\section*{Part A : Working with Octave}
+\subsection*{Question A.1}
+\begin{enumerate}
+\item Clear the screen, and change the prompt to the following:
+\begin{framed}
+\begin{verbatim}
+>>:
+>>:
+\end{verbatim}
+\end{framed}
+\item Change the \textbf{\textit{Working Directory}} to \textbf{\texttt{C:/WorkArea/Octave}}.
+\item Close the current octave session.
+\end{enumerate}
+%--------------------------------------------%
+\newpage
+
+\section*{Part B : Basic Mathematical Operations}
+There will be a separate section for Matrices and Linear Algebra.
+
+\subsection*{Question B.1}
+\begin{enumerate}
+\item Compute the sum of the first 100 positive integers.
+\[ \sum^{100}_{i=1} i \]
+\item Compute the sum of the squares of the \textbf{first} 100 positive integers.
+\[ \sum^{100}_{i=1} i^2 \]
+\end{enumerate}
+\subsection*{Question B.2}
+\begin{enumerate}
+\item Determine the prime factors of the following numbers
+\begin{itemize}
+\item \textbf{8475495}
+\item \textbf{934234}
+\item \textbf{783932234}
+\end{itemize}
+\end{enumerate}
+\subsection*{Question B.3}  %Complex Numbers
+\begin{enumerate}
+\item Evaluate the following expression:
+{\Large \[ e^{i \pi} \]}
+\item Evaluate the following expression:
+{\Large \[ \lceil e^{1.5} \rceil \]}
+\item Evaluate the following expression:
+\[ {\LARGE \lfloor  tan \left( \frac{\pi}{3} \right) \rfloor  }\]
+\end{enumerate}
+\subsection*{Question B.4}
+\begin{enumerate}
+\item How many prime numbers are less than 100?
+\item Compute the sum of all prime numbers less than 100.
+\item Compute the sum of all prime numbers between 50 and 100.
+\item Compute the sum of the first 100 prime numbers.
+\end{enumerate}
+
+\subsection*{Question B.5}
+Let \textbf{P} be the set of all prime numbers less than 10000.
+\begin{enumerate}
+\item How many numbers are there in set \textbf{P}?
+\item For each value of \textbf{P}, determine the set \textbf{P1}, which are the floor function values of the square roots of each value of \textbf{P}. Compute the sum of the values in \textbf{P1}.
+\item How many \textbf{\textit{unique}} values are there in \textbf{P1}?
+\end{enumerate}
+
+\subsection*{Question B.6}
+Suppose the data set $X$ is a randomly selected sample.
+\begin{framed}
+\begin{verbatim}
+X=[ 5.1, 4.9, 4.7, 4.6, 5, 5.4, 4.6, 5, 4.4, 4.9, 5.4,4.8]
+ \end{verbatim}
+\end{framed}
+\begin{enumerate}
+\item How many values are there in $X$?
+\item Compute the sum of the values in $X$.
+\item Calculate the mean, median and mode of $X$.
+\item Calculate the standard deviation and variance of $X$.
+\item Calculate the maximum value, minimum value and range of $X$.
+\end{enumerate}
+
+\subsection*{Question B.7}
+Determine the roots of the following polynomials. (Some will have complex roots)
+\[ x^3 + 2x^2 - 5x + 4 \]
+\[ x^4 - 4x^4 + 6x^2 - 4x + 1 \]
+\[ x^5 + 4x^3 + 2x + 1  \]
+%------------------------------------------------%
+\newpage
+\section*{Part C: Matrices and Linear Algebra}
+
+Construct the following Matrices
+{
+\LARGE
+\[ A =  \left( \begin{array}{ccc}
+4 & 7 & 5 \\ 
+1 & 2 & 5 \\ 
+6 & 1 & 3
+\end{array}   \right)
+\qquad B = \left( \begin{array}{cc}
+3 & 5 \\ 
+1 & 5 \\ 
+5 & 2
+\end{array} \right)   \]
+}
+\begin{framed}
+\begin{verbatim}
+A = [4, 7, 5
+1,2,5
+6,1,3]
+\end{verbatim}
+\end{framed}
+\subsection*{Question C.1}
+\begin{enumerate}
+\item The inverse of matrix A ($A^{-1}$),
+\item The rank of matrix $A$,
+\item The product of A and B ($A \times B$).
+\end{enumerate}
+
+
+
+
+\subsection*{Question C.3}
+Suppose we have the $3 \times 4$ matrix A.
+
+\[ 
+A = \left(
+\begin{array}{cccc}
+ 5 & 2 & 1 & -1 \\ 
+ 1 & 3 & 2 & 5 \\ 
+ -1 & 4 & 7 & 1 \\ 
+\end{array} \right)
+\]
+
+\begin{enumerate}
+\item Compute the sum totals for each column,
+\item Compute the sum totals for each row,
+\item Compute the overall sum total.
+\end{enumerate}
+
+\subsection*{Question C.4}
+
+\[C = \left( \begin{array}{cccc}
+2& 7& -5& 5\\
+4&-2 & 7& -1\\
+6&-3 & 0& 3 \\
+4&-2 & 7& 1
+\end{array} \right)
+\]
+\begin{framed}
+\begin{verbatim}
+C = [2, 7, -5, 5
+4,-2,7,-1
+6,-3,0,3
+4,-2,7,1]
+
+\end{verbatim}
+\end{framed}
+\begin{enumerate}
+\item Replace all negative values of matrix C with 0. Call this matrix $C1$
+\item Replace all negative values of matrix C with the absolute value of those values. Call this matrix $C2$.
+\end{enumerate}
+
+\end{document}
