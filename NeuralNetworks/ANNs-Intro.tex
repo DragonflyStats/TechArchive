@@ -1,0 +1,74 @@
+CIS310 Artificial Intelligence
+
+Sections 1 Introduction
+Sections 2 Intelligent Agents
+Sections 3 Searches
+Sections 4 Knowledge Representation
+Sections 5 Planning
+Sections 6 Natural Language
+Sections 7 Philosophy
+
+Section 3 – Searches
+Breadth-first search (BFS) is a graph search algorithm that begins at the root node and explores all the neighboring nodes. Then for each of those nearest nodes, it explores their unexplored neighbor nodes, and so on, until it finds the goal. 
+Iterative deepening depth-first search (IDDFS) is a state space search strategy in which a depth-limited search is run repeatedly, increasing the depth limit with each iteration until it reaches d, the depth of the shallowest goal state. On each iteration, IDDFS visits the nodes in the search tree in the same order as depth-first search, but the cumulative order in which nodes are first visited, assuming no pruning, is effectively breadth-first.
+Uniform-cost search (UCS) is a tree search algorithm used for traversing or searching a weighted tree, tree structure, or graph. The search begins at the root node. The search continues by visiting the next node which has the least total cost from the root. Nodes are visited in this manner until a goal state is reached.
+
+Depth-first search (DFS) is an algorithm for traversing or searching a tree, tree structure, or graph. One starts at the root (selecting some node as the root in the graph case) and explores as far as possible along each branch before backtracking.
+Pruning is a term in mathematics and informatics which describes a method of enumeration, which allows to cut parts of a decision tree. Pruned parts of the tree are no longer considered because the algorithm knows based on already collected data (e.g. through sampling) that these subtrees do not contain the searched object. The decision tree is simplified by removing some decisions.
+A* ("A star") is a best-first, graph search algorithm that finds the least-cost path from a given initial node to one goal node (out of one or more possible goals).
+It uses a distance-plus-cost heuristic function (usually denoted f(x)) to determine the order in which the search visits nodes in the tree. The distance-plus-cost heuristic is a sum of two functions: the path-cost function (usually denoted g(x), which may or may not be a heuristic) and an admissible "heuristic estimate" of the distance to the goal (usually denoted h(x)). The path-cost function g(x) is the cost from the starting node to the current node.
+Since the h(x) part of the f(x) function must be an admissible heuristic, it must not overestimate the distance to the goal. Thus for an application like routing, h(x) might represent the straight-line distance to the goal, since that is physically the smallest possible distance between any two points (or nodes for that matter).
+
+
+Section 7
+
+
+
+
+The Turing test
+The Turing test is a proposal for a test of a machine's ability to demonstrate intelligence. It proceeds as follows: a human judge engages in a natural language conversation with one human and one machine, each of which tries to appear human. All participants are placed in isolated locations. If the judge cannot reliably tell the machine from the human, the machine is said to have passed the test. In order to test the machine's intelligence rather than its ability to render words into audio, the conversation is limited to a text-only channel such as a computer keyboard and screen. 
+It was described by Alan Turing in his 1950 paper "Computing Machinery and Intelligence," in which Turing considers the question "can machines think?" Since "thinking" is difficult to define, Turing chose to "replace the question by another which is closely related to it and is expressed in relatively unambiguous words." The question he attempts to answer is whether a machine can pass the Turing test.
+In the years since 1950, the test has proven to be both highly influential and widely criticized, and it is an essential concept in the philosophy of artificial intelligence. 
+ 
+Common objections
+Having clarified the question, Turing turned to answering it: he considered the following common objections, which include all the major arguments against artificial intelligence raised in the years since his paper was first published.
+ Mathematical Objections: This objection uses mathematical theorems, such as Gödel's incompleteness theorem, to show that there are limits to what questions a computer system based on logic can answer. Turing suggests that humans are too often wrong themselves and pleased at the fallibility of a machine. (This argument would be made again by philosopher John Lucas in 1961 and physicist Roger Penrose in 1989.) 
+Argument From Consciousness: This argument, suggested by Professor Geoffrey Jefferson in his 1949 Lister Oration states that "not until a machine can write a sonnet or compose a concerto because of thoughts and emotions felt, and not by the chance fall of symbols, could we agree that machine equals brain." Turing replies by saying that we have no way of knowing that any individual other than ourselves experiences emotions, and that therefore we should accept the test. 
+He adds, "I do not wish to give the impression that I think there is no mystery about consciousness ... [b]ut I do not think these mysteries necessarily need to be solved before we can answer the question [of whether machines can think]." 
+(This argument, that a computer can't have conscious experiences or understanding would be made 1980 by philosopher John Searle in his Chinese Room argument. Turing's reply is now known as the "other minds reply". See also Can a machine have a mind? in the philosophy of AI.) 
+Lady Lovelace's Objection: One of the most famous objections states that computers are incapable of originality. This is largely because, according to Ada Lovelace, machines are incapable of independent learning. Turing contradicts this by arguing that Lady Lovelace's assumption was affected by the context from which she wrote, and if exposed to more contemporary scientific knowledge, it would become evident that the brain's storage is quite similar to that of a computer. 
+Turing further replies that computers could still surprise humans, in particular where the consequences of different facts are not immediately recognizable. 
+Argument from the informality of behaviour: This argument states that any system governed by laws will be predictable and therefore not truly intelligent. Turing replies by stating that this is confusing laws of behaviour with general rules of conduct, and that if on a broad enough scale (such as is evident in man) machine behaviour would become increasingly difficult to predict. He argues that, just because we can't immediately see what the laws are, does not mean that no such laws exist. He writes "we certainly know of no circumstances under which we could say, 'we have searched enough. There are no such laws.'". (Hubert Dreyfus would argue in 1972 that human reason and problem solving was not based on formal rules, but instead relied on instincts and awareness that would never be captured in rules. More recent AI research in robotics and computational intelligence attempts to find the complex rules that govern our "informal" and unconscious skills of perception, mobility and pattern matching. 
+
+The Chinese Room 
+
+The Chinese Room argument comprises a thought experiment and associated arguments by John Searle (1980), which attempts to show that a symbol-processing machine like a computer can never be properly described as having a "mind" or "understanding", regardless of how intelligently it may behave.
+
+Searle's thought experiment begins with this hypothetical premise: suppose that artificial intelligence research has succeeded in constructing a computer that behaves as if it understands Chinese. It takes Chinese characters as input and, by following the instructions of a computer program, produces other Chinese characters, which it presents as output. Suppose, says Searle, that this computer performs its task so convincingly that it comfortably passes the Turing test: it convinces a human Chinese speaker that the program is itself a human Chinese speaker. All of the questions that the human asks it receive appropriate responses, such that any Chinese speaker would be convinced that he or she is talking to another Chinese-speaking human being.
+Some proponents of artificial intelligence would conclude that the computer "understands" Chinese. This conclusion, a position he refers to as "strong AI", is the target of Searle's argument.
+Searle then asks the reader to suppose that he is in a closed room and that he has a book with an English version of the aforementioned computer program, along with paper, pencils, erasers and filing cabinets. He can receive Chinese characters (perhaps through a slot in the door), process them according to the program's instructions, and produce Chinese characters as output. As the computer passed the Turing test this way, it is fair, says Searle, to deduce that he will be able to do so as well, simply by running the program manually.
+And yet, Searle points out, he does not understand a word of Chinese. He asserts that there is no essential difference between the role the computer plays in the first case and the role he plays in the latter. Each is simply following a program, step-by-step, which simulates intelligent behavior. Since it is obvious that he does not understand Chinese, Searle argues, we must infer that computer does not understand Chinese either.
+Searle argues that without "understanding" (what philosophers call "intentionality"), we can not describe what the machine is doing as "thinking". Because it does not think, it does not have a "mind" in anything like the normal sense of the word, according to Searle. Therefore, he concludes, "strong AI" is mistaken.
+
+
+%---------------------------%
+\section{Artificial Neural Networks }
+
+Artificial Neural Networks (ANNs) is an abstract simulation of a real nervous system that contains a collection of neuron units communicating with each other via axon connections. Such a model bears a strong reasemblance to axons and dendrites in a nervous system.
+
+
+The first fundamental modeling of neural nets was proposeed in 1943 by McCulloch and Pitts in terms of a computational model of "nervous activity". The McCulloch-Pitts neuron is a binary device and each neuron has a fixed threshold logic. 
+
+
+This model lead the works of John von Neumann, Marvin Minsky, Frank Rosenblatt, and many others. Hebb postulated, in his classical book \textit{The Organization of Behavior}, that the neurons were appropiately interconnected by self-organization and that "an existing pathway strenghens the connections between the neurons". 
+
+He proposed that the connectivity of the brain is continually changing as an organism learns 
+different functional tasks, and that cells assemblies are created by such changes. By embedding a vast number of simple neurons in an interactive nervous system, it is possible to provide computational power  for very sophisticated informating processing. 
+
+
+The neural model can be divided into two categories:
+
+
+The first is the biological type. It encompasses networks mimicking biological neural systems such as audio functions or early vision functions.
+
+The other type is application-driven. It depens less on the faithfulness to neurobiology. For this models the architectures are largely dictated by the application needs. Many such neural networks are represented by the so called connectionist models.

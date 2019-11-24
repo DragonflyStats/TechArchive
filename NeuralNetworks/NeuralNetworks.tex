@@ -1,0 +1,376 @@
+
+\documentclass[a4paper,11pt]{report}
+%
+%--------------------   start of the 'preamble'
+%
+\usepackage{graphicx,amssymb,amstext,amsmath}
+
+\usepackage[margin=0.40in]{geometry}
+
+
+%%    homebrew commands -- to save typing
+\newcommand\etc{\textsl{etc}}
+\newcommand\eg{\textsl{eg.}\ }
+\newcommand\etal{\textsl{et al.}}
+\newcommand\Quote[1]{\lq\textsl{#1}\rq}
+\newcommand\fr[2]{{\textstyle\frac{#1}{#2}}}
+\newcommand\miktex{\textsl{MikTeX}}
+\newcommand\comp{\textsl{The Companion}}
+\newcommand\nss{\textsl{Not so Short}}
+%
+%---------------------   end of the 'preamble'
+%
+
+\begin{document}
+\chapter{Neural Networks}
+\section{Overview}
+\begin{itemize}
+\item The artificial neuron; \item network architecture;
+perceptrons. \item Single layer networks; supervised training in
+batch and individual mode. \item Multilayer feedforward networks;
+\item backpropogation; momentum. \item Counterpropogation
+networks; unsupervised training; initialisation of weights. \item
+Statistical methods; Boltzmann training. \item Feedback networks;
+\item Hopfields nets; energy; training. Applications. \item
+Additional software requirements: recommended that some neural
+nets software is obtained (eg MATLAB).
+\end{itemize}
+
+
+\section{Hopfield networks}
+A Hopfield network is a form of recurrent artificial neural
+network invented by John Hopfield. Hopfield networks serve as
+content-addressable memory systems with binary threshold units.
+They are guaranteed to converge to a local minimum, but
+convergence to one of the stored patterns is not guaranteed.
+
+
+\section{Lyapunov functions}
+Lyapunov functions are functions which can be used to prove the
+stability of a certain fixed point in a dynamical system or
+autonomous differential equation. Named after the Russian
+mathematician Aleksandr Mikhailovich Lyapunov, Lyapunov functions
+are important to stability theory and control theory. A similar
+concept appears in the theory of general state space Markov
+Chains, usually under the name Lyapunov-Foster functions.
+
+Functions which might prove the stability of some equilibrium are
+called Lyapunov-candidate-functions. There is no general method to
+construct or find a Lyapunov-candidate-function which proves the
+stability of an equilibrium, and the inability to find a Lyapunov
+function is inconclusive with respect to stability, which means,
+that not finding a Lyapunov function doesn't mean that the system
+is unstable. For dynamical systems (e.g. physical systems),
+conservation laws can often be used to construct a
+Lyapunov-candidate-function.
+
+The basic Lyapunov theorems for autonomous systems which are
+directly related to Lyapunov (candidate) functions are a useful
+tool to prove the stability of an equilibrium of an autonomous
+dynamical system. One must be aware that the basic Lyapunov
+Theorems for autonomous systems are a sufficient, but not
+necessary tool to prove the stability of an equilibrium. Finding a
+Lyapunov Function for a certain equilibrium might be a matter of
+luck. Trial and error is the method to apply, when testing
+Lyapunov-candidate-functions on some equilibrium. As the areas of
+equal stability often follow lines in 2D, the computer generated
+images of Lyapunov exponents are visually appealing and very
+popular.
+
+\section{Boltzmann Machines}
+A Boltzmann machine is the name given to a type of stochastic
+recurrent neural network by Geoffrey Hinton and Terry
+Sejnowski.They are named after the Boltzmann distribution in
+statistical mechanics, which is used in their sampling function.
+Boltzmann machines can be seen as the stochastic, generative
+counterpart of Hopfield nets. They were one of the first examples
+of a neural network capable of learning internal representations,
+and are able to represent and (given sufficient time) solve
+difficult combinatoric problems.
+
+Boltzmann machines with unconstrained connectivity have not proven
+useful for practical problems in machine learning or inference.
+They are still theoretically intriguing, however, due to the
+locality and Hebbian nature of their training algorithm, as well
+as their parallelism and the resemblance of their dynamics to
+simple physical processes. If the connectivity is constrained, the
+learning can be made efficient enough to be useful for practical
+problems.
+
+\section{Self Organizing Maps}
+A self-organizing map (SOM) or self-organizing feature map (SOFM)
+is a type of artificial neural network that is trained using
+unsupervised learning to produce a low-dimensional (typically
+two-dimensional), discretized representation of the input space of
+the training samples, called a map. Self-organizing maps are
+different from other artificial neural networks in the sense that
+they use a neighborhood function to preserve the topological
+properties of the input space.
+
+This makes SOM useful for visualizing low-dimensional views of
+high-dimensional data, akin to multidimensional scaling. The model
+was first described as an artificial neural network by the Finnish
+professor Teuvo Kohonen, and is sometimes called a Kohonen map.
+[1] Like most artificial neural networks, SOMs operate in two
+modes: training and mapping. Training builds the map using input
+examples. It is a competitive process, also called vector
+quantization. Mapping automatically classifies a new input vector.
+A self-organizing map consists of components called nodes or
+neurons. Associated with each node is a weight vector of the same
+dimension as the input data vectors and a position in the map
+space. The usual arrangement of nodes is a regular spacing in a
+hexagonal or rectangular grid. The self-organizing map describes a
+mapping from a higher dimensional input space to a lower
+dimensional map space.
+
+The procedure for placing a vector from data space onto the map is
+to find the node with the closest weight vector to the vector
+taken from data space and to assign the map coordinates of this
+node to our vector. While it is typical to consider this type of
+network structure as related to feedforward networks where the
+nodes are visualized as being attached, this type of architecture
+is fundamentally different in arrangement and motivation. Useful
+extensions include using toroidal grids where opposite edges are
+connected and using large numbers of nodes. It has been shown that
+while self-organizing maps with a small number of nodes behave in
+a way that is similar to K-means, larger self-organizing maps
+rearrange data in a way that is fundamentally topological in
+character. It is also common to use the U-matrix. The U-matrix
+value of a particular node is the average distance between the
+node and its closest neighbors (ref. 9). In a square grid for
+instance, we might consider the closest 4 or 8 nodes, or six nodes
+in a hexagonal grid. Large SOMs display properties which are
+emergent. In maps consisting of thousands of nodes, it is possible
+to perform cluster operations on the map itself.
+%-----------------------------------------------------------------------------------%
+\newpage
+\section{Widrow - Hoff Rule}
+
+\subsection{Least mean squares} Least mean squares (LMS) algorithms
+are a class of adaptive filter used to mimic a desired filter by
+finding the filter coefficients that relate to producing the least
+mean squares of the error signal (difference between the desired
+and the actual signal). It is a stochastic gradient descent method
+in that the filter is only adapted based on the error at the
+current time. It was invented in 1960 by Stanford University
+professor Bernard Widrow and his first Ph.D. student, Ted Hoff.
+
+%-----------------------------------------------------------------------------------%
+\newpage
+\section{Hebbian theory}
+Hebbian theory describes a basic mechanism for synaptic plasticity
+where in an increase in synaptic efficacy arises from the
+presynaptic cell's repeated and persistent stimulation of the
+postsynaptic cell. Introduced by Donald Hebb in 1949, it is also
+called Hebb's rule, Hebb's postulate, and cell assembly theory,
+and states: \begin{quote}Let us assume that the persistence or
+repetition of a reverberatory activity (or "trace") tends to
+induce lasting cellular changes that add to its stability. When
+an axon of cell A is near enough to excite a cell B and repeatedly
+or persistently takes part in firing it, some growth process or
+metabolic change takes place in one or both cells such that A's
+efficiency, as one of the cells firing B, is increased. The theory
+is often summarized as "cells that fire together, wire together"
+\end{quote} although this is an oversimplification of the nervous system
+not to be taken literally, as well as not accurately representing
+Hebb's original statement on cell connectivity strength changes.
+The theory is commonly evoked to explain some types of associative
+learning in which simultaneous activation of cells leads to
+pronounced increases in synaptic strength. Such learning is known
+as Hebbian learning
+
+%-----------------------------------------------------------------------------------%
+\newpage
+\section{Energy Well}
+\begin{itemize}
+\item Explain which neural network state is known as the `energy
+well'. \item Write the formula for computing the energy level in a
+Hopfield neural network.
+\end{itemize}
+
+\newpage
+%http://www.cs.miami.edu/~geoff/Courses/COMP6210-10M/Content/NeuralNetworks.shtml
+\begin{verbatim}
+
+Neural Networks
+
+--------------------------------------------------------------------------------
+ • Processing Elements ◦ An array of inputs, with a weight associated with each input. 
+◦ An intermediate value computed from the input values and weights. The computation performed depends on the architecture of the network, often the sum of products. 
+◦ An output which is some (activation) function of the intermediate value. Often sigmoid, or step, or sign function. 
+◦ Inputs come either from other PEs, or from an external source. 
+◦ Layers or slabs ◾ The PEs are arranged into layers, or slabs. 
+◾ The input layer accepts input from an external source 
+◾ The output layer produces output for external consumption 
+◾ Hidden layers lie between the input and output layers 
+◾ There may or may not be a spatial relationship between the PEs in a layer. 
+◾ If each PE in a layer has an input from every PE in the previous layer, then the network is fully feedforward connected. 
+◾ Connections between non-adjacent layers may be used. 
+
+◦ Learning ◾ Supervised learning architectures ◾ Learn functions from input to output, based on example input and output vector pairs. 
+◾ Once trained can approximate the function for inputs not previously encountered. 
+
+◾ Unsupervised learning architectures ◾ Learn to differentiate between different input vectors. 
+
+
+
+
+
+• Kohonen/Counter-Propagation Networks ◦ There is an input layer, a hidden layer called the Kohonen layer, and an output layer called the Grossberg layer. 
+◦ The network is fully feedforward connected. 
+◦ Training takes place in two stages. ◾ Firstly the Kohonen layer is trained in an unsupervised manner. ◾ This trains the PEs in the layer to differentiate between different input vectors. 
+
+◾ The second phase trains the Grossberg layer in a supervised manner. ◾ This trains the Grossberg layer to associate an output vector with each recognised input vector. 
+
+
+◦ Once trained, the network will output an appropriate output vector for any given input vector. 
+◦ Kohonen layer ◾ The PEs in the Kohonen layer may have a spatial relationship, e.g. rectangular lattice, triangular lattice, hexagonal lattice. 
+◾ Intermediate value = sqrt(SUMinputs(Weight - Input)2)
+ This is the Euclidian distance from the weight vector to the input vector. 
+◾ Activation function is f(Intermediate) = 1 if Intermediate is minimum over PEs,
+ f(Intermediate) = 0 otherwise
+ This is a form of step function. 
+◾ The weights are initially set randomly. 
+
+◦ Training the Kohonen Layer ◾ A sequence of typical input vectors are handed to the input layer, which distributes these values to the Kohonen layer PEs. 
+◾ Each Kohonen layer PE works out the intermediate value (distance) from its weights to the input vector. 
+◾ The activation function determines which PE which is closest to the input, and is declared the "winner". 
+◾ The winning PE (and those close by in the spatial relationship if any) have their weights moved towards the input vector:
+ weightkohonen,winner#,input# += alpha*(inputkohonen,winner#,input# - weightkohonen,winner#,input#)
+ where alpha is the learning rate for winners. 
+◾ The other PEs (losers) have their weights moved towards the input vector:
+ weightkohonen,loser#,input# += beta*(inputkohonen,loser#,input# - weightkohonen,loser#,input#)
+ where beta is the learning rate for losers. Beta is typically very small, often 0. 
+◾ After sufficient training, the PE's weights will be distributed about the input space, with higher density in the areas of frequent input. Each PE recognises a piece of the input space. 
+
+◦ The Grossberg layer ◾ Intermediate value = SUMinputs(Weight * Input). This is the sum of products. 
+◾ Activation function is f(Intermediate) = Intermediate 
+◾ The weights are initially set randomly. 
+
+◦ Training the Grossberg layer ◾ A sequence of typical input vectors and expected output vectors are used. 
+◾ The input values are distributed to the Kohonen layer as usual, and the winner calulated. 
+◾ The output values from the Kohonen layer are transmitted to the Grossberg layer. 
+◾ The output from each Grossberg layer PE is the weight corresponding to the input value 1 from the Kohonen layer. 
+◾ The weights in Grossberg layer PEs are then modified:
+ weightgrossberg,pe#,input# += inputgrossberg,pe#,input# * (gamma*(expected_outputpe# - outputgrossberg,pe#,input#))
+ where gamma is the learning rate for the Grossberg layer. 
+◾ After sufficient training, the vector made from the Grossberg layer PE's outputs will approximate the output vector for the piece of input space recognised by the ith Kohonen layer PE. 
+
+◦ Example application: Weather types and intelligent reactions 
+
+
+
+• Backpropagation ◦ There is an input layer, a hidden layer and an output layer. 
+◦ Intermediate value = SUMinputs(Weight * Input). This is the sum of products. 
+◦ Activation function is the sigmoid: f(x) = 1/(1 + exp(-x)) 
+◦ The network may or may not be fully feedforward connected. 
+◦ The weights are initially set randomly. 
+◦ The network is trained in a supervised manner, to learn a function from input vectors to output vectors (the output vectors are formed from the outputs from the output layer PEs). This is done by adjusting the weights in the network. 
+◦ Once trained, the network is used by presenting an input vector. The vector formed from the output PE output forms the output from the function learned. 
+◦ Training ◾ A sequence of typical input and output vector pairs are presented to the network, and the PE outputs calculated. 
+◾ The output layer weights are then updated:
+ deltaoutput,pe = f'(Intermediateoutput,pe) * (expected_outputoutput,pe - outputoutput,pe)
+ weightoutput,pe,i += alpha*deltaoutput,pe*inputoutput,pe,i
+ where the first derivative of the sigmoid function is used to train the network: f'(x) = f(x)*(1-f(x)), and alpha is the learning rate for the output layer. 
+◾ The hidden layer weights are then updated, by propagating the errors from the output layer back to the hidden layer:
+ deltahidden,pe = f'(Intermediatehidden,pe) * SUMi(deltaoutput,i*weightoutput,pe,i)
+ weighthidden,pe,i += beta*deltahidden,pe*inputhidden,i
+ where beta is the learning rate for the hidden layer. 
+
+◦ Example application: Stock market analysis 
+
+
+
+
+--------------------------------------------------------------------------------
+ 
+Exam Style Questions
+• Describe the structure and operation of a processing element. 
+• Explain what is meant by a neural network being "fully feedforward connected". 
+• Explain the difference between supervised and unsupervised learning in a neural network. 
+• Describe the architecture of a Kohonen/counter propagation network. What (in general terms) are the tasks of each of the layers? 
+• Give details of how the output and hidden layers of a backpropogation network are trained. After sufficient training, what has a backpropogation network learned? 
+
+\end{verbatim}
+
+\section{2010 Neural Networks Exam ULCIS}
+
+\subsection{Question 1}
+\begin{itemize}
+\item[a)] Draw a diagram showing a threshold unit with 2 inputs (?a, ?b) with weights (3 and l
+respectively) plus a bias with weight 2. Explain the meaning of the symbols that you
+use.
+[4]
+\item[b)] What is meant by the terms recurrent, sigmoid, net and supervised learning? Use
+diagrams to help your explanation if appropriate.
+[8]
+\item[c)] Describe the calculation involved in calculating the activation of a tmit given its
+inputs.
+[4]
+\item[d)] A threshold unit has 5 inputs, and outputs a l if and only if more than 3 of these
+inputs are l.
+Describe the design of such a unit giving the values of all of the weights needed.
+Explain how this unit works, showing that it obeys the description given.
+[9]
+\end{itemize}
+%----------------------------------------------------------------------%
+
+\subsection{Question 2}
+\begin{itemize}
+\item[a)]  A threshold unit has a bias and 3 inputs. The associated weights are 1, 1, -0.25 and
+-0.2 respectively. Use this information to draw a diagram of the unit.
+[5]
+\item[b)] Draw a truth table for the Lmit with the given weights.
+[5]
+\item[c)] Describe the update rule for such a unit, explaining carefully any equations and
+symbols that you use.
+[5]
+\item[d)] Showing all your calculations, calculate the effect on the unit of training with the
+following training set and with a leaming rate of 0.2:
+%?a ?b ?c tar et
+%1 KHHKIK
+%ZH 1 1 HH
+%1 1 1 1
+[6]
+\item[e)] Draw the truth table of the unit resulting from part d).
+\end{itemize}
+
+%---------------------------------------------------%
+\newpage
+\subsection{Question 3}
+In your study of chapter ll of the guide, you should have met many applications of I
+neural networks.
+Describe three applications of your choice, at least one of which is of a Hopfield Net. In
+each case give:
+\begin{itemize}
+\item[a)] The aims and objectives ofthe application
+[6]
+\item[b)] The difficulties faced and how successful it has been, indicating how success is
+measured for that application
+[6]
+\item[c)] The architecture of the neural network used and typical values of the parameters
+needed to replicate the application.
+[I3]
+\end{itemize}
+[25 overall]
+%---------------------------------------------------%
+\subsection{Question 4}
+\begin{itemize}
+\item[a)] Describe a typical Kohonen-Grossberg network, explaining the different roles played
+by each layer.
+[5]
+\item[b)]  Giving appropriate equations, sketch the algoritlnn used to train the Kohonen layer in
+such a network. Define each symbol appearing in the equations.
+[8]
+\item[c)] The two units of a Kohonen layer are given by (-0.1, 0.2, -0.3, 0.4) and (-0.2, 0.3,
+-0.4, 0.5). The network is to be trained using a set of examples; the first one of which is:
+(0.3, -0.4, 0.5, -0.6). Showing all of your working, calculate the units resulting from the
+presentation of just this one example if the leaming rate is 0.3.
+[12]
+\end{itemize}
+
+%---------------------------------------------------%
+
+\end{document}
+
+\end{document}
