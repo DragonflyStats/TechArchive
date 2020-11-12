@@ -12,7 +12,7 @@ with specific callouts to Java or Python if there are major differences.
 * ***The four libraries are Spark SQL, Spark Streaming, MLlib, and GraphX.***
 
 ----------------------------------------------------------
-### Srak SQL
+## Spark SQL
 * Spark SQL allows you to write relational queries that are expressed in either SQL, HiveQL, or Scala to be executed
 using Spark. 
 * Spark SQL has a new RDD called the SchemaRDD. The SchemaRDD consists of rows objects and a
@@ -118,28 +118,3 @@ example, you must first start up netcat, which is a small utility found in most 
 source to give the application streams of data to work with. Then, on a different terminal window, run the application
 using the command shown here.
 
-#### MLlib 
-The MLlib library contains algorithms and utilities for
-classification, regression, clustering, collaborative filtering and dimensionality reduction. Essentially, you would use
-this for specific machine learning use cases that requires these algorithms. In the lab exercise, you will use the
-clustering K-Means algorithm on a set of taxi drop off points to figure out potentially where the best place to hail a
-cab would be.
-
-### GraphX
-The GraphX is another library that sits on top of the Spark Core. It is basically a graph processing library which can
-used for social networks and language modeling. Graph data and the requirement for graph parallel systems is
-becoming more common, which is why the GraphX library was developed. Specific scenarios would not be efficient if
-it is processed using the data-parallel model. A need for the graph-parallel model is introduced with new graph-parallel
-systems like Giraph and GraphLab to efficiently execute graph algorithms much faster than general data-parallel
-systems.
-
-There are new inherent challenges that comes with graph computations, such as constructing the graph, modifying its
-structure, or expressing computations that span several graphs. As such, it is often necessary to move between table
-and graph views depending on the objective of the application and the business requirements.
-
-The goal of GraphX is to optimize the process by making it easier to view data both as a graph and as collections, such
-as RDD, without data movement or duplication. The lab exercise goes through an example of loading in a text file and creating a graph from it to find attributes of the
-top users.
-
-#### Summary:
-Having completed this lesson, you should be able to understand and use the various Spark libraries.
