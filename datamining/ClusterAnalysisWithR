@@ -1,0 +1,39 @@
+Cluster Analysis with R
+
+%--------------------------------------------------------------------%
+
+Cluster Analysis is a statistical technique used to group cases (individuals or objects) into homogeneous sub-groups
+based on responses to variabkes,
+
+\begin{itemize}
+\item Two-step
+\item k-mean
+\item Hierarchical
+\end{itemize}
+%--------------------------------------------------------------------%
+
+The dist() function.
+method	
+the distance measure to be used. This must be one of "euclidean", "maximum", "manhattan", 
+"canberra", "binary" or "minkowski". Any unambiguous substring can be given.
+
+%--------------------------------------------------------------------%
+
+The measure of distance is an important tool in statistical analysis. 
+It quantifies dissimilarity between sample data for numerical computation. 
+A popular choice of distance metric is the Euclidean distance, which is the square root of sum 
+of squares of attribute differences. In particular, for two data points x and y with n numerical 
+attributes, the Euclidean distance between them is: (Formula)
+
+
+For example, the data frame mtcars consists of measurements from a collection of 32 automobiles. Since there are 11 measurement attributes for each automobile, the data set can be seen as a collection of 32 sample vectors in an 11 dimensional space. To find out the dissimilarity between two automobiles, say Honda Civic and Camaro Z28, we can calculate the distance between them with the dist function:
+
+\begin{verbatim}
+> x <- mtcars["Honda Civic",] 
+> y <- mtcars["Camaro Z28",] 
+> dist(rbind(x, y)) 
+           Honda Civic 
+Camaro Z28      335.89
+\end{verbatim}
+
+%--------------------------------------------------------------------%
