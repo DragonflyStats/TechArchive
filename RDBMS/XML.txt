@@ -1,6 +1,0 @@
-Section 3
-XML extensible markup language
-
-DTDs
-IDs
-IDrefs
